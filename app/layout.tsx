@@ -1,22 +1,32 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.css";
+import { ContactModal } from "@/components/ContactModal";
+import { CaseStudyModal } from "@/components/CaseStudyModal";
 
 export const metadata: Metadata = {
-  title: "APEX | Intelligent systems. Real impact.",
-  description: "APEX designs AI, software, data, and workflow systems that modernize operations and create measurable business impact.",
+  title: "APEX | Intelligent Systems. Real Momentum.",
+  description:
+    "APEX builds software, AI, data, and workflow systems that help businesses modernize operations and scale with confidence.",
   openGraph: {
-    title: "APEX | Intelligent systems. Real impact.",
-    description: "AI and digital systems designed around real operations.",
-    type: "website"
-  }
+    title: "APEX | Intelligent Systems. Real Momentum.",
+    description:
+      "Software, AI, data, and workflow systems built around real operations.",
+    type: "website",
+  },
 };
 
 export const viewport: Viewport = {
-  width: "device-width",
-  initialScale: 1,
-  themeColor: "#ffffff"
+  themeColor: "#ffffff",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  return <html lang="en"><body>{children}</body></html>;
+  return (
+    <html lang="en">
+      <body>
+        {children}
+        <CaseStudyModal />
+        <ContactModal />
+      </body>
+    </html>
+  );
 }

@@ -1,5 +1,5 @@
 {
-  "name": "apex-ultra-website",
+  "name": "apex-final-ultra-2026",
   "version": "1.0.0",
   "private": true,
   "scripts": {
@@ -13,9 +13,9 @@
     "react-dom": "19.0.0"
   },
   "devDependencies": {
-    "@types/node": "^20.17.0",
-    "@types/react": "^19.0.0",
-    "@types/react-dom": "^19.0.0",
-    "typescript": "^5.7.2"
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "typescript": "^5"
   }
 }

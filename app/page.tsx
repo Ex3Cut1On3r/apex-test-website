@@ -1,37 +1,37 @@
 import Image from "next/image";
 import Header from "@/components/Header";
-import ContactButton, { ContactModal } from "@/components/ContactModal";
+import ContactButton from "@/components/ContactModal";
+import { CaseStudyButton } from "@/components/CaseStudyModal";
 import {
+  ArrowRightIcon,
   BrainIcon,
   BriefcaseIcon,
+  CalendarIcon,
   ChartIcon,
+  CheckIcon,
   CodeIcon,
   CompassIcon,
   DatabaseIcon,
-  FactoryIcon,
   FlowIcon,
+  GlobeIcon,
+  GraduationIcon,
   GridIcon,
   LayersIcon,
+  LeafIcon,
+  MessageIcon,
   NodesIcon,
-  PeopleIcon,
-  PlaneIcon,
+  SearchIcon,
   ShieldIcon,
+  SparkIcon,
 } from "@/components/Icons";
 
 const solutions = [
-  { icon: BrainIcon, title: "AI & Intelligent Automation", body: "Apply AI where it removes repetitive work, improves response quality, and accelerates decisions." },
-  { icon: LayersIcon, title: "Legacy Modernization", body: "Modernize aging applications and workflows without discarding the business logic that still matters." },
-  { icon: NodesIcon, title: "System Integration", body: "Connect software, teams, and data so information moves cleanly through the operation." },
-  { icon: DatabaseIcon, title: "Data Infrastructure", body: "Create dependable data foundations for reporting, analytics, automation, and AI-enabled operations." },
-  { icon: CodeIcon, title: "Custom Software", body: "Build internal tools and customer experiences around how the business actually needs to work." },
-  { icon: FlowIcon, title: "Workflow Automation", body: "Turn manual handoffs, approvals, follow-ups, and reconciliation into reliable digital flows." },
-];
-
-const industries = [
-  { icon: FactoryIcon, no: "01", title: "Manufacturing", body: "Production visibility, operational workflows, integrations, and data that can be acted on." },
-  { icon: PlaneIcon, no: "02", title: "Aerospace & Defense", body: "Modern systems for environments where reliability, traceability, and disciplined execution matter." },
-  { icon: PeopleIcon, no: "03", title: "Recruiting & Staffing", body: "Candidate workflows, matching operations, communication, reporting, and back-office automation." },
-  { icon: BriefcaseIcon, no: "04", title: "Service Businesses", body: "Connected customer journeys and operations that reduce admin work and protect delivery quality." },
+  { key: "ai", icon: BrainIcon, no: "01", title: "AI & Intelligent Automation", body: "Apply AI where it removes repetitive work, improves response quality, and accelerates decisions." },
+  { key: "legacy", icon: LayersIcon, no: "02", title: "Legacy Modernization", body: "Modernize aging applications and workflows without discarding the business logic that still matters." },
+  { key: "integration", icon: NodesIcon, no: "03", title: "System Integration", body: "Connect software, teams, and data so information moves cleanly through the operation." },
+  { key: "data", icon: DatabaseIcon, no: "04", title: "Data Infrastructure", body: "Create dependable data foundations for reporting, analytics, automation, and AI-enabled operations." },
+  { key: "software", icon: CodeIcon, no: "05", title: "Custom Software", body: "Build internal tools and customer experiences around how the business actually needs to work." },
+  { key: "workflow", icon: FlowIcon, no: "06", title: "Workflow Automation", body: "Turn manual handoffs, approvals, follow-ups, and reconciliation into reliable digital flows." },
 ];
 
 const process = [
@@ -42,70 +42,82 @@ const process = [
   { icon: ChartIcon, no: "05", title: "Evolve", body: "Measure what changed, strengthen the system, and expand where the value is clear." },
 ];
 
-function Arrow() {
-  return <span className="text-arrow" aria-hidden="true">→</span>;
+function ArchitectureVisual() {
+  return (
+    <div className="architecture-wrap" aria-label="APEX AI systems architecture illustration">
+      <svg viewBox="0 0 760 620" className="architecture-svg" role="img" aria-labelledby="archTitle archDesc">
+        <title id="archTitle">APEX AI systems architecture</title>
+        <desc id="archDesc">A layered system architecture connecting automation, analytics, AI models, integrations, and data.</desc>
+        <defs>
+          <linearGradient id="platformTop" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#ffffff"/><stop offset="1" stopColor="#ECF9F7"/></linearGradient>
+          <linearGradient id="platformSide" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stopColor="#E3EAED"/><stop offset="1" stopColor="#C9D2D7"/></linearGradient>
+          <linearGradient id="tealEdge" x1="0" y1="0" x2="1" y2="0"><stop offset="0" stopColor="#26D2C2"/><stop offset="1" stopColor="#00A99B"/></linearGradient>
+          <filter id="softShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="20" stdDeviation="18" floodColor="#11252B" floodOpacity=".14"/></filter>
+          <filter id="cardShadow" x="-30%" y="-30%" width="160%" height="160%"><feDropShadow dx="0" dy="10" stdDeviation="11" floodColor="#1E2328" floodOpacity=".08"/></filter>
+        </defs>
+
+        <g className="arch-orbits" opacity=".55">
+          <ellipse cx="390" cy="330" rx="278" ry="178" fill="none" stroke="#DCE6E8" strokeWidth="1.5" strokeDasharray="4 10"/>
+          <ellipse cx="390" cy="330" rx="220" ry="132" fill="none" stroke="#DCE6E8" strokeWidth="1.2"/>
+          <path d="M115 330C220 248 563 234 671 326" fill="none" stroke="#D8E3E5" strokeWidth="1.2"/>
+          <circle cx="143" cy="298" r="5" fill="#00B3A4"/><circle cx="638" cy="285" r="5" fill="#00B3A4"/><circle cx="586" cy="448" r="4" fill="#00B3A4"/><circle cx="208" cy="457" r="4" fill="#00B3A4"/>
+        </g>
+
+        <g filter="url(#softShadow)">
+          <path d="M237 421 382 492 545 412 400 341Z" fill="#D3DBDF" opacity=".58"/>
+          <path d="M226 390 385 470 556 383 396 305Z" fill="url(#platformSide)" stroke="#D3DCDF"/>
+          <path d="M226 365 385 445 556 358 396 280Z" fill="#F7F9FA" stroke="#D9E1E4"/>
+          <path d="M216 331 386 416 567 324 397 241Z" fill="url(#platformSide)" stroke="#CFD8DC"/>
+          <path d="M216 303 386 388 567 296 397 213Z" fill="#FAFCFC" stroke="#D9E2E4"/>
+          <path d="M204 257 389 349 580 253 395 161Z" fill="#D4DCDF" stroke="#C9D4D7"/>
+          <path d="M204 228 389 320 580 224 395 132Z" fill="url(#platformTop)" stroke="#C9D4D7" strokeWidth="1.4"/>
+          <path d="M204 228 389 320 580 224" fill="none" stroke="url(#tealEdge)" strokeWidth="6"/>
+          <text x="389" y="215" textAnchor="middle" fill="#1E2328" fontSize="18" fontWeight="800" letterSpacing="2">APEX</text>
+          <text x="389" y="237" textAnchor="middle" fill="#7B868C" fontSize="8.8" fontWeight="700" letterSpacing="1.6">AI SYSTEMS ARCHITECTURE</text>
+          <text x="390" y="286" textAnchor="middle" fill="#849097" fontSize="8.5" letterSpacing="1.2">INTELLIGENT LAYER</text>
+          <text x="390" y="354" textAnchor="middle" fill="#849097" fontSize="8.5" letterSpacing="1.2">INTEGRATION LAYER</text>
+          <text x="390" y="417" textAnchor="middle" fill="#849097" fontSize="8.5" letterSpacing="1.2">DATA LAYER</text>
+        </g>
+
+        <ArchCard x={116} y={128} title="AUTOMATION" kind="automation" />
+        <ArchCard x={500} y={85} title="ANALYTICS" kind="analytics" />
+        <ArchCard x={586} y={271} title="AI MODELS" kind="models" />
+        <ArchCard x={506} y={440} title="INTEGRATIONS" kind="integrations" />
+        <ArchCard x={102} y={380} title="DATA" kind="data" />
+
+        <g stroke="#00B3A4" strokeWidth="1.6" fill="none" opacity=".78">
+          <path d="M247 186 302 224"/><path d="M500 150 467 190"/><path d="M586 325 542 316"/><path d="M506 482 459 423"/><path d="M232 426 294 387"/>
+        </g>
+      </svg>
+    </div>
+  );
 }
 
-function MountainVisual() {
+function ArchCard({ x, y, title, kind }: { x: number; y: number; title: string; kind: string }) {
   return (
-    <div className="mountain-frame">
-      <div className="mountain-frame-head">
-        <span>APEX / SYSTEM MAP</span>
-        <span className="system-live"><i /> LIVE</span>
-      </div>
-      <div className="mountain-canvas">
-        <svg viewBox="0 0 720 500" role="img" aria-labelledby="mountainTitle mountainDesc" className="mountain-art">
-          <title id="mountainTitle">Apex growth path</title>
-          <desc id="mountainDesc">An ascending system path across a structured mountain with five evenly spaced milestones.</desc>
-          <defs>
-            <linearGradient id="peakFill" x1="0" y1="0" x2="1" y2="1">
-              <stop offset="0%" stopColor="#F8FAFB" />
-              <stop offset="55%" stopColor="#E7EDF0" />
-              <stop offset="100%" stopColor="#D9E1E5" />
-            </linearGradient>
-            <linearGradient id="peakShade" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0%" stopColor="#C8D1D6" stopOpacity="0.75" />
-              <stop offset="100%" stopColor="#F8FAFB" stopOpacity="0.12" />
-            </linearGradient>
-            <linearGradient id="routeGlow" x1="0" y1="1" x2="1" y2="0">
-              <stop offset="0%" stopColor="#1EC6B8" />
-              <stop offset="100%" stopColor="#00A99B" />
-            </linearGradient>
-          </defs>
+    <g transform={`translate(${x} ${y})`} filter="url(#cardShadow)">
+      <rect width="150" height="90" rx="14" fill="rgba(255,255,255,.96)" stroke="#D6E1E3"/>
+      <rect x="14" y="14" width="25" height="25" rx="7" fill="#E4F8F5"/>
+      <circle cx="26.5" cy="26.5" r="4" fill="#00B3A4"/>
+      <text x="48" y="29" fill="#536067" fontSize="9.5" fontWeight="800" letterSpacing=".7">{title}</text>
+      {kind === "automation" && <><path d="M17 65h20l9-12 11 8 13-21 12 14 18-18 30 15" fill="none" stroke="#00B3A4" strokeWidth="1.8"/><path d="M17 71h116" stroke="#E4EAEC"/></>}
+      {kind === "analytics" && <><path d="M17 69h116" stroke="#E4EAEC"/><path d="m18 65 16-8 14 5 17-17 16 8 17-23 14 10 21-16" fill="none" stroke="#00B3A4" strokeWidth="1.8"/><circle cx="98" cy="30" r="3" fill="#00B3A4"/></>}
+      {kind === "models" && <><circle cx="42" cy="62" r="4" fill="#00B3A4"/><circle cx="75" cy="49" r="4" fill="#00B3A4"/><circle cx="109" cy="63" r="4" fill="#00B3A4"/><circle cx="92" cy="28" r="4" fill="#00B3A4"/><path d="M42 62 75 49 109 63M75 49 92 28M92 28 109 63" stroke="#8DDDD5" strokeWidth="1.5" fill="none"/></>}
+      {kind === "integrations" && <><rect x="23" y="53" width="21" height="21" rx="5" fill="#E5F8F6"/><rect x="64" y="46" width="21" height="21" rx="5" fill="#E5F8F6"/><rect x="105" y="54" width="21" height="21" rx="5" fill="#E5F8F6"/><path d="M44 63h20M85 57l20 6" stroke="#00B3A4" strokeWidth="1.7"/></>}
+      {kind === "data" && <>{[0,1,2,3,4].map((r)=><g key={r}>{[0,1,2,3,4,5].map((c)=><circle key={c} cx={22+c*16} cy={49+r*7} r="1.6" fill={(r+c)%3===0?"#00B3A4":"#C6D2D6"}/>)}</g>)}</>}
+    </g>
+  );
+}
 
-          <g className="contour-lines" opacity="0.72">
-            <path d="M98 432C190 379 240 342 306 281C365 227 406 150 466 84" />
-            <path d="M160 443C235 393 302 354 357 298C411 243 451 176 501 117" />
-            <path d="M235 446C301 411 361 368 405 318C450 267 487 207 533 151" />
-          </g>
-
-          <path className="mountain-fill" d="M76 438L153 390L222 337L280 284L338 220L397 145L471 58L523 129L578 219L638 334L689 438H76Z" fill="url(#peakFill)" />
-          <path d="M471 58L397 145L434 179L405 207L442 246L398 277L437 321L380 360L418 438H689L638 334L578 219L523 129L471 58Z" fill="url(#peakShade)" opacity="0.82" />
-          <path className="mountain-outline" d="M76 438L153 390L222 337L280 284L338 220L397 145L471 58L523 129L578 219L638 334L689 438" />
-
-          <path className="route-glow" d="M120 420C250 390 370 110 575 50" />
-          <path className="route-line" d="M120 420C250 390 370 110 575 50" stroke="url(#routeGlow)" />
-
-          {[
-            [120, 420],
-            [239.7, 335.2],
-            [338.9, 224.4],
-            [445.5, 120.9],
-            [575, 50],
-          ].map(([cx, cy], index) => (
-            <g key={`${cx}-${cy}`} className="route-node">
-              <circle cx={cx} cy={cy} r={index === 4 ? 18 : 14} className="route-node-ring" />
-              <circle cx={cx} cy={cy} r={index === 4 ? 6 : 5} className="route-node-core" />
-            </g>
-          ))}
-        </svg>
-
-        <div className="mountain-caption">
-          <Image src="/apex-mark.svg" alt="" width={60} height={45} />
-          <div><span>CONTINUOUS IMPROVEMENT</span><strong>Systems that climb with the business.</strong></div>
-        </div>
-      </div>
-    </div>
+function IndustryVisual({ type }: { type: "education" | "service" | "environment" }) {
+  if (type === "education") return (
+    <svg viewBox="0 0 320 180" aria-hidden="true"><defs><linearGradient id="eduBg" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#F4F8F9"/><stop offset="1" stopColor="#E2ECEE"/></linearGradient></defs><rect width="320" height="180" rx="18" fill="url(#eduBg)"/><path d="M22 146h276" stroke="#D1DDE0"/><rect x="54" y="54" width="74" height="62" rx="6" fill="#fff" stroke="#CBD7DB"/><rect x="141" y="42" width="128" height="82" rx="7" fill="#fff" stroke="#CBD7DB"/><path d="M156 60h98M156 74h71M156 88h86" stroke="#B4C5CA" strokeWidth="5" strokeLinecap="round"/><rect x="75" y="126" width="30" height="12" rx="3" fill="#00B3A4" opacity=".16"/><circle cx="91" cy="79" r="13" fill="#00B3A4" opacity=".18"/></svg>
+  );
+  if (type === "service") return (
+    <svg viewBox="0 0 320 180" aria-hidden="true"><defs><linearGradient id="svcBg" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#F5F8F9"/><stop offset="1" stopColor="#DDE9EB"/></linearGradient></defs><rect width="320" height="180" rx="18" fill="url(#svcBg)"/><rect x="31" y="42" width="258" height="108" rx="10" fill="#fff" stroke="#C9D6DA"/><rect x="47" y="56" width="118" height="76" rx="6" fill="#16323B"/><path d="M59 116V85l20 9 23-25 18 15 29-21" fill="none" stroke="#26D2C2" strokeWidth="3"/><rect x="177" y="58" width="94" height="13" rx="4" fill="#E6ECEF"/><rect x="177" y="81" width="68" height="8" rx="4" fill="#CAD6DA"/><rect x="177" y="98" width="80" height="8" rx="4" fill="#D7E0E3"/><rect x="177" y="116" width="50" height="8" rx="4" fill="#E1E7E9"/></svg>
+  );
+  return (
+    <svg viewBox="0 0 620 190" aria-hidden="true"><defs><linearGradient id="envSky" x1="0" y1="0" x2="0" y2="1"><stop stopColor="#EEF8F7"/><stop offset="1" stopColor="#DDE9E7"/></linearGradient></defs><rect width="620" height="190" rx="18" fill="url(#envSky)"/><path d="M0 146 90 100l70 30 87-72 95 85 86-66 104 68 88-52v97H0Z" fill="#C7DDD8"/><path d="M0 163 106 125l82 31 97-68 101 72 104-45 130 57v18H0Z" fill="#9CC8BE" opacity=".7"/><path d="M375 120v-51M375 69l-25 18M375 69l27 17M375 69l5-31M453 136V87M453 87l-21 13M453 87l22 14M453 87l4-27" stroke="#557A73" strokeWidth="3" strokeLinecap="round"/><circle cx="375" cy="69" r="5" fill="#00B3A4"/><circle cx="453" cy="87" r="5" fill="#00B3A4"/></svg>
   );
 }
 
@@ -118,164 +130,146 @@ export default function Home() {
           <div className="container hero-grid">
             <div className="hero-copy">
               <span className="eyebrow">AI & DIGITAL SYSTEMS</span>
-              <h1>Intelligent systems.<br /><span>Real impact.</span></h1>
-              <p className="hero-lead">APEX designs software, AI, data, and workflow systems that help businesses modernize operations and scale with confidence.</p>
+              <h1>Intelligent<br/>systems.<br/><span>Real momentum.</span></h1>
+              <p className="hero-lead">APEX builds software, AI, data, and workflow systems that help businesses modernize operations and scale with confidence.</p>
               <div className="hero-actions">
-                <a className="button button-primary" href="#solutions">Explore Solutions <Arrow /></a>
+                <a className="button button-primary" href="#solutions">Explore Solutions <ArrowRightIcon/></a>
                 <ContactButton className="button-secondary">Book a Consultation</ContactButton>
               </div>
               <div className="hero-principles" aria-label="Apex delivery principles">
-                <div><ShieldIcon /><strong>Secure by design</strong><span>Disciplined foundations</span></div>
-                <div><NodesIcon /><strong>End to end</strong><span>Systems that connect</span></div>
-                <div><ChartIcon /><strong>Measurable</strong><span>Built around outcomes</span></div>
+                <div><ShieldIcon/><strong>Secure by design</strong><span>Built with trust from the ground up.</span></div>
+                <div><NodesIcon/><strong>Connected systems</strong><span>Everything works better together.</span></div>
+                <div><ChartIcon/><strong>Measurable outcomes</strong><span>Real impact you can see and scale.</span></div>
               </div>
             </div>
-            <MountainVisual />
+            <ArchitectureVisual />
           </div>
         </section>
 
-        <section className="statement" id="about">
-          <div className="container statement-grid">
-            <p className="statement-title">Modernization should make the operation simpler — not add another layer of complexity.</p>
-            <p>We start with the business process, then design the technology around it. That keeps the work grounded in adoption, reliability, and measurable operational value.</p>
+        <section className="about-strip" id="about">
+          <div className="container about-grid">
+            <span className="eyebrow">HOW WE THINK</span>
+            <p>Good technology should make an operation easier to understand, easier to run, and easier to improve.</p>
+            <p>We start with the system around the work — then apply software, AI, automation, and data where they create measurable value.</p>
           </div>
         </section>
 
-        <section className="section section-soft" id="solutions">
+        <section className="section solutions-section" id="solutions">
           <div className="container">
             <div className="section-intro center">
               <span className="eyebrow">SOLUTIONS</span>
-              <h2>Modern systems for modern business.</h2>
+              <h2>Modern systems for<br/>modern business.</h2>
               <p>From intelligent automation to full-stack engineering, Apex builds the connected digital systems behind faster, clearer operations.</p>
             </div>
-            <div className="solutions-grid">
-              {solutions.map(({ icon: Icon, title, body }, index) => (
-                <article className="solution-card" key={title}>
-                  <div className="solution-top"><span className="solution-number">0{index + 1}</span><div className="icon-frame"><Icon /></div></div>
+            <div className="solutions-layout">
+              {solutions.map(({ key, icon: Icon, no, title, body }) => (
+                <article className={`solution-card solution-${key}`} key={title}>
+                  <div className="solution-number">{no}</div>
+                  <div className="solution-icon"><Icon/></div>
                   <h3>{title}</h3>
                   <p>{body}</p>
-                  <ContactButton className="text-button">Discuss this capability</ContactButton>
+                  <ContactButton className="solution-link">Explore capability</ContactButton>
                 </article>
               ))}
             </div>
           </div>
         </section>
 
-        <section className="section" id="industries">
+        <section className="section industries-section" id="industries">
           <div className="container">
-            <div className="section-intro split">
-              <div><span className="eyebrow">INDUSTRIES</span><h2>Built for operationally demanding businesses.</h2></div>
-              <p>Apex is most valuable where disconnected processes, legacy tools, and manual work are expensive enough to hold the business back.</p>
+            <div className="industries-intro">
+              <div>
+                <span className="eyebrow">INDUSTRIES</span>
+                <h2>Built for real<br/>operations.</h2>
+                <p>We focus on industries where complex workflows, disconnected systems, and manual work create real friction.</p>
+              </div>
+              <div className="world-visual" aria-hidden="true"><GlobeIcon/><span className="orbit orbit-a"/><span className="orbit orbit-b"/><i className="world-dot world-dot-a"/><i className="world-dot world-dot-b"/><i className="world-dot world-dot-c"/></div>
             </div>
-            <div className="industry-grid">
-              {industries.map(({ icon: Icon, no, title, body }) => (
-                <article className="industry-card" key={title}>
-                  <div className="industry-top"><Icon /><span>{no}</span></div>
-                  <div><h3>{title}</h3><p>{body}</p></div>
-                </article>
-              ))}
+
+            <div className="industry-layout">
+              <article className="industry-card education-card">
+                <div className="industry-content"><span className="industry-no">01</span><div className="industry-icon"><GraduationIcon/></div><h3>Education</h3><p>Smarter platforms for learning, tutoring, administrative operations, and student experiences.</p><ul><li><CheckIcon/>Learning platforms</li><li><CheckIcon/>AI tutor assistance</li><li><CheckIcon/>Operations systems</li></ul><a href="#case-studies">Explore this industry <ArrowRightIcon/></a></div>
+                <div className="industry-art"><IndustryVisual type="education"/></div>
+              </article>
+
+              <article className="industry-card service-card">
+                <div className="industry-content"><span className="industry-no">02</span><div className="industry-icon"><BriefcaseIcon/></div><h3>Service Operations</h3><p>End-to-end systems for service businesses that need efficiency, visibility, and seamless customer journeys.</p><ul><li><CheckIcon/>Booking & scheduling</li><li><CheckIcon/>Customer journey automation</li><li><CheckIcon/>CRM & operations</li></ul><ContactButton className="industry-link">Explore this industry</ContactButton></div>
+                <div className="industry-art"><IndustryVisual type="service"/></div>
+              </article>
+
+              <article className="industry-card environment-card">
+                <div className="industry-content"><span className="industry-no">03</span><div className="industry-icon"><LeafIcon/></div><h3>Public & Environmental Systems</h3><p>Intelligent systems for monitoring, environmental operations, and public data coordination.</p><ul><li><CheckIcon/>Environmental monitoring</li><li><CheckIcon/>Data intelligence</li><li><CheckIcon/>Workflow coordination</li></ul></div>
+                <div className="industry-art"><IndustryVisual type="environment"/></div>
+              </article>
+            </div>
+
+            <div className="industry-open-door">
+              <div><span className="open-door-icon"><SparkIcon/></span><div><strong>Have a different operational challenge?</strong><p>Let’s discuss how we can help.</p></div></div>
+              <ContactButton className="plain-contact">Talk to our team</ContactButton>
             </div>
           </div>
         </section>
 
         <section className="case-section" id="case-studies">
           <div className="container">
-            <div className="case-heading">
-              <div><span className="eyebrow">CASE STUDIES</span><h2>Work shown with context, not hype.</h2></div>
-              <p>Each case study is designed to explain the business problem, Apex’s contribution, and verified outcomes. No invented numbers, no empty claims.</p>
+            <div className="case-intro">
+              <div><span className="eyebrow">CASE STUDY</span><h2>Work that proves<br/>the system<span>.</span></h2></div>
+              <p>Every case study reveals the challenge, our approach, and the measurable impact we deliver for our clients. Real work. Real outcomes.</p>
             </div>
 
-            <article className="case-card">
-              <div className="case-visual">
-                <div className="case-browser">
-                  <div className="browser-bar"><span /><span /><span /><strong>tutwithus.com</strong></div>
-                  <Image
-                    src="/tutwithus-reference.png"
-                    alt="TutWithUs website, a previous Apex collaboration"
-                    width={2047}
-                    height={1299}
-                    sizes="(max-width: 900px) 100vw, 56vw"
-                  />
-                </div>
+            <article className="case-feature">
+              <div className="case-browser-wrap">
+                <div className="browser-frame"><div className="browser-dots"><i/><i/><i/></div><Image src="/tutwithus-reference.png" alt="TutWithUs website" width={1600} height={1000} /></div>
+                <div className="case-circuit circuit-a"/><div className="case-circuit circuit-b"/>
               </div>
-              <div className="case-content">
-                <div className="case-brand-line"><Image src="/tutwithus-logo.png" alt="TutWithUs" width={195} height={64} /><div><strong>Selected collaboration</strong><small>Education platform</small></div></div>
+              <div className="case-copy">
+                <Image src="/tutwithus-logo.png" alt="TutWithUs" width={116} height={50} />
                 <h3>A polished tutoring experience built around clarity and trust.</h3>
-                <p className="case-summary">TutWithUs is presented as a previous Apex collaboration. The current case-study copy stays deliberately factual until the team approves public scope and performance metrics.</p>
+                <p>TutWithUs is a previous APEX collaboration. We worked on the platform experience, AI-assisted support, admin workflows, and the booking journey to create a more coherent system for students, tutors, and administrators.</p>
+                <div className="case-capabilities" aria-label="TutWithUs capabilities"><span>Platform redesign</span><span>AI chatbot</span><span>Booking logic</span><span>Admin system</span><span>Analytics</span></div>
                 <div className="case-facts">
-                  <div><span>CONTEXT</span><p>An online tutoring experience must make tutor choice, pricing, scheduling, and service expectations easy to understand.</p></div>
-                  <div><span>APEX CONTRIBUTION</span><p>Product and engineering collaboration supporting a professional digital experience and the platform’s continued evolution.</p></div>
-                  <div><span>READY TO EXPAND</span><p>The structure is ready for verified scope, stack, timeline, challenges, screenshots, and measurable results as more case studies are approved.</p></div>
+                  <div><span className="fact-icon"><SearchIcon/></span><strong>Challenge</strong><p>A tutoring experience needed clearer choices, pricing, scheduling, and service expectations.</p></div>
+                  <div><span className="fact-icon"><CodeIcon/></span><strong>What we built</strong><p>A modern platform with smart booking, AI support, and an admin system to manage tutors and content.</p></div>
+                  <div><span className="fact-icon"><ChartIcon/></span><strong>Impact</strong><p>A clearer user journey, better tutor discovery, and a stronger foundation for future growth.</p></div>
                 </div>
+                <CaseStudyButton className="case-link">View Full Case Study <ArrowRightIcon/></CaseStudyButton>
               </div>
             </article>
           </div>
         </section>
 
-        <section className="section process-section" id="process">
-          <div className="container">
-            <div className="section-intro center narrow">
+        <section className="method-section" id="method">
+          <div className="container method-grid">
+            <div className="method-copy">
               <span className="eyebrow">THE APEX METHOD</span>
-              <h2>A disciplined path from friction to impact.</h2>
-              <p>Each step narrows uncertainty and keeps the build aligned with the operation.</p>
+              <h2>From friction<br/>to impact<span>.</span></h2>
+              <p>A disciplined, proven approach that connects what’s broken to what’s possible. Every step narrows uncertainty and compounds value.</p>
+              <div className="method-principles">
+                <div><CompassIcon/><span><strong>Purpose-built outcomes</strong><small>Aligned to real business impact.</small></span></div>
+                <div><ShieldIcon/><span><strong>Proven and repeatable</strong><small>Battle-tested across industries.</small></span></div>
+                <div><ChartIcon/><span><strong>Adaptive by design</strong><small>Built to evolve with your business.</small></span></div>
+              </div>
             </div>
-            <div className="process-grid">
-              {process.map(({ icon: Icon, no, title, body }) => (
-                <article className="process-card" key={no}>
-                  <div className="process-head"><span>{no}</span><Icon /></div>
-                  <h3>{title}</h3>
-                  <p>{body}</p>
-                </article>
-              ))}
+            <div className="method-list">
+              {process.map(({ icon: Icon, no, title, body }) => <article key={no} className="method-row"><span className="method-no">{no}</span><span className="method-icon"><Icon/></span><h3>{title}</h3><p>{body}</p><ArrowRightIcon/></article>)}
             </div>
           </div>
-        </section>
 
-        <section className="transformation-section">
-          <div className="container transformation-grid">
-            <div className="transformation-copy">
-              <span className="eyebrow eyebrow-light">FROM FRAGMENTED TO CONNECTED</span>
-              <h2>One operating flow instead of five workarounds.</h2>
-              <p>Apex connects the points where teams currently compensate for disconnected systems with spreadsheets, email, manual entry, and repeated follow-up.</p>
-              <div className="impact-list">
-                <div><strong>01</strong><span>Reduce repetitive handoffs</span></div>
-                <div><strong>02</strong><span>Create shared operational visibility</span></div>
-                <div><strong>03</strong><span>Move data once, not repeatedly</span></div>
-                <div><strong>04</strong><span>Keep people focused on judgment and service</span></div>
-              </div>
-            </div>
-            <div className="workflow-panel" aria-label="Before and after workflow comparison">
-              <div className="workflow-column before">
-                <span className="workflow-title">BEFORE</span>
-                <div>Customer request</div><b>↓</b><div>Email / inbox</div><b>↓</b><div>Spreadsheet</div><b>↓</b><div>Manual update</div><b>↓</b><div>Delayed report</div>
-              </div>
-              <div className="workflow-center"><Image src="/apex-mark.svg" alt="Apex" width={52} height={39} /><span>APEX SYSTEM LAYER</span></div>
-              <div className="workflow-column after">
-                <span className="workflow-title">AFTER</span>
-                <div>Connected intake</div><b>↓</b><div>Automated routing</div><b>↓</b><div>Unified data</div><b>↓</b><div>Live workflow</div><b>↓</b><div>Clear visibility</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <section className="cta-section" id="contact">
-          <div className="container cta-card">
-            <div><span className="eyebrow eyebrow-light">BUILD WHAT&apos;S NEXT</span><h2>Turn operational friction into a system your business can grow on.</h2></div>
-            <ContactButton>Start a Conversation</ContactButton>
+          <div className="container impact-cta">
+            <div className="impact-mark"><Image src="/apex-mark.svg" alt="" width={54} height={42}/></div>
+            <h3>Turn operational friction into<br/>compounding <span>business impact.</span></h3>
+            <div><p>Let’s build the connected system your business can grow on.</p><ContactButton className="button-light">Start a Conversation</ContactButton></div>
           </div>
         </section>
       </main>
 
-      <footer className="footer">
-        <div className="container footer-grid">
-          <div className="footer-brand"><Image src="/apex-logo.svg" alt="APEX" width={160} height={49} /><p>Intelligent systems.<br />Real impact.</p></div>
-          <div><strong>Solutions</strong><a href="#solutions">AI & Automation</a><a href="#solutions">Modernization</a><a href="#solutions">Integrations</a><a href="#solutions">Custom Software</a></div>
-          <div><strong>Industries</strong><a href="#industries">Manufacturing</a><a href="#industries">Aerospace & Defense</a><a href="#industries">Recruiting & Staffing</a><a href="#industries">Service Businesses</a></div>
-          <div><strong>Company</strong><a href="#case-studies">Case Studies</a><a href="#process">Method</a><a href="#about">About</a><a href="#contact">Contact</a></div>
+      <footer className="site-footer">
+        <div className="container footer-row">
+          <a href="#top" className="footer-brand"><Image src="/apex-logo.svg" alt="APEX" width={146} height={45}/></a>
+          <nav aria-label="Footer navigation"><a href="#solutions">Solutions</a><a href="#industries">Industries</a><a href="#case-studies">Case Studies</a><a href="#method">Method</a><a href="#about">About</a></nav>
+          <span>© {new Date().getFullYear()} APEX. All rights reserved.</span>
         </div>
-        <div className="container footer-bottom"><span>© {new Date().getFullYear()} APEX. All rights reserved.</span><span>AI & DIGITAL SYSTEMS</span></div>
       </footer>
-      <ContactModal />
     </>
   );
 }

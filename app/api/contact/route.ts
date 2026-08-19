@@ -5,38 +5,40 @@ function clean(value: unknown, max: number) {
 }
 
 export async function POST(request: Request) {
-  let data: Record<string, unknown>;
+  let body: Record<string, unknown>;
   try {
-    data = await request.json();
+    body = await request.json();
   } catch {
-    return NextResponse.json({ error: "Invalid request." }, { status: 400 });
+    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
   }
 
-  const name = clean(data.name, 80);
-  const email = clean(data.email, 160);
-  const company = clean(data.company, 120);
-  const message = clean(data.message, 2000);
+  const lead = {
+    name: clean(body.name, 80),
+    email: clean(body.email, 160),
+    company: clean(body.company, 120),
+    message: clean(body.message, 2000),
+    submittedAt: new Date().toISOString(),
+  };
 
-  if (name.length < 2 || message.length < 10 || !/^\S+@\S+\.\S+$/.test(email)) {
-    return NextResponse.json({ error: "Please complete the required fields with valid information." }, { status: 422 });
+  if (lead.name.length < 2 || !/^\S+@\S+\.\S+$/.test(lead.email) || lead.message.length < 10) {
+    return NextResponse.json({ error: "Please complete the required fields." }, { status: 422 });
   }
 
-  const lead = { name, email, company, message, submittedAt: new Date().toISOString() };
-  const webhook = process.env.APEX_CONTACT_WEBHOOK_URL;
-
-  if (webhook) {
+  const webhookUrl = process.env.APEX_CONTACT_WEBHOOK_URL;
+  if (webhookUrl) {
     try {
-      const response = await fetch(webhook, {
+      const response = await fetch(webhookUrl, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(lead),
       });
       if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
-    } catch {
-      return NextResponse.json({ error: "The contact service is temporarily unavailable. Please try again." }, { status: 502 });
+    } catch (error) {
+      console.error("APEX contact webhook failed:", error);
+      return NextResponse.json({ error: "Could not send the request right now." }, { status: 502 });
     }
   } else {
-    console.log("APEX contact lead (preview mode):", lead);
+    console.log("APEX contact request (preview mode):", lead);
   }
 
   return NextResponse.json({ ok: true }, { status: 201 });
