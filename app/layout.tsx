@@ -1,8 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "@/shared/styles/globals.css";
 import { getContent } from "@/shared/content/content";
-import ApContactModal from "@/shared/components/ap_contact_modal";
-import ApCaseStudyModal from "@/shared/components/ap_case_study_modal";
+import ApPublicOverlays from "@/shared/components/ap_public_overlays";
 
 export function generateMetadata(): Metadata {
   const content = getContent("en");
@@ -28,8 +27,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang={content.locale} dir={content.direction}>
       <body>
         {children}
-        <ApCaseStudyModal content={content.caseStudy} />
-        <ApContactModal />
+        <ApPublicOverlays caseStudy={content.caseStudy} />
       </body>
     </html>
   );

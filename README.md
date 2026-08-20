@@ -1,45 +1,23 @@
-# APEX Website — CMS-Ready Final Build
+# APEX Website + `/admin`
 
-This build keeps the approved APEX visual direction while refactoring the project into a CMS-friendly, reusable component architecture.
+This is one Next.js project containing both the public APEX website and the private administration panel.
 
-## What changed
+## Routes
 
-- Home page is now a thin composition layer that calls reusable APEX screen components.
-- Only the three active verticals are shown: Education, Service Operations, Public & Environmental Systems.
-- Added `/products` with the complete page layout but no fictional products.
-- Added `/blogs` with the complete editorial layout but no fictional news or achievements.
-- Products and blog collections are intentionally empty until real CMS entries exist.
-- All site copy and screen data is stored in fallback JSON: `shared/content/en.json` and `shared/content/ar.json`.
-- `shared/content/content.ts` is the CMS integration/fallback layer.
-- All request, response, CMS, page, solution, industry, and case-study shapes are centralized in `shared/types/types.ts`.
-- APEX study adapter: `shared/models/apex/sp_study.ts`.
-- Global styles moved to `shared/styles/globals.css`.
-- SVG icon sprite moved to `public/shared/assets/icons/icons.svg`.
-- Logos live under `public/shared/assets/logo/`.
-- Case-study media lives under `public/shared/assets/case-studies/`.
-- Primary / secondary / tertiary brand colors are declared once in `globals.css`.
-- Contact and blog subscription APIs share typed request/response contracts from `types.ts`.
+- `/` — public APEX website
+- `/products` — public products page
+- `/blogs` — public blogs/news page
+- `/admin` — protected admin dashboard
+- `/admin/login` — admin sign-in
+- `/admin/site` — website content editor
+- `/admin/products` — products content
+- `/admin/blogs` — blogs/news content
+- `/admin/media` — media uploads
+- `/admin/settings` — publishing/system settings
 
-## Core reusable components
+There is **no separate CMS deployment**. Deploy this repository once on Vercel and visit `https://your-domain.com/admin`.
 
-- `ap_header.tsx`
-- `ap_button.tsx`
-- `ap_textbox.tsx`
-- `ap_icon.tsx`
-- `ap_load.tsx`
-- `ap_component.tsx`
-- `ap_hero.tsx`
-- `ap_solutions.tsx`
-- `ap_industries.tsx`
-- `ap_case_study.tsx`
-- `ap_method.tsx`
-- `ap_footer.tsx`
-
-## CMS migration later
-
-Replace the body of `getCmsContent()` in `shared/content/content.ts` with the CMS request. Keep the fallback JSON path for resilience. Components already consume typed data and should not need to be rewritten.
-
-## Run locally
+## Local development
 
 ```powershell
 $env:Path="C:\Program Files\nodejs;$env:Path"
@@ -47,7 +25,45 @@ npm.cmd install
 npm.cmd run dev
 ```
 
-Open `http://localhost:3000`.
+Open `http://localhost:3000/admin`.
+
+Development-only fallback credentials are:
+
+- email: `admin@apex.local`
+- password: `apex-dev`
+
+They do not work in production.
+
+## Vercel environment variables
+
+Configure these in Vercel → Project → Settings → Environment Variables:
+
+```env
+APEX_ADMIN_EMAIL=you@example.com
+APEX_ADMIN_PASSWORD=use-a-strong-password
+APEX_ADMIN_SECRET=use-a-long-random-secret
+```
+
+Without those variables, production admin sign-in is intentionally disabled.
+
+### Publishing website content
+
+The admin editor reads `shared/content/en.json` and `shared/content/ar.json` as the fallback content model.
+
+On Vercel, the filesystem is not a durable CMS database. To make the **Publish** button persist changes, configure a GitHub token that can update this repository:
+
+```env
+GITHUB_TOKEN=...
+GITHUB_REPO=Ex3Cut1On3r/apex-test-website
+GITHUB_BRANCH=main
+GITHUB_CONTENT_PATH_EN=shared/content/en.json
+GITHUB_CONTENT_PATH_AR=shared/content/ar.json
+GITHUB_MEDIA_PATH=public/shared/assets/cms
+```
+
+Publishing then commits the JSON/media changes to GitHub. If Vercel is connected to `main`, that commit triggers the normal website redeploy.
+
+For local development, without GitHub variables, publishing writes directly to `shared/content/*.json`.
 
 ## Production check
 
@@ -56,25 +72,23 @@ npm.cmd run typecheck
 npm.cmd run build
 ```
 
-## Replace the existing GitHub main branch
+## Architecture
 
-From this project folder:
+Public UI remains under `shared/components/` and public content under `shared/content/`.
 
-```powershell
-git init
-git branch -M main
-git remote remove origin 2>$null
-git remote add origin https://github.com/Ex3Cut1On3r/apex-test-website.git
-git add -A
-git commit -m "Refactor Apex website into CMS-ready architecture"
-git push -u origin main --force
+Admin-only code is isolated under:
+
+```text
+shared/admin/
+  components/
+    ap_admin_shell.tsx
+    ap_admin_icons.tsx
+    ap_content_editor.tsx
+    ap_media_manager.tsx
+    ap_login_form.tsx
+  lib/
+    auth.ts
+    store.ts
 ```
 
-Only use the force push if replacing the existing remote `main` is intentional.
-
-## Optional production integrations
-
-- `APEX_CONTACT_WEBHOOK_URL` — receives contact requests.
-- `APEX_SUBSCRIBE_WEBHOOK_URL` — receives blog/newsletter subscriptions.
-
-Without these variables, local/preview submissions are validated and logged safely.
+The `/admin` route is protected by the `(protected)` route-group layout. Admin API endpoints are namespaced under `/api/admin/*`.
