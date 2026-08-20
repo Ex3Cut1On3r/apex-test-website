@@ -1,7 +1,13 @@
 import { NextResponse } from "next/server";
-import { getAdminSession } from "@/shared/admin/lib/auth";
-import { getContent, saveContent } from "@/shared/admin/lib/store";
-import type { Locale, SiteContent } from "@/shared/types/types";
+import { getAdminSession } from "@/shared/auth";
+import { getContent, saveContent } from "@/shared/store";
+import type {
+  AdminContentGetResponse,
+  AdminContentUpdateRequest,
+  AdminContentUpdateResponse,
+  Locale,
+  SiteContent,
+} from "@/shared/types";
 
 function parseLocale(value: string | null): Locale {
   return value === "ar" ? "ar" : "en";
@@ -15,29 +21,29 @@ function looksLikeSiteContent(value: unknown): value is SiteContent {
 
 export async function GET(request: Request) {
   const session = await getAdminSession();
-  if (!session) return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
+  if (!session) return NextResponse.json<AdminContentGetResponse>({ ok: false, error: "Unauthorized" }, { status: 401 });
   const url = new URL(request.url);
   const locale = parseLocale(url.searchParams.get("locale"));
   try {
     const content = await getContent(locale);
-    return NextResponse.json({ ok: true, locale, content });
+    return NextResponse.json<AdminContentGetResponse>({ ok: true, locale, content });
   } catch (error) {
-    return NextResponse.json({ ok: false, error: error instanceof Error ? error.message : "Could not load content" }, { status: 500 });
+    return NextResponse.json<AdminContentGetResponse>({ ok: false, error: error instanceof Error ? error.message : "Could not load content" }, { status: 500 });
   }
 }
 
 export async function PUT(request: Request) {
   const session = await getAdminSession();
-  if (!session) return NextResponse.json({ ok: false, error: "Unauthorized" }, { status: 401 });
+  if (!session) return NextResponse.json<AdminContentUpdateResponse>({ ok: false, error: "Unauthorized" }, { status: 401 });
   try {
-    const body = (await request.json()) as { locale?: Locale; content?: unknown };
+    const body = (await request.json()) as Partial<AdminContentUpdateRequest>;
     const locale = parseLocale(body.locale || "en");
     if (!looksLikeSiteContent(body.content)) {
-      return NextResponse.json({ ok: false, error: "Content payload is incomplete." }, { status: 422 });
+      return NextResponse.json<AdminContentUpdateResponse>({ ok: false, error: "Content payload is incomplete." }, { status: 422 });
     }
     const result = await saveContent(locale, body.content);
-    return NextResponse.json({ ok: true, ...result });
+    return NextResponse.json<AdminContentUpdateResponse>({ ok: true, ...result });
   } catch (error) {
-    return NextResponse.json({ ok: false, error: error instanceof Error ? error.message : "Could not publish content" }, { status: 500 });
+    return NextResponse.json<AdminContentUpdateResponse>({ ok: false, error: error instanceof Error ? error.message : "Could not publish content" }, { status: 500 });
   }
 }

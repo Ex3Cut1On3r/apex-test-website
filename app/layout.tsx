@@ -1,33 +1,33 @@
 import type { Metadata, Viewport } from "next";
-import "@/shared/styles/globals.css";
-import { getContent } from "@/shared/content/content";
-import ApPublicOverlays from "@/shared/components/ap_public_overlays";
+import "@/shared/globals.css";
+import rawContent from "@/shared/en.json";
+import type { SiteContent } from "@/shared/types";
+import AP_PublicOverlays from "@/app/components/AP_PublicOverlays";
 
-export function generateMetadata(): Metadata {
-  const content = getContent("en");
-  return {
+const content = rawContent as SiteContent;
+
+export const metadata: Metadata = {
+  title: content.meta.title,
+  description: content.meta.description,
+  icons: { icon: "/api/assets/logo/icon.svg" },
+  openGraph: {
     title: content.meta.title,
     description: content.meta.description,
-    icons: { icon: "/shared/assets/logo/apex-mark.svg" },
-    openGraph: {
-      title: content.meta.title,
-      description: content.meta.description,
-      type: "website",
-    },
-  };
-}
+    type: "website",
+  },
+};
 
-export function generateViewport(): Viewport {
-  return { themeColor: "#ffffff", colorScheme: "light" };
-}
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  colorScheme: "light",
+};
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
-  const content = getContent("en");
   return (
     <html lang={content.locale} dir={content.direction}>
       <body>
         {children}
-        <ApPublicOverlays caseStudy={content.caseStudy} />
+        <AP_PublicOverlays caseStudy={content.caseStudy} />
       </body>
     </html>
   );

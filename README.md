@@ -1,94 +1,134 @@
-# APEX Website + `/admin`
+# APEX — architecture-fixed website + /admin
 
-This is one Next.js project containing both the public APEX website and the private administration panel.
+This build keeps the public website, Products page, Blogs/News page, and the protected `/admin` CMS in one Next.js project while applying the requested APEX code structure.
 
-## Routes
+## Structure
 
-- `/` — public APEX website
-- `/products` — public products page
-- `/blogs` — public blogs/news page
-- `/admin` — protected admin dashboard
-- `/admin/login` — admin sign-in
-- `/admin/site` — website content editor
-- `/admin/products` — products content
-- `/admin/blogs` — blogs/news content
-- `/admin/media` — media uploads
-- `/admin/settings` — publishing/system settings
+```text
+app/
+├── components/          # the ONE reusable component folder; every component is AP_*
+├── screens/             # complete screen compositions
+├── admin/               # thin Next.js route wrappers for /admin
+├── api/                 # Next.js route handlers only
+├── blogs/               # thin route wrapper
+├── products/            # thin route wrapper
+├── layout.tsx           # framework entry layout
+├── loading.tsx          # only calls AP_Loader
+└── page.tsx             # only calls AP_HomeScreen
 
-There is **no separate CMS deployment**. Deploy this repository once on Vercel and visit `https://your-domain.com/admin`.
+shared/
+├── assets/
+│   ├── logo/            # icon.svg + APEX logo assets
+│   ├── icons/
+│   └── case-studies/
+├── en.json              # English CMS/fallback data
+├── ar.json              # Arabic CMS/fallback data
+├── content.ts           # CMS/fallback content bridge
+├── globals.css          # all global styling and responsive rules
+├── types.tsx            # domain models + request/response contracts
+├── auth.ts              # admin session logic
+└── store.ts             # JSON/GitHub CMS storage logic
 
-## Local development
+public/
+└── uploads/              # CMS-uploaded media only
+```
+
+### Why route wrapper files still exist in `app/`
+Next.js requires `page.tsx`, `layout.tsx`, route groups, and `api/` handlers to live inside `app`. They contain almost no presentation logic. All actual page/screen composition is in `app/screens`, and all reusable UI is in the single `app/components` folder.
+
+## Requested architecture changes applied
+
+- `icon.svg` is under `shared/assets/logo/icon.svg`.
+- All reusable components are in one folder: `app/components`.
+- Every reusable component file uses the `AP_` prefix.
+- `globals.css` is now `shared/globals.css`.
+- The duplicate `public/shared` folder is removed; there is one `shared` source folder.
+- Shared design assets are served through `/api/assets/...` so they can stay in the single `shared/assets` tree.
+- `AP_Loader.tsx` is the loading component; `app/loading.tsx` is only the Next.js wrapper.
+- Complete screen compositions are under `app/screens`.
+- The old `shared/models/apex/sp_study.ts` model layer is removed; case-study/domain contracts live in `shared/types.tsx`.
+- English and Arabic fallback content are `shared/en.json` and `shared/ar.json`.
+- Products and Blogs layouts remain ready without invented products/news.
+- Industries remain the three active verticals only, plus the open-door operational challenge CTA.
+- Primary, secondary and tertiary brand colors are centralized in `shared/globals.css`.
+- Public and admin layouts use CSS Grid/Flexbox responsive breakpoints rather than fixed-position layout hacks.
+
+## Safest way to replace your existing GitHub project
+
+Do **not** drag-copy over the old repo if you can avoid it, because deleted old files can survive and break Vercel.
+
+Extract this ZIP somewhere, then run from the extracted folder:
+
+```powershell
+.\APPLY_TO_EXISTING_REPO.ps1 "C:\path\to\apex-test-website"
+```
+
+The script mirrors this exact build over the repo while preserving `.git`, `.env.local`, `node_modules`, `.next`, and `.vercel`.
+
+If you insist on manually pasting files over the old repo, run `CLEAN_STALE_FILES.ps1` in the old repo **before** re-copying this build.
+
+## Local run
 
 ```powershell
 $env:Path="C:\Program Files\nodejs;$env:Path"
 npm.cmd install
+npm.cmd run typecheck
 npm.cmd run dev
 ```
 
-Open `http://localhost:3000/admin`.
+Public site:
 
-Development-only fallback credentials are:
+```text
+http://localhost:3000
+```
 
-- email: `admin@apex.local`
-- password: `apex-dev`
+Admin:
 
-They do not work in production.
+```text
+http://localhost:3000/admin
+```
+
+Development-only fallback login:
+
+```text
+admin@apex.local
+apex-dev
+```
 
 ## Vercel environment variables
 
-Configure these in Vercel → Project → Settings → Environment Variables:
+Copy `.env.example` values into Vercel → Project → Settings → Environment Variables.
 
-```env
-APEX_ADMIN_EMAIL=you@example.com
-APEX_ADMIN_PASSWORD=use-a-strong-password
-APEX_ADMIN_SECRET=use-a-long-random-secret
+Required for production `/admin` login:
+
+```text
+APEX_ADMIN_EMAIL
+APEX_ADMIN_PASSWORD
+APEX_ADMIN_SECRET
 ```
 
-Without those variables, production admin sign-in is intentionally disabled.
+Required if the admin Publish button should commit edits back to GitHub:
 
-### Publishing website content
-
-The admin editor reads `shared/content/en.json` and `shared/content/ar.json` as the fallback content model.
-
-On Vercel, the filesystem is not a durable CMS database. To make the **Publish** button persist changes, configure a GitHub token that can update this repository:
-
-```env
-GITHUB_TOKEN=...
+```text
+GITHUB_TOKEN
 GITHUB_REPO=Ex3Cut1On3r/apex-test-website
 GITHUB_BRANCH=main
-GITHUB_CONTENT_PATH_EN=shared/content/en.json
-GITHUB_CONTENT_PATH_AR=shared/content/ar.json
-GITHUB_MEDIA_PATH=public/shared/assets/cms
+GITHUB_CONTENT_PATH_EN=shared/en.json
+GITHUB_CONTENT_PATH_AR=shared/ar.json
+GITHUB_MEDIA_PATH=public/uploads
 ```
 
-Publishing then commits the JSON/media changes to GitHub. If Vercel is connected to `main`, that commit triggers the normal website redeploy.
-
-For local development, without GitHub variables, publishing writes directly to `shared/content/*.json`.
-
-## Production check
+## Before pushing
 
 ```powershell
 npm.cmd run typecheck
 npm.cmd run build
 ```
 
-## Architecture
+Then:
 
-Public UI remains under `shared/components/` and public content under `shared/content/`.
-
-Admin-only code is isolated under:
-
-```text
-shared/admin/
-  components/
-    ap_admin_shell.tsx
-    ap_admin_icons.tsx
-    ap_content_editor.tsx
-    ap_media_manager.tsx
-    ap_login_form.tsx
-  lib/
-    auth.ts
-    store.ts
+```powershell
+git add -A
+git commit -m "Refactor APEX architecture and fix admin build"
+git push origin main
 ```
-
-The `/admin` route is protected by the `(protected)` route-group layout. Admin API endpoints are namespaced under `/api/admin/*`.

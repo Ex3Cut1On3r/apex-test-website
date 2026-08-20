@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import type { SubscribeRequest, SubscribeResponse } from "@/shared/types/types";
+import type { SubscribeRequest, SubscribeResponse } from "@/shared/types";
 
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);

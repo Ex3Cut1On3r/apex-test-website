@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 import { redirect } from "next/navigation";
-import ApAdminShell from "@/shared/admin/components/ap_admin_shell";
-import { getAdminSession } from "@/shared/admin/lib/auth";
-import { getStorageMode } from "@/shared/admin/lib/store";
+import AP_AdminShell from "@/app/components/AP_AdminShell";
+import { getAdminSession } from "@/shared/auth";
+import { getStorageMode } from "@/shared/store";
 
 export const metadata: Metadata = {
   title: "APEX Admin",
@@ -15,9 +15,9 @@ export default async function ProtectedAdminLayout({ children }: { children: Rea
 
   return (
     <div className="ap-admin-root">
-      <ApAdminShell email={session.email} mode={getStorageMode()}>
+      <AP_AdminShell email={session.email} mode={getStorageMode()}>
         {children}
-      </ApAdminShell>
+      </AP_AdminShell>
     </div>
   );
 }

@@ -1,2 +1,2 @@
-import ApLoad from "@/shared/components/ap_load";
-export default function Loading() { return <ApLoad />; }
+import AP_Loader from "@/app/components/AP_Loader";
+export default function Loading() { return <AP_Loader />; }
