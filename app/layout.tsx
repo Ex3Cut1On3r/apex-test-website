@@ -1,31 +1,35 @@
 import type { Metadata, Viewport } from "next";
-import "./globals.css";
-import { ContactModal } from "@/components/ContactModal";
-import { CaseStudyModal } from "@/components/CaseStudyModal";
+import "@/shared/styles/globals.css";
+import { getContent } from "@/shared/content/content";
+import ApContactModal from "@/shared/components/ap_contact_modal";
+import ApCaseStudyModal from "@/shared/components/ap_case_study_modal";
 
-export const metadata: Metadata = {
-  title: "APEX | Intelligent Systems. Real Momentum.",
-  description:
-    "APEX builds software, AI, data, and workflow systems that help businesses modernize operations and scale with confidence.",
-  openGraph: {
-    title: "APEX | Intelligent Systems. Real Momentum.",
-    description:
-      "Software, AI, data, and workflow systems built around real operations.",
-    type: "website",
-  },
-};
+export function generateMetadata(): Metadata {
+  const content = getContent("en");
+  return {
+    title: content.meta.title,
+    description: content.meta.description,
+    icons: { icon: "/shared/assets/logo/apex-mark.svg" },
+    openGraph: {
+      title: content.meta.title,
+      description: content.meta.description,
+      type: "website",
+    },
+  };
+}
 
-export const viewport: Viewport = {
-  themeColor: "#ffffff",
-};
+export function generateViewport(): Viewport {
+  return { themeColor: "#ffffff", colorScheme: "light" };
+}
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const content = getContent("en");
   return (
-    <html lang="en">
+    <html lang={content.locale} dir={content.direction}>
       <body>
         {children}
-        <CaseStudyModal />
-        <ContactModal />
+        <ApCaseStudyModal content={content.caseStudy} />
+        <ApContactModal />
       </body>
     </html>
   );

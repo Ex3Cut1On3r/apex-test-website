@@ -1,11 +1,12 @@
 {
-  "name": "apex-final-ultra-2026",
-  "version": "1.0.0",
+  "name": "apex-cms-ready-website",
+  "version": "2.0.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "typecheck": "tsc --noEmit"
   },
   "dependencies": {
     "next": "15.5.21",

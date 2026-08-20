@@ -1,45 +1,42 @@
 import { NextResponse } from "next/server";
+import type { ContactRequest, ContactResponse } from "@/shared/types/types";
 
-function clean(value: unknown, max: number) {
-  return typeof value === "string" ? value.trim().slice(0, max) : "";
+function isEmail(value: string) {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
 }
 
 export async function POST(request: Request) {
-  let body: Record<string, unknown>;
+  let body: Partial<ContactRequest>;
   try {
-    body = await request.json();
+    body = (await request.json()) as Partial<ContactRequest>;
   } catch {
-    return NextResponse.json({ error: "Invalid request body." }, { status: 400 });
+    return NextResponse.json<ContactResponse>({ ok: false, error: "Invalid request body." }, { status: 400 });
   }
 
-  const lead = {
-    name: clean(body.name, 80),
-    email: clean(body.email, 160),
-    company: clean(body.company, 120),
-    message: clean(body.message, 2000),
-    submittedAt: new Date().toISOString(),
-  };
+  const name = String(body.name ?? "").trim();
+  const email = String(body.email ?? "").trim();
+  const company = String(body.company ?? "").trim();
+  const message = String(body.message ?? "").trim();
 
-  if (lead.name.length < 2 || !/^\S+@\S+\.\S+$/.test(lead.email) || lead.message.length < 10) {
-    return NextResponse.json({ error: "Please complete the required fields." }, { status: 422 });
-  }
+  if (name.length < 2 || name.length > 80) return NextResponse.json<ContactResponse>({ ok: false, error: "Please enter a valid name." }, { status: 422 });
+  if (!isEmail(email) || email.length > 180) return NextResponse.json<ContactResponse>({ ok: false, error: "Please enter a valid work email." }, { status: 422 });
+  if (company.length > 120) return NextResponse.json<ContactResponse>({ ok: false, error: "Company name is too long." }, { status: 422 });
+  if (message.length < 10 || message.length > 2000) return NextResponse.json<ContactResponse>({ ok: false, error: "Please provide a little more project context." }, { status: 422 });
 
+  const lead: ContactRequest & { submittedAt: string } = { name, email, company, message, submittedAt: new Date().toISOString() };
   const webhookUrl = process.env.APEX_CONTACT_WEBHOOK_URL;
+
   if (webhookUrl) {
     try {
-      const response = await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(lead),
-      });
+      const response = await fetch(webhookUrl, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(lead) });
       if (!response.ok) throw new Error(`Webhook returned ${response.status}`);
     } catch (error) {
-      console.error("APEX contact webhook failed:", error);
-      return NextResponse.json({ error: "Could not send the request right now." }, { status: 502 });
+      console.error("APEX contact webhook failed", error);
+      return NextResponse.json<ContactResponse>({ ok: false, error: "We could not send your request right now. Please try again." }, { status: 502 });
     }
   } else {
-    console.log("APEX contact request (preview mode):", lead);
+    console.log("APEX contact lead (preview mode)", lead);
   }
 
-  return NextResponse.json({ ok: true }, { status: 201 });
+  return NextResponse.json<ContactResponse>({ ok: true, message: "Request received." }, { status: 201 });
 }
