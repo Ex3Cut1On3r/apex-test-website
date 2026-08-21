@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { getContent, getStorageMode } from "@/shared/store";
 import { AP_AdminIcon } from "@/app/components/AP_AdminIcons";
 
@@ -35,12 +36,13 @@ export default async function AP_AdminDashboardScreen() {
       <section className="panel">
         <div className="panel-head"><div><h2>Quick access</h2><p>The most common content areas.</p></div></div>
         <div className="quick-grid">
-          <a className="quick-card" href="/admin/site"><div className="metric-icon"><AP_AdminIcon name="edit" /></div><h3>Website content</h3><p>Hero, about, solutions, industries, method, navigation, and footer.</p></a>
-          <a className="quick-card" href="/admin/site?section=caseStudy"><div className="metric-icon"><AP_AdminIcon name="case" /></div><h3>Case study</h3><p>Manage the TutWithUs collaboration and future case-study copy.</p></a>
-          <a className="quick-card" href="/admin/products"><div className="metric-icon"><AP_AdminIcon name="products" /></div><h3>Products page</h3><p>Maintain the page architecture now; add real products only when approved.</p></a>
-          <a className="quick-card" href="/admin/blogs"><div className="metric-icon"><AP_AdminIcon name="blogs" /></div><h3>Blogs & updates</h3><p>Prepare the newsroom layout without inventing announcements or milestones.</p></a>
-          <a className="quick-card" href="/admin/media"><div className="metric-icon"><AP_AdminIcon name="media" /></div><h3>Media library</h3><p>Upload approved website images and copy their public asset paths.</p></a>
-          <a className="quick-card" href="/admin/settings"><div className="metric-icon"><AP_AdminIcon name="settings" /></div><h3>Portal settings</h3><p>See the publishing mode, repo target, content paths, and brand tokens.</p></a>
+          <Link prefetch={false} className="quick-card" href="/admin/site"><div className="metric-icon"><AP_AdminIcon name="edit" /></div><h3>Website content</h3><p>Hero, about, solutions, industries, method, navigation, and footer.</p></Link>
+          <Link prefetch={false} className="quick-card" href="/admin/site?section=caseStudy"><div className="metric-icon"><AP_AdminIcon name="case" /></div><h3>Case study</h3><p>Manage the TutWithUs collaboration and future case-study copy.</p></Link>
+          <Link prefetch={false} className="quick-card" href="/admin/products"><div className="metric-icon"><AP_AdminIcon name="products" /></div><h3>Products page</h3><p>Maintain the page architecture now; add real products only when approved.</p></Link>
+          <Link prefetch={false} className="quick-card" href="/admin/blogs"><div className="metric-icon"><AP_AdminIcon name="blogs" /></div><h3>Blogs & updates</h3><p>Prepare the newsroom layout without inventing announcements or milestones.</p></Link>
+          <Link prefetch={false} className="quick-card" href="/admin/careers"><div className="metric-icon"><AP_AdminIcon name="products" /></div><h3>Careers page</h3><p>Manage the careers narrative and publish only approved openings.</p></Link>
+          <Link prefetch={false} className="quick-card" href="/admin/media"><div className="metric-icon"><AP_AdminIcon name="media" /></div><h3>Media library</h3><p>Upload approved website images and copy their public asset paths.</p></Link>
+          <Link prefetch={false} className="quick-card" href="/admin/settings"><div className="metric-icon"><AP_AdminIcon name="settings" /></div><h3>Portal settings</h3><p>See the publishing mode, repo target, content paths, and brand tokens.</p></Link>
         </div>
       </section>
     </>

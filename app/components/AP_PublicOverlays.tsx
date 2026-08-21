@@ -1,11 +1,14 @@
 "use client";
 
+import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
-import AP_ContactModal from "@/app/components/AP_ContactModal";
-import AP_CaseStudyModal from "@/app/components/AP_CaseStudyModal";
-import type { CaseStudyContent } from "@/shared/types";
+import type { CaseStudyContent, SocialContent } from "@/shared/types";
 
-export default function AP_PublicOverlays({ caseStudy }: { caseStudy: CaseStudyContent }) {
+const AP_ContactModal = dynamic(() => import("@/app/components/AP_ContactModal"), { ssr: false });
+const AP_CaseStudyModal = dynamic(() => import("@/app/components/AP_CaseStudyModal"), { ssr: false });
+const AP_FloatingActions = dynamic(() => import("@/app/components/AP_FloatingActions"), { ssr: false });
+
+export default function AP_PublicOverlays({ caseStudy, social }: { caseStudy: CaseStudyContent; social: SocialContent }) {
   const pathname = usePathname();
   if (pathname.startsWith("/admin")) return null;
 
@@ -13,6 +16,7 @@ export default function AP_PublicOverlays({ caseStudy }: { caseStudy: CaseStudyC
     <>
       <AP_CaseStudyModal content={caseStudy} />
       <AP_ContactModal />
+      <AP_FloatingActions social={social} />
     </>
   );
 }

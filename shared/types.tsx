@@ -153,6 +153,46 @@ export type BlogsPageContent = {
   categories: string[];
 };
 
+
+export type SocialContent = {
+  whatsapp: string;
+  linkedin: string;
+  instagram: string;
+  whatsappLabel: string;
+  chatbotLabel: string;
+  chatbotTitle: string;
+  chatbotSubtitle: string;
+};
+
+export type CareerValue = {
+  title: string;
+  body: string;
+};
+
+export type CareerRole = {
+  title: string;
+  type: string;
+  location: string;
+  summary: string;
+};
+
+export type CareersPageContent = {
+  eyebrow: string;
+  title: string;
+  highlight: string;
+  body: string;
+  primaryCta: string;
+  valuesEyebrow: string;
+  valuesTitle: string;
+  values: CareerValue[];
+  rolesEyebrow: string;
+  rolesTitle: string;
+  rolesBody: string;
+  emptyTitle: string;
+  emptyBody: string;
+  roles: CareerRole[];
+};
+
 export type SiteMeta = {
   title: string;
   description: string;
@@ -172,6 +212,8 @@ export type SiteContent = {
   footer: FooterContent;
   products: ProductsPageContent;
   blogs: BlogsPageContent;
+  careers: CareersPageContent;
+  social: SocialContent;
 };
 
 export type ContactRequest = {

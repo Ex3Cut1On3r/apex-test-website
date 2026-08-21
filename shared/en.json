@@ -31,6 +31,10 @@
       "href": "/blogs"
     },
     {
+      "label": "Careers",
+      "href": "/careers"
+    },
+    {
       "label": "About",
       "href": "/#about"
     }
@@ -302,5 +306,43 @@
       "Events",
       "Company News"
     ]
+  },
+  "social": {
+    "whatsapp": "https://wa.me/10000000000?text=Hello%20APEX",
+    "linkedin": "",
+    "instagram": "",
+    "whatsappLabel": "Contact APEX on WhatsApp",
+    "chatbotLabel": "Open APEX AI assistant",
+    "chatbotTitle": "APEX Assistant",
+    "chatbotSubtitle": "A guided path to the right conversation."
+  },
+  "careers": {
+    "eyebrow": "CAREERS",
+    "title": "Build systems that",
+    "highlight": "move real businesses.",
+    "body": "APEX is building a team around thoughtful engineering, operational clarity, and technology that earns its place in the workflow.",
+    "primaryCta": "Introduce yourself",
+    "valuesEyebrow": "HOW WE WORK",
+    "valuesTitle": "High standards. Low theatre.",
+    "values": [
+      {
+        "title": "Own the outcome",
+        "body": "We care about whether the system works in the real operation, not whether the demo looked impressive."
+      },
+      {
+        "title": "Make complexity legible",
+        "body": "Strong builders simplify decisions, interfaces, handoffs, and technical systems without hiding the important details."
+      },
+      {
+        "title": "Build for momentum",
+        "body": "We favor durable foundations, fast feedback, and improvements that compound instead of creating more maintenance."
+      }
+    ],
+    "rolesEyebrow": "OPEN ROLES",
+    "rolesTitle": "The next seat could be yours.",
+    "rolesBody": "Approved openings will appear here. We do not publish placeholder jobs or roles that are not actively being hired for.",
+    "emptyTitle": "No public openings right now.",
+    "emptyBody": "If APEX feels like the kind of team you want to build with, you can still introduce yourself and tell us where you create unusual value.",
+    "roles": []
   }
 }

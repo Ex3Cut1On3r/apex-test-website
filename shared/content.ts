@@ -3,8 +3,8 @@ import en from "./en.json";
 import ar from "./ar.json";
 
 const fallbackContent: Record<Locale, SiteContent> = {
-  en: en as SiteContent,
-  ar: ar as SiteContent,
+  en: en as unknown as SiteContent,
+  ar: ar as unknown as SiteContent,
 };
 
 export function normalizeLocale(value?: string | null): Locale {

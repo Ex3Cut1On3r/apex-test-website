@@ -1,7 +1,10 @@
 import type { Metadata } from "next";
-import content from "@/shared/en.json";
 import AP_BlogsScreen from "@/app/screens/AP_BlogsScreen";
 
-export const metadata: Metadata = { title: "Blogs | APEX", description: content.blogs.body };
+export const metadata: Metadata = {
+  title: "Blogs & News",
+  description: "APEX news, achievements, collaborations, and practical thinking on intelligent digital systems.",
+  alternates: { canonical: "/blogs" },
+};
 
-export default AP_BlogsScreen;
+export default function BlogsPage() { return <AP_BlogsScreen />; }

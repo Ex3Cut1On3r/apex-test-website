@@ -1,6 +1,7 @@
 "use client";
 
 import { usePathname, useRouter } from "next/navigation";
+import Link from "next/link";
 import { useState } from "react";
 import { AP_AdminIcon, type AP_AdminIconName } from "@/app/components/AP_AdminIcons";
 
@@ -10,6 +11,7 @@ const nav: { href: string; label: string; icon: AP_AdminIconName }[] = [
   { href: "/admin/site?section=caseStudy", label: "Case Studies", icon: "case" },
   { href: "/admin/products", label: "Products", icon: "products" },
   { href: "/admin/blogs", label: "Blogs & News", icon: "blogs" },
+  { href: "/admin/careers", label: "Careers", icon: "products" },
   { href: "/admin/media", label: "Media", icon: "media" },
   { href: "/admin/settings", label: "Settings", icon: "settings" },
 ];
@@ -29,6 +31,7 @@ export default function AP_AdminShell({ children, email, mode }: { children: Rea
     pathname.includes("/site") ? "Website content" :
     pathname.includes("/products") ? "Products" :
     pathname.includes("/blogs") ? "Blogs & news" :
+    pathname.includes("/careers") ? "Careers" :
     pathname.includes("/media") ? "Media library" : "Settings";
 
   return (
@@ -40,14 +43,14 @@ export default function AP_AdminShell({ children, email, mode }: { children: Rea
         </div>
         <nav className="admin-nav">
           <div className="admin-nav-label">Workspace</div>
-          {nav.slice(0, 5).map((item) => {
+          {nav.slice(0, 6).map((item) => {
             const active = item.href === "/admin" ? pathname === "/admin" : pathname.startsWith(item.href.split("?")[0]);
-            return <a key={item.href} href={item.href} data-active={active ? "true" : "false"} onClick={() => setOpen(false)}><span className="nav-icon"><AP_AdminIcon name={item.icon} /></span>{item.label}</a>;
+            return <Link prefetch={false} key={item.href} href={item.href} data-active={active ? "true" : "false"} onClick={() => setOpen(false)}><span className="nav-icon"><AP_AdminIcon name={item.icon} /></span>{item.label}</Link>;
           })}
           <div className="admin-nav-label">System</div>
-          {nav.slice(5).map((item) => {
+          {nav.slice(6).map((item) => {
             const active = pathname.startsWith(item.href);
-            return <a key={item.href} href={item.href} data-active={active ? "true" : "false"} onClick={() => setOpen(false)}><span className="nav-icon"><AP_AdminIcon name={item.icon} /></span>{item.label}</a>;
+            return <Link prefetch={false} key={item.href} href={item.href} data-active={active ? "true" : "false"} onClick={() => setOpen(false)}><span className="nav-icon"><AP_AdminIcon name={item.icon} /></span>{item.label}</Link>;
           })}
         </nav>
         <div className="admin-sidebar-foot">

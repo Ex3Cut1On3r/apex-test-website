@@ -4,8 +4,8 @@ import { useEffect, useMemo, useState, type ChangeEvent } from "react";
 import { AP_AdminIcon } from "@/app/components/AP_AdminIcons";
 import type { Locale, SiteContent } from "@/shared/types";
 
-type EditorMode = "site" | "products" | "blogs";
-type SiteSection = "meta" | "hero" | "about" | "solutions" | "industries" | "caseStudy" | "method" | "footer";
+type EditorMode = "site" | "products" | "blogs" | "careers";
+type SiteSection = "meta" | "hero" | "about" | "solutions" | "industries" | "caseStudy" | "method" | "social" | "footer";
 
 const siteSections: { key: SiteSection; label: string }[] = [
   { key: "meta", label: "Site & navigation" },
@@ -15,6 +15,7 @@ const siteSections: { key: SiteSection; label: string }[] = [
   { key: "industries", label: "Industries" },
   { key: "caseStudy", label: "Case study" },
   { key: "method", label: "Method" },
+  { key: "social", label: "Social & contact" },
   { key: "footer", label: "Footer" },
 ];
 
@@ -26,6 +27,7 @@ const sectionDescriptions: Record<SiteSection, string> = {
   industries: "Only active verticals belong here. The open-door row invites other operational challenges.",
   caseStudy: "The featured TutWithUs collaboration and the detailed case-study modal content.",
   method: "The APEX operating method, core principles, and final business-impact CTA.",
+  social: "WhatsApp, LinkedIn, Instagram, and the local guided assistant labels. Empty social URLs stay hidden safely.",
   footer: "Legal copy and footer-level static content.",
 };
 
@@ -77,7 +79,7 @@ export default function AP_ContentEditor({
   const [toast, setToast] = useState<{ text: string; error?: boolean } | null>(null);
 
   const content = contentMap[locale];
-  const pageTitle = mode === "site" ? siteSections.find((item) => item.key === section)?.label || "Website" : mode === "products" ? "Products page" : "Blogs & news page";
+  const pageTitle = mode === "site" ? siteSections.find((item) => item.key === section)?.label || "Website" : mode === "products" ? "Products page" : mode === "blogs" ? "Blogs & news page" : "Careers page";
 
   useEffect(() => {
     if (!toast) return;
@@ -173,7 +175,7 @@ export default function AP_ContentEditor({
         {mode === "site" ? <aside className="editor-sections">{siteSections.map((item) => <button key={item.key} className="editor-section-button" data-active={section === item.key ? "true" : "false"} onClick={() => setSection(item.key)}><span>{item.label}</span><span>›</span></button>)}</aside> : null}
         <section className="editor-panel">
           <div className="editor-card" dir={content.direction}>
-            {mode === "site" ? renderSiteSection(section, content, change, value) : mode === "products" ? renderProducts(content, change, value) : renderBlogs(content, change, value)}
+            {mode === "site" ? renderSiteSection(section, content, change, value) : mode === "products" ? renderProducts(content, change, value) : mode === "blogs" ? renderBlogs(content, change, value) : renderCareers(content, change, value)}
           </div>
           <p style={{ color: "#7b909b", fontSize: 11, margin: "12px 4px 0" }}>Editing <strong>{pageTitle}</strong> · {locale === "en" ? "English" : "Arabic"}. Drafts stay in your browser; Publish writes to the configured CMS source.</p>
         </section>
@@ -212,6 +214,10 @@ function renderSiteSection(section: SiteSection, content: SiteContent, change: (
     return <><SectionHead eyebrow="HOMEPAGE" title="APEX method" description={sectionDescriptions.method} /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("method.eyebrow")} onChange={(v) => change("method.eyebrow", v)} /><TextField label="Title" value={value("method.title")} onChange={(v) => change("method.title", v)} /><div className="field full"><TextArea label="Body" value={value("method.body")} onChange={(v) => change("method.body", v)} /></div></div><div className="form-divider" /><div className="array-stack">{content.method.steps.map((step, index) => <div className="subcard" key={step.number}><div className="subcard-head"><strong>{step.number} · {step.title}</strong><span>{step.icon}</span></div><div className="field-grid"><TextField label="Title" value={step.title} onChange={(v) => change(`method.steps.${index}.title`, v)} /><TextArea label="Body" value={step.body} onChange={(v) => change(`method.steps.${index}.body`, v)} /></div></div>)}</div><div className="form-divider" /><div className="field-grid"><TextField label="CTA title" value={value("method.ctaTitle")} onChange={(v) => change("method.ctaTitle", v)} /><TextField label="Highlighted words" value={value("method.ctaHighlight")} onChange={(v) => change("method.ctaHighlight", v)} /><div className="field full"><TextArea label="CTA body" value={value("method.ctaBody")} onChange={(v) => change("method.ctaBody", v)} /></div><TextField label="CTA button" value={value("method.cta")} onChange={(v) => change("method.cta", v)} /></div></div></>;
   }
 
+  if (section === "social") {
+    return <><SectionHead eyebrow="CONTACT" title="Social & contact" description={sectionDescriptions.social} /><div className="editor-card-body"><div className="field-grid"><TextField label="WhatsApp URL" value={value("social.whatsapp")} onChange={(v) => change("social.whatsapp", v)} hint="Use a full wa.me URL. Leave blank to make the floating WhatsApp button open the contact form instead." /><TextField label="LinkedIn URL" value={value("social.linkedin")} onChange={(v) => change("social.linkedin", v)} /><TextField label="Instagram URL" value={value("social.instagram")} onChange={(v) => change("social.instagram", v)} /><TextField label="WhatsApp accessibility label" value={value("social.whatsappLabel")} onChange={(v) => change("social.whatsappLabel", v)} /><TextField label="AI assistant button label" value={value("social.chatbotLabel")} onChange={(v) => change("social.chatbotLabel", v)} /><TextField label="Assistant title" value={value("social.chatbotTitle")} onChange={(v) => change("social.chatbotTitle", v)} /><div className="field full"><TextField label="Assistant subtitle" value={value("social.chatbotSubtitle")} onChange={(v) => change("social.chatbotSubtitle", v)} /></div></div></div></>;
+  }
+
   return <><SectionHead eyebrow="WEBSITE" title="Footer" description={sectionDescriptions.footer} /><div className="editor-card-body"><TextField label="Legal line" value={value("footer.legal")} onChange={(v) => change("footer.legal", v)} /></div></>;
 }
 
@@ -221,4 +227,9 @@ function renderProducts(content: SiteContent, change: (path: string, value: unkn
 
 function renderBlogs(content: SiteContent, change: (path: string, value: unknown) => void, value: (path: string) => string) {
   return <><SectionHead eyebrow="BLOGS & NEWS" title="Newsroom layout" description="Prepare the page language and filtering structure now. Publish actual achievements, collaborations, and news only when they exist." /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("blogs.eyebrow")} onChange={(v) => change("blogs.eyebrow", v)} /><TextField label="Main title" value={value("blogs.title")} onChange={(v) => change("blogs.title", v)} /><TextField label="Highlighted words" value={value("blogs.highlight")} onChange={(v) => change("blogs.highlight", v)} /><div className="field full"><TextArea label="Intro body" value={value("blogs.body")} onChange={(v) => change("blogs.body", v)} /></div><TextField label="Subscribe title" value={value("blogs.subscribeTitle")} onChange={(v) => change("blogs.subscribeTitle", v)} /><TextArea label="Subscribe body" value={value("blogs.subscribeBody")} onChange={(v) => change("blogs.subscribeBody", v)} /><TextField label="Featured label" value={value("blogs.featuredLabel")} onChange={(v) => change("blogs.featuredLabel", v)} /><TextField label="Empty-state title" value={value("blogs.emptyTitle")} onChange={(v) => change("blogs.emptyTitle", v)} /><div className="field full"><TextArea label="Empty-state body" value={value("blogs.emptyBody")} onChange={(v) => change("blogs.emptyBody", v)} /></div><div className="field full"><TextField label="Categories (separate with |)" value={content.blogs.categories.join(" | ")} onChange={(v) => change("blogs.categories", v.split("|").map((s) => s.trim()).filter(Boolean))} /></div></div><div className="editor-empty"><div className="empty-icon"><AP_AdminIcon name="blogs" /></div><h3>No articles are published.</h3><p>The public newsroom can stay visually complete without fake Series B rounds, vendor awards, or partnerships. Add real updates once they are approved.</p></div></div></>;
+}
+
+
+function renderCareers(content: SiteContent, change: (path: string, value: unknown) => void, value: (path: string) => string) {
+  return <><SectionHead eyebrow="CAREERS" title="Careers page" description="Manage the careers narrative and approved roles. The public page remains credible when the roles list is empty." /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("careers.eyebrow")} onChange={(v) => change("careers.eyebrow", v)} /><TextField label="Main title" value={value("careers.title")} onChange={(v) => change("careers.title", v)} /><TextField label="Highlighted words" value={value("careers.highlight")} onChange={(v) => change("careers.highlight", v)} /><div className="field full"><TextArea label="Intro body" value={value("careers.body")} onChange={(v) => change("careers.body", v)} /></div><TextField label="Primary CTA" value={value("careers.primaryCta")} onChange={(v) => change("careers.primaryCta", v)} /><TextField label="Values eyebrow" value={value("careers.valuesEyebrow")} onChange={(v) => change("careers.valuesEyebrow", v)} /><TextField label="Values title" value={value("careers.valuesTitle")} onChange={(v) => change("careers.valuesTitle", v)} /></div><div className="form-divider" /><div className="array-stack">{content.careers.values.map((item, index) => <div className="subcard" key={`${item.title}-${index}`}><div className="subcard-head"><strong>Value {index + 1}</strong></div><div className="field-grid"><TextField label="Title" value={item.title} onChange={(v) => change(`careers.values.${index}.title`, v)} /><TextArea label="Body" value={item.body} onChange={(v) => change(`careers.values.${index}.body`, v)} /></div></div>)}</div><div className="form-divider" /><div className="field-grid"><TextField label="Roles eyebrow" value={value("careers.rolesEyebrow")} onChange={(v) => change("careers.rolesEyebrow", v)} /><TextField label="Roles title" value={value("careers.rolesTitle")} onChange={(v) => change("careers.rolesTitle", v)} /><div className="field full"><TextArea label="Roles intro" value={value("careers.rolesBody")} onChange={(v) => change("careers.rolesBody", v)} /></div><TextField label="Empty-state title" value={value("careers.emptyTitle")} onChange={(v) => change("careers.emptyTitle", v)} /><div className="field full"><TextArea label="Empty-state body" value={value("careers.emptyBody")} onChange={(v) => change("careers.emptyBody", v)} /></div></div><div className="editor-empty"><div className="empty-icon"><AP_AdminIcon name="products" /></div><h3>{content.careers.roles.length ? `${content.careers.roles.length} approved role(s)` : "No public roles are published."}</h3><p>Role CRUD can be added when the hiring workflow is approved. For now the content model already supports a typed roles array without inventing openings.</p></div></div></>;
 }

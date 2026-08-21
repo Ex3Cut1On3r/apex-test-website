@@ -1,19 +1,15 @@
-APEX Architecture Fixed — validation summary
+APEX FINAL LOADING UPGRADE — VALIDATION
+Date: 2026-08-21
 
-Checks completed before packaging:
-- All local @/ and relative TypeScript imports resolve with exact filename case.
-- All TS/TSX files pass TypeScript transpile/syntax validation.
-- Internal strict type-check passed using local framework stubs (used only for validation, not included).
-- shared/en.json and shared/ar.json parse successfully and match the expected solution/industry/icon domain values.
-- shared/globals.css parses successfully with PostCSS.
-- No duplicate Next.js page routes were detected.
-- No root-level legacy components folder is included.
-- No public/shared duplicate folder is included.
-- No shared/models, shared/components, shared/admin, shared/styles, or shared/content directories remain.
-- All reusable component filenames in app/components use AP_ prefix.
-- All screen composition filenames in app/screens use AP_ prefix.
+Checks run in artifact environment:
+- 73 TS/TSX files parsed/transpiled successfully with TypeScript 5.8.3.
+- shared/en.json valid JSON.
+- shared/ar.json valid JSON.
+- package.json valid JSON.
+- Internal @/ imports resolve with exact Linux/Vercel case.
+- 12 Next.js page routes found; no duplicate route collisions.
+- shared/globals.css brace balance passed.
 
-Final production verification still recommended on a machine with npm registry access:
-  npm.cmd install
-  npm.cmd run typecheck
-  npm.cmd run build
+Environment limitation:
+- Full `npm install && npm run build` could not be executed because the artifact container has no npm registry/network access.
+- Run `npm.cmd install`, `npm.cmd run typecheck`, and `npm.cmd run build` locally before pushing production.
