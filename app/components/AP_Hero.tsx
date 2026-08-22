@@ -35,7 +35,7 @@ export default function AP_Hero({ hero }: { hero: HeroContent }) {
             <AP_Button variant="secondary" contact>{hero.secondaryCta}</AP_Button>
           </div>
         </div>
-        <div className="ap-ref-hero-visual" aria-hidden="true">
+        <div className="ap-ref-hero-visual" aria-label="Explore the APEX architecture">
           <AP_ArchitectureVisual />
         </div>
       </div>

@@ -15,7 +15,7 @@ export default function AP_Solutions({ content, standalone = false }: { content:
         </div>
         <div className="ap-ref-solution-grid">
           {content.items.map((item) => (
-            <article className="ap-ref-solution-card" key={item.key}>
+            <article className="ap-ref-solution-card" id={item.key} key={item.key}>
               <div className="ap-ref-card-icon"><AP_Icon name={item.icon}/></div>
               <h3>{item.title}</h3>
               <p>{item.body}</p>
