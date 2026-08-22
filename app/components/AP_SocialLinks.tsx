@@ -8,9 +8,9 @@ function Logo({ kind }: { kind: "linkedin" | "instagram" | "whatsapp" }) {
 
 export default function AP_SocialLinks({ social }: { social: SocialContent }) {
   const links = [
-    ["linkedin", social.linkedin, "LinkedIn"],
-    ["instagram", social.instagram, "Instagram"],
-    ["whatsapp", social.whatsapp, "WhatsApp"],
+    ["linkedin", social.linkedin || "https://www.linkedin.com/", "LinkedIn"],
+    ["instagram", social.instagram || "https://www.instagram.com/", "Instagram"],
+    ["whatsapp", social.whatsapp || "https://wa.me/10000000000?text=Hello%20APEX", "WhatsApp"],
   ] as const;
-  return <div className="ap-social-row">{links.filter(([, href]) => Boolean(href)).map(([kind, href, label]) => <a className="ap-social-link" key={kind} href={href} target="_blank" rel="noreferrer" aria-label={label}><Logo kind={kind}/></a>)}</div>;
+  return <div className="ap-social-row">{links.map(([kind, href, label]) => <a className="ap-social-link" key={kind} href={href} target="_blank" rel="noreferrer" aria-label={label}><Logo kind={kind}/></a>)}</div>;
 }

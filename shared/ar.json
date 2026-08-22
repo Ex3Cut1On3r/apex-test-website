@@ -8,15 +8,11 @@
   "nav": [
     {
       "label": "الحلول",
-      "href": "/#solutions"
+      "href": "/solutions"
     },
     {
       "label": "القطاعات",
-      "href": "/#industries"
-    },
-    {
-      "label": "المنتجات",
-      "href": "/products"
+      "href": "/industries"
     },
     {
       "label": "دراسات الحالة",
@@ -24,7 +20,11 @@
     },
     {
       "label": "المنهجية",
-      "href": "/#method"
+      "href": "/method"
+    },
+    {
+      "label": "المنتجات",
+      "href": "/products"
     },
     {
       "label": "الأخبار",
@@ -309,8 +309,8 @@
   },
   "social": {
     "whatsapp": "https://wa.me/10000000000?text=Hello%20APEX",
-    "linkedin": "",
-    "instagram": "",
+    "linkedin": "https://www.linkedin.com/",
+    "instagram": "https://www.instagram.com/",
     "whatsappLabel": "تواصل مع APEX عبر واتساب",
     "chatbotLabel": "افتح مساعد APEX الذكي",
     "chatbotTitle": "مساعد APEX",

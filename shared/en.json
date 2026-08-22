@@ -8,15 +8,11 @@
   "nav": [
     {
       "label": "Solutions",
-      "href": "/#solutions"
+      "href": "/solutions"
     },
     {
       "label": "Industries",
-      "href": "/#industries"
-    },
-    {
-      "label": "Products",
-      "href": "/products"
+      "href": "/industries"
     },
     {
       "label": "Case Studies",
@@ -24,7 +20,11 @@
     },
     {
       "label": "Method",
-      "href": "/#method"
+      "href": "/method"
+    },
+    {
+      "label": "Products",
+      "href": "/products"
     },
     {
       "label": "Blogs",
@@ -309,8 +309,8 @@
   },
   "social": {
     "whatsapp": "https://wa.me/10000000000?text=Hello%20APEX",
-    "linkedin": "",
-    "instagram": "",
+    "linkedin": "https://www.linkedin.com/",
+    "instagram": "https://www.instagram.com/",
     "whatsappLabel": "Contact APEX on WhatsApp",
     "chatbotLabel": "Open APEX AI assistant",
     "chatbotTitle": "APEX Assistant",

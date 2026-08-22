@@ -27,7 +27,7 @@ const sectionDescriptions: Record<SiteSection, string> = {
   industries: "Only active verticals belong here. The open-door row invites other operational challenges.",
   caseStudy: "The featured TutWithUs collaboration and the detailed case-study modal content.",
   method: "The APEX operating method, core principles, and final business-impact CTA.",
-  social: "WhatsApp, LinkedIn, Instagram, and the local guided assistant labels. Empty social URLs stay hidden safely.",
+  social: "WhatsApp, LinkedIn, Instagram, and the local guided assistant labels. Social URLs are editable here; when left blank, the public site uses the fallback values from the JSON content files.",
   footer: "Legal copy and footer-level static content.",
 };
 
@@ -215,7 +215,7 @@ function renderSiteSection(section: SiteSection, content: SiteContent, change: (
   }
 
   if (section === "social") {
-    return <><SectionHead eyebrow="CONTACT" title="Social & contact" description={sectionDescriptions.social} /><div className="editor-card-body"><div className="field-grid"><TextField label="WhatsApp URL" value={value("social.whatsapp")} onChange={(v) => change("social.whatsapp", v)} hint="Use a full wa.me URL. Leave blank to make the floating WhatsApp button open the contact form instead." /><TextField label="LinkedIn URL" value={value("social.linkedin")} onChange={(v) => change("social.linkedin", v)} /><TextField label="Instagram URL" value={value("social.instagram")} onChange={(v) => change("social.instagram", v)} /><TextField label="WhatsApp accessibility label" value={value("social.whatsappLabel")} onChange={(v) => change("social.whatsappLabel", v)} /><TextField label="AI assistant button label" value={value("social.chatbotLabel")} onChange={(v) => change("social.chatbotLabel", v)} /><TextField label="Assistant title" value={value("social.chatbotTitle")} onChange={(v) => change("social.chatbotTitle", v)} /><div className="field full"><TextField label="Assistant subtitle" value={value("social.chatbotSubtitle")} onChange={(v) => change("social.chatbotSubtitle", v)} /></div></div></div></>;
+    return <><SectionHead eyebrow="CONTACT" title="Social & contact" description={sectionDescriptions.social} /><div className="editor-card-body"><div className="field-grid"><TextField label="WhatsApp URL" value={value("social.whatsapp")} onChange={(v) => change("social.whatsapp", v)} hint="Use a full wa.me URL. If left blank, the public site uses the fallback WhatsApp value from the JSON content file." /><TextField label="LinkedIn URL" value={value("social.linkedin")} onChange={(v) => change("social.linkedin", v)} /><TextField label="Instagram URL" value={value("social.instagram")} onChange={(v) => change("social.instagram", v)} /><TextField label="WhatsApp accessibility label" value={value("social.whatsappLabel")} onChange={(v) => change("social.whatsappLabel", v)} /><TextField label="AI assistant button label" value={value("social.chatbotLabel")} onChange={(v) => change("social.chatbotLabel", v)} /><TextField label="Assistant title" value={value("social.chatbotTitle")} onChange={(v) => change("social.chatbotTitle", v)} /><div className="field full"><TextField label="Assistant subtitle" value={value("social.chatbotSubtitle")} onChange={(v) => change("social.chatbotSubtitle", v)} /></div></div></div></>;
   }
 
   return <><SectionHead eyebrow="WEBSITE" title="Footer" description={sectionDescriptions.footer} /><div className="editor-card-body"><TextField label="Legal line" value={value("footer.legal")} onChange={(v) => change("footer.legal", v)} /></div></>;

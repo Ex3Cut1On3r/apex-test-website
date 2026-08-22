@@ -2,7 +2,6 @@
 
 import { FormEvent, useState } from "react";
 import type { SubscribeRequest, SubscribeResponse } from "@/shared/types";
-import AP_Icon from "@/app/components/AP_Icon";
 import { AP_TextBox } from "@/app/components/AP_TextBox";
 
 export default function AP_SubscribeForm() {
@@ -36,7 +35,7 @@ export default function AP_SubscribeForm() {
   return (
     <form className="subscribe-form" onSubmit={submit}>
       <AP_TextBox type="email" name="email" required placeholder="Enter your work email" aria-label="Work email" />
-      <button className="button button-primary" disabled={state === "sending"}>{state === "sending" ? "Sending…" : "Subscribe"}<AP_Icon name="arrow-up-right" /></button>
+      <button className="button button-primary" disabled={state === "sending"}>{state === "sending" ? "Sending…" : "Subscribe"}</button>
       {message && <p className={`subscribe-status ${state}`}>{message}</p>}
     </form>
   );
