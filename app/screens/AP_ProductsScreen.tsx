@@ -131,7 +131,7 @@ export default async function AP_ProductsScreen() {
                         <AP_Icon name={item.icon ?? ITEM_ICONS[index % ITEM_ICONS.length]} className="h-5 w-5 shrink-0 text-px-cyan2" />
                         <span className="min-w-0">
                           <strong className="block truncate text-[11.5px] font-bold text-px-ink">{item.name}</strong>
-                          <small className="block truncate text-[9.5px] text-px-copy">{item.category}</small>
+                          <small className="block truncate text-[10px] text-px-copy">{item.category}</small>
                         </span>
                       </div>
                       <AP_Icon name="arrow-right" className="h-3 w-3 shrink-0 text-[#8dc0d3]" />
@@ -237,7 +237,7 @@ export default async function AP_ProductsScreen() {
         {/* ---------- trust strip ---------- */}
         <section className="bg-px-band py-4">
           <div className={`${shell} flex flex-wrap items-center gap-x-6 gap-y-5`}>
-            <span className="min-w-[min(150px,100%)] max-w-[190px] flex-1 text-[9.5px] font-extrabold uppercase leading-[1.35] tracking-[0.12em] text-px-cyan2">
+            <span className="min-w-[min(150px,100%)] max-w-[190px] flex-1 text-[10px] font-extrabold uppercase leading-[1.35] tracking-[0.12em] text-px-cyan2">
               {page.trustEyebrow}
             </span>
             <div className="flex min-w-[min(360px,100%)] flex-[2] flex-wrap items-center justify-around gap-x-5 gap-y-3">

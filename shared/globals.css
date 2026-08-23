@@ -336,7 +336,7 @@ p, h1, h2, h3 { overflow-wrap: break-word; }
 
 
 /* Shared component primitives */
-.button-plain { background: transparent; color: var(--teal-dark); box-shadow: none; border: 0; padding-inline: 0; }
+.button-plain { background: transparent; color: var(--ap-ref-cyan); box-shadow: none; border: 0; padding-inline: 0; }
 .ap-textbox { width: 100%; border: 1px solid #CAD4D8; border-radius: 8px; background: #FBFCFC; padding: 12px 13px; color: var(--ink); outline: 0; font-size: 13px; font-weight: 500; }
 .ap-textbox:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(0,179,164,.10); background: #fff; }
 .ap-textarea { resize: vertical; min-height: 120px; }
@@ -1112,7 +1112,7 @@ body { color: var(--ap-ref-ink); background: #fff; }
 .ap-ref-nav-links a { position: relative; padding-block: 26px 23px; white-space: nowrap; }
 .ap-ref-nav-links a::after { content: ""; position: absolute; left: 50%; right: 50%; bottom: 18px; height: 2px; background: var(--ap-ref-cyan); transition: left .2s ease, right .2s ease; }
 .ap-ref-nav-links a:hover::after, .ap-ref-nav-links a.active::after { left: 0; right: 0; }
-.ap-ref-nav-cta { min-height: 40px; padding-inline: 17px; border-radius: 4px; background: var(--ap-ref-cyan) !important; color: white !important; text-transform: uppercase; letter-spacing: .02em; font-size: 10px; box-shadow: none !important; }
+.ap-ref-nav-cta { min-height: 40px; padding-inline: 17px; border-radius: 4px; background: var(--ap-ref-cyan) !important; color: white !important; text-transform: uppercase; letter-spacing: .02em; font-size: 11px; box-shadow: none !important; }
 .ap-ref-nav-cta:hover { background: var(--ap-ref-cyan-dark) !important; }
 .ap-ref-nav-actions { display: flex; justify-content: flex-end; align-items: center; }
 .ap-ref-header .mobile-menu-button { display: none; }
@@ -1299,7 +1299,7 @@ body { color: var(--ap-ref-ink); background: #fff; }
 
 /* responsive */
 @media (max-width: 1080px) {
-  .ap-ref-nav-links{gap:16px;font-size:11px}.ap-ref-nav-cta{font-size:9px;padding-inline:13px}
+  .ap-ref-nav-links{gap:16px;font-size:11px}.ap-ref-nav-cta{font-size:10px;padding-inline:13px}
   .ap-ref-hero-grid{grid-template-columns:.95fr 1.05fr;gap:24px}.ap-ref-hero-visual{min-height:420px}.ap-ref-system-label{display:none}
   .ap-ref-split-layout{grid-template-columns:.5fr 1.5fr;gap:34px}.ap-ref-solution-grid{grid-template-columns:repeat(2,1fr)}
   .ap-ref-industry-cards{grid-template-columns:repeat(2,1fr)}

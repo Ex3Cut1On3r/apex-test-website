@@ -65,7 +65,7 @@ export default async function AP_BlogsScreen() {
                   </div>
                   <div className="absolute inset-y-0 right-0 flex w-[52%] flex-col items-center justify-center gap-2 px-4 text-center">
                     <strong className="text-[clamp(24px,2.6vw,38px)] font-bold leading-none tracking-[-0.03em] text-hx-cyan">{featured.statValue}</strong>
-                    <small className="text-[9px] font-bold uppercase tracking-[0.12em] text-hx-ink">{featured.statLabel}</small>
+                    <small className="text-[10px] font-bold uppercase tracking-[0.12em] text-hx-ink">{featured.statLabel}</small>
                     {featured.badge && <span className="mt-1 rounded-full bg-[#0b2233] px-3 py-1.5 text-[10px] font-semibold text-white">{featured.badge}</span>}
                   </div>
                 </div>
@@ -93,8 +93,8 @@ export default async function AP_BlogsScreen() {
                   </div>
                   <div className="flex flex-1 flex-col p-3.5">
                     <div className="flex flex-wrap items-baseline justify-between gap-x-2">
-                      <span className="text-[8.5px] font-extrabold uppercase tracking-[0.1em] text-hx-cyan">{update.category}</span>
-                      <span className="text-[9px] text-hx-muted">{update.date}</span>
+                      <span className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-hx-cyan">{update.category}</span>
+                      <span className="text-[10px] text-hx-muted">{update.date}</span>
                     </div>
                     <h3 className="mt-2 text-[12px] font-bold leading-[1.3] text-hx-ink">{update.title}</h3>
                     <p className="mt-1.5 text-[10px] leading-[1.5] text-hx-copy">{update.body}</p>
@@ -128,7 +128,7 @@ export default async function AP_BlogsScreen() {
                       {index < milestones.length - 1 && <span aria-hidden="true" className="mt-1 w-px flex-1 bg-hx-line" />}
                     </span>
                     <div className="min-w-0 pb-1">
-                      <span className="block text-[9px] font-extrabold uppercase tracking-[0.1em] text-hx-cyan">{milestone.date}</span>
+                      <span className="block text-[10px] font-extrabold uppercase tracking-[0.1em] text-hx-cyan">{milestone.date}</span>
                       <strong className="mt-1 block text-[11.5px] font-bold leading-[1.3] text-hx-ink">{milestone.title}</strong>
                       <p className="mt-1 text-[10px] leading-[1.45] text-hx-copy">{milestone.body}</p>
                     </div>
@@ -147,7 +147,7 @@ export default async function AP_BlogsScreen() {
                 </div>
               </div>
               <div className="mt-4"><AP_SubscribeForm placeholder={page.subscribePlaceholder} cta={page.subscribeCta} /></div>
-              <p className="mt-2.5 flex items-center gap-2 text-[9.5px] text-hx-muted">
+              <p className="mt-2.5 flex items-center gap-2 text-[10px] text-hx-muted">
                 <AP_Icon name="shield-check" className="h-3 w-3 shrink-0 text-hx-cyan" />{page.privacyNote}
               </p>
             </div>
@@ -164,7 +164,7 @@ export default async function AP_BlogsScreen() {
             </div>
             <div className="min-w-[min(300px,100%)] flex-1">
               <AP_SubscribeForm placeholder={page.subscribePlaceholder} cta={page.subscribeCta} />
-              <p className="mt-2.5 flex items-center justify-center gap-2 text-[9.5px] text-hx-muted">
+              <p className="mt-2.5 flex items-center justify-center gap-2 text-[10px] text-hx-muted">
                 <AP_Icon name="shield-check" className="h-3 w-3 shrink-0 text-hx-cyan" />{page.privacyNote}
               </p>
             </div>

@@ -32,7 +32,7 @@ export default function AP_Industries({ content, standalone = false }: { content
                   <div key={stat.label} className="min-w-0 flex-1 basis-1/3 border-l border-hx-line px-2 first:border-l-0 first:pl-0">
                     <AP_Icon name={stat.icon ?? "users"} className="h-[20px] w-[20px] text-hx-cyan" />
                     <strong className="mt-2 block text-[clamp(16px,1.35vw,22px)] font-bold leading-tight text-hx-cyan">{stat.value}</strong>
-                    <small className="mt-0.5 block whitespace-nowrap text-[9px] leading-[1.35] text-hx-copy">{stat.label}</small>
+                    <small className="mt-0.5 block whitespace-nowrap text-[10px] leading-[1.35] text-hx-copy">{stat.label}</small>
                   </div>
                 ))}
               </div>
@@ -142,7 +142,7 @@ export default function AP_Industries({ content, standalone = false }: { content
             </article>
           ))}
 
-          <article className="flex min-w-[min(175px,100%)] shrink grow-[0.55] basis-[calc(18%-16px)] flex-col rounded-xl border border-hx-line bg-white p-4">
+          <article className="flex min-w-[min(175px,100%)] grow basis-[calc(18%-16px)] flex-col rounded-xl border border-hx-line bg-white p-4">
             <AP_Icon name="message" className="h-[22px] w-[22px] shrink-0 text-hx-cyan" />
             <h3 className="mt-2.5 text-[14px] font-bold leading-tight text-hx-ink">{content.openDoorTitle}</h3>
             <p className="mt-2 text-[11.5px] leading-[1.55] text-hx-copy">{content.openDoorBody}</p>

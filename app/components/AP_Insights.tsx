@@ -56,7 +56,7 @@ export default function AP_Insights({ blogs, solutions, compact = false }: { blo
                 {post.image ? <img src={post.image} alt={post.title} className="h-full w-full object-cover" /> : <PostArt index={index} />}
               </div>
               <div className="flex flex-1 flex-col p-4">
-                <span className="block text-[9px] font-extrabold uppercase tracking-[0.12em] text-hx-cyan">{post.category}</span>
+                <span className="block text-[10px] font-extrabold uppercase tracking-[0.12em] text-hx-cyan">{post.category}</span>
                 <h3 className="mt-2 text-[13.5px] font-bold leading-[1.3] text-hx-ink">{post.title}</h3>
                 <p className="mt-2 text-[11px] leading-[1.5] text-hx-copy">{post.body}</p>
                 <div className="mt-auto flex items-center justify-between gap-3 pt-4 text-[10px] text-hx-muted">
