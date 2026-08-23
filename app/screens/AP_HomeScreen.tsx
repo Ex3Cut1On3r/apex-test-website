@@ -19,7 +19,7 @@ export default async function AP_HomeScreen() {
       <AP_Header nav={data.nav} />
       <main id="top">
         <AP_Hero hero={data.hero} />
-        <AP_TrustStrip caseStudy={data.caseStudy} hero={data.hero} />
+        <AP_TrustStrip trust={data.trust} />
         <AP_Solutions content={data.solutions} />
         <AP_Industries content={data.industries} />
         <AP_CaseStudy content={data.caseStudy} />

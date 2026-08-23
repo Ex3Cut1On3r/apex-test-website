@@ -7,7 +7,8 @@ export type AP_IconName =
   | "check" | "search" | "calendar" | "message" | "lock" | "globe"
   | "spark" | "mail" | "box"
   | "shield-check" | "sparkles" | "users" | "bulb" | "rocket"
-  | "cloud" | "trend-up" | "upload-cloud" | "pin" | "building" | "chevron-down";
+  | "cloud" | "trend-up" | "upload-cloud" | "pin" | "building" | "chevron-down"
+  | "check-circle" | "sliders" | "share" | "sitemap";
 
 export type NavItem = {
   label: string;
@@ -20,9 +21,22 @@ export type Principle = {
   body: string;
 };
 
+export type TrustStat = {
+  value: string;
+  label: string;
+};
+
+export type TrustContent = {
+  eyebrow: string;
+  clients: string[];
+  stats: TrustStat[];
+};
+
 export type HeroContent = {
   eyebrow: string;
   lines: [string, string, string];
+  highlight?: string;
+  architecture?: string[];
   body: string;
   primaryCta: string;
   secondaryCta: string;
@@ -35,7 +49,7 @@ export type AboutContent = {
   body: string;
 };
 
-export type SolutionKey = "ai" | "legacy" | "integration" | "data" | "software" | "workflow";
+export type SolutionKey = "ai" | "legacy" | "integration" | "data" | "software" | "workflow" | "cloud";
 
 export type SolutionItem = {
   key: SolutionKey;
@@ -62,6 +76,14 @@ export type IndustryItem = {
   title: string;
   body: string;
   bullets: string[];
+  image?: string;
+  learnMore?: string;
+};
+
+export type IndustryStat = {
+  value: string;
+  label: string;
+  icon?: AP_IconName;
 };
 
 export type IndustriesContent = {
@@ -72,6 +94,15 @@ export type IndustriesContent = {
   openDoorTitle: string;
   openDoorBody: string;
   openDoorCta: string;
+  learnMoreLabel?: string;
+  pageTitle?: string;
+  pageHighlight?: string;
+  pageBody?: string;
+  stats?: IndustryStat[];
+  startTitle?: string;
+  startBody?: string;
+  startCta?: string;
+  qualities?: Principle[];
   items: IndustryItem[];
 };
 
@@ -124,6 +155,26 @@ export type FooterContent = {
   legal: string;
 };
 
+export type ProductHighlight = {
+  title: string;
+  body: string;
+  icon?: AP_IconName;
+};
+
+export type ProductItem = {
+  name: string;
+  category: string;
+  body: string;
+  features: string[];
+  icon?: AP_IconName;
+  cta?: string;
+};
+
+export type ProductStat = {
+  value: string;
+  label: string;
+};
+
 export type ProductsPageContent = {
   eyebrow: string;
   title: string;
@@ -140,6 +191,36 @@ export type ProductsPageContent = {
   ecosystemEyebrow: string;
   ecosystemTitle: string;
   ecosystemBody: string;
+  heroHighlights?: ProductHighlight[];
+  heroImage?: string;
+  heroImageAlt?: string;
+  items?: ProductItem[];
+  flowEyebrow?: string;
+  flowTitle?: string;
+  flowOrder?: string[];
+  flowOutcome?: string[];
+  deployEyebrow?: string;
+  deployTitle?: string;
+  deployBody?: string;
+  deployItems?: ProductHighlight[];
+  deployCardTitle?: string;
+  deployCardBody?: string;
+  deployCardCta?: string;
+  featuredEyebrow?: string;
+  featuredName?: string;
+  featuredCategory?: string;
+  featuredBody?: string;
+  featuredCapabilitiesLabel?: string;
+  featuredCapabilities?: string[];
+  featuredImage?: string;
+  featuredImageAlt?: string;
+  ctaTitle?: string;
+  ctaBody?: string;
+  ctaPrimary?: string;
+  ctaSecondary?: string;
+  trustEyebrow?: string;
+  clients?: string[];
+  stats?: ProductStat[];
 };
 
 export type BlogsPageContent = {
@@ -191,6 +272,36 @@ export type CareerStep = {
   body: string;
 };
 
+export type CareerFormLabels = {
+  nameLabel: string;
+  namePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  phoneLabel: string;
+  phonePlaceholder: string;
+  locationLabel: string;
+  locationPlaceholder: string;
+  roleLabel: string;
+  rolePlaceholder: string;
+  roleGeneralOption: string;
+  linkedinLabel: string;
+  linkedinPlaceholder: string;
+  resumeLabel: string;
+  resumeDropTitle: string;
+  resumeDropBrowse: string;
+  resumeReplace: string;
+  resumeHint: string;
+  coverLabel: string;
+  coverPlaceholder: string;
+  submit: string;
+  submitting: string;
+  success: string;
+  errorResumeMissing: string;
+  errorResumeType: string;
+  errorResumeSize: string;
+  errorGeneric: string;
+};
+
 export type CareersPageContent = {
   eyebrow: string;
   title: string;
@@ -220,6 +331,9 @@ export type CareersPageContent = {
   closingTitle?: string;
   closingBody?: string;
   closingCta?: string;
+  viewRoleLabel?: string;
+  heroImageAlt?: string;
+  form?: CareerFormLabels;
 };
 
 export type SiteMeta = {
@@ -243,6 +357,7 @@ export type SiteContent = {
   blogs: BlogsPageContent;
   careers: CareersPageContent;
   social: SocialContent;
+  trust?: TrustContent;
 };
 
 export type ContactRequest = {

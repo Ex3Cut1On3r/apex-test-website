@@ -1,21 +1,37 @@
-import Image from "next/image";
-import type { CaseStudyContent, HeroContent } from "@/shared/types";
+import type { TrustContent } from "@/shared/types";
 import AP_Icon from "@/app/components/AP_Icon";
 
-export default function AP_TrustStrip({ caseStudy, hero }: { caseStudy: CaseStudyContent; hero: HeroContent }) {
+/* No media queries: one wrapping flex row, children carry basis + min-width. */
+const shell = "mx-auto w-full max-w-[1640px] px-[clamp(1rem,3vw,2rem)]";
+
+export default function AP_TrustStrip({ trust }: { trust?: TrustContent }) {
+  if (!trust) return null;
+  const { eyebrow, clients = [], stats = [] } = trust;
+
   return (
-    <section className="ap-trust-strip" aria-label="APEX trust and delivery principles">
-      <div className="container ap-trust-strip-inner">
-        <div className="ap-trust-client">
-          <span>SELECTED COLLABORATION</span>
-          <Image src={caseStudy.clientLogo} alt={caseStudy.client} width={116} height={44} loading="lazy" />
+    <section className="border-y border-hx-line bg-hx-band py-4" aria-label={eyebrow}>
+      <div className={`${shell} flex flex-wrap items-center gap-x-6 gap-y-5`}>
+        <span className="min-w-[min(150px,100%)] max-w-[190px] flex-1 text-[9.5px] font-extrabold uppercase leading-[1.35] tracking-[0.12em] text-hx-cyan">
+          {eyebrow}
+        </span>
+
+        <div className="flex min-w-[min(360px,100%)] flex-[2] flex-wrap items-center justify-around gap-x-5 gap-y-3">
+          {clients.map((client) => (
+            <span key={client} className="flex items-center gap-2 text-[13px] font-bold text-hx-ink">
+              <AP_Icon name="grid" className="h-4 w-4 shrink-0 text-hx-muted" />{client}
+            </span>
+          ))}
         </div>
-        {hero.principles.map((item) => (
-          <div className="ap-trust-principle" key={item.title}>
-            <AP_Icon name={item.icon} />
-            <span><strong>{item.title}</strong><small>{item.body}</small></span>
-          </div>
-        ))}
+
+        <div className="flex min-w-[min(340px,100%)] flex-[1.5] flex-wrap border-l border-hx-line">
+          {stats.map((stat) => (
+            <div key={stat.label} className="min-w-[min(110px,100%)] flex-1 basis-1/4 px-2 text-center">
+              <strong className="block text-[19px] font-bold leading-tight text-hx-cyan">{stat.value}</strong>
+              <small className="mt-0.5 block text-[10px] text-hx-copy">{stat.label}</small>
+            </div>
+          ))}
+          {stats.map((stat) => <span key={`t-ghost-${stat.label}`} aria-hidden="true" className="h-0 min-w-[min(110px,100%)] flex-1 basis-1/4" />)}
+        </div>
       </div>
     </section>
   );

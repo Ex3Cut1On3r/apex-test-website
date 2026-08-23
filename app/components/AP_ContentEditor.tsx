@@ -221,14 +221,22 @@ function renderSiteSection(section: SiteSection, content: SiteContent, change: (
   return <><SectionHead eyebrow="WEBSITE" title="Footer" description={sectionDescriptions.footer} /><div className="editor-card-body"><TextField label="Legal line" value={value("footer.legal")} onChange={(v) => change("footer.legal", v)} /></div></>;
 }
 
-function renderProducts(content: SiteContent, change: (path: string, value: unknown) => void, value: (path: string) => string) {
-  return <><SectionHead eyebrow="PRODUCTS" title="Products page layout" description="The page is ready, but the product catalog remains intentionally empty until APEX has approved products to publish." /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("products.eyebrow")} onChange={(v) => change("products.eyebrow", v)} /><TextField label="Main title" value={value("products.title")} onChange={(v) => change("products.title", v)} /><TextField label="Highlighted words" value={value("products.highlight")} onChange={(v) => change("products.highlight", v)} /><div className="field full"><TextArea label="Primary body" value={value("products.body")} onChange={(v) => change("products.body", v)} /></div><div className="field full"><TextArea label="Secondary body" value={value("products.secondaryBody")} onChange={(v) => change("products.secondaryBody", v)} /></div><TextField label="Primary CTA" value={value("products.primaryCta")} onChange={(v) => change("products.primaryCta", v)} /><TextField label="Secondary CTA" value={value("products.secondaryCta")} onChange={(v) => change("products.secondaryCta", v)} /></div><div className="form-divider" /><div className="field-grid"><TextField label="Suite eyebrow" value={value("products.suiteEyebrow")} onChange={(v) => change("products.suiteEyebrow", v)} /><TextField label="Suite title" value={value("products.suiteTitle")} onChange={(v) => change("products.suiteTitle", v)} /><div className="field full"><TextArea label="Suite body" value={value("products.suiteBody")} onChange={(v) => change("products.suiteBody", v)} /></div><TextField label="Empty-state title" value={value("products.emptyTitle")} onChange={(v) => change("products.emptyTitle", v)} /><TextArea label="Empty-state body" value={value("products.emptyBody")} onChange={(v) => change("products.emptyBody", v)} /><TextField label="Ecosystem eyebrow" value={value("products.ecosystemEyebrow")} onChange={(v) => change("products.ecosystemEyebrow", v)} /><TextField label="Ecosystem title" value={value("products.ecosystemTitle")} onChange={(v) => change("products.ecosystemTitle", v)} /><div className="field full"><TextArea label="Ecosystem body" value={value("products.ecosystemBody")} onChange={(v) => change("products.ecosystemBody", v)} /></div></div><div className="editor-empty"><div className="empty-icon"><AP_AdminIcon name="products" /></div><h3>No products are published.</h3><p>This is intentional. The public Products page keeps its premium layout and empty-state structure without inventing products that APEX has not actually released.</p></div></div></>;
-}
+const CAREER_FORM_FIELDS: [string, string][] = [
+  ["nameLabel", "Name label"], ["namePlaceholder", "Name placeholder"],
+  ["emailLabel", "Email label"], ["emailPlaceholder", "Email placeholder"],
+  ["phoneLabel", "Phone label"], ["phonePlaceholder", "Phone placeholder"],
+  ["locationLabel", "Location label"], ["locationPlaceholder", "Location placeholder"],
+  ["roleLabel", "Role label"], ["rolePlaceholder", "Role placeholder"], ["roleGeneralOption", "General-interest option"],
+  ["linkedinLabel", "LinkedIn label"], ["linkedinPlaceholder", "LinkedIn placeholder"],
+  ["resumeLabel", "Resume label"], ["resumeDropTitle", "Upload title"], ["resumeDropBrowse", "Upload browse text"],
+  ["resumeReplace", "Upload replace text"], ["resumeHint", "Upload hint"],
+  ["coverLabel", "Cover letter label"], ["coverPlaceholder", "Cover letter placeholder"],
+  ["submit", "Submit button"], ["submitting", "Submitting text"], ["success", "Success message"],
+  ["errorResumeMissing", "Error: resume missing"], ["errorResumeType", "Error: wrong file type"],
+  ["errorResumeSize", "Error: file too large"], ["errorGeneric", "Error: generic"],
+];
 
-function renderBlogs(content: SiteContent, change: (path: string, value: unknown) => void, value: (path: string) => string) {
-  return <><SectionHead eyebrow="BLOGS & NEWS" title="Newsroom layout" description="Prepare the page language and filtering structure now. Publish actual achievements, collaborations, and news only when they exist." /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("blogs.eyebrow")} onChange={(v) => change("blogs.eyebrow", v)} /><TextField label="Main title" value={value("blogs.title")} onChange={(v) => change("blogs.title", v)} /><TextField label="Highlighted words" value={value("blogs.highlight")} onChange={(v) => change("blogs.highlight", v)} /><div className="field full"><TextArea label="Intro body" value={value("blogs.body")} onChange={(v) => change("blogs.body", v)} /></div><TextField label="Subscribe title" value={value("blogs.subscribeTitle")} onChange={(v) => change("blogs.subscribeTitle", v)} /><TextArea label="Subscribe body" value={value("blogs.subscribeBody")} onChange={(v) => change("blogs.subscribeBody", v)} /><TextField label="Featured label" value={value("blogs.featuredLabel")} onChange={(v) => change("blogs.featuredLabel", v)} /><TextField label="Empty-state title" value={value("blogs.emptyTitle")} onChange={(v) => change("blogs.emptyTitle", v)} /><div className="field full"><TextArea label="Empty-state body" value={value("blogs.emptyBody")} onChange={(v) => change("blogs.emptyBody", v)} /></div><div className="field full"><TextField label="Categories (separate with |)" value={content.blogs.categories.join(" | ")} onChange={(v) => change("blogs.categories", v.split("|").map((s) => s.trim()).filter(Boolean))} /></div></div><div className="editor-empty"><div className="empty-icon"><AP_AdminIcon name="blogs" /></div><h3>No articles are published.</h3><p>The public newsroom can stay visually complete without fake Series B rounds, vendor awards, or partnerships. Add real updates once they are approved.</p></div></div></>;
-}
-
+const PRODUCT_ICON_CHOICES: AP_IconName[] = ["flow", "chart", "sparkles", "layers", "brain", "cloud", "database", "nodes", "grid", "box", "shield", "shield-check", "lock", "rocket", "sliders", "globe", "code", "trend-up", "compass", "spark"];
 
 const ROLE_ICON_CHOICES: AP_IconName[] = ["code", "brain", "cloud", "chart", "trend-up", "database", "layers", "nodes", "flow", "briefcase", "shield", "globe", "grid", "compass", "spark", "graduation", "leaf", "box", "message", "search", "lock", "calendar", "mail"];
 const STAT_ICON_CHOICES: AP_IconName[] = ["users", "globe", "chart", "spark", "shield", "grid", "nodes", "briefcase"];
@@ -269,6 +277,228 @@ function listHelpers<T>(items: T[], commit: (next: T[]) => void) {
     },
   };
 }
+
+function renderProducts(content: SiteContent, change: (path: string, value: unknown) => void, value: (path: string) => string) {
+  const products = content.products;
+  const items = products.items ?? [];
+  const highlights = products.heroHighlights ?? [];
+  const deployItems = products.deployItems ?? [];
+  const stats = products.stats ?? [];
+  const clients = products.clients ?? [];
+  const flowOrder = products.flowOrder ?? [];
+  const outcome = products.flowOutcome ?? [];
+  const capabilities = products.featuredCapabilities ?? [];
+
+  const itemList = listHelpers(items, (next) => change("products.items", next));
+  const highlightList = listHelpers(highlights, (next) => change("products.heroHighlights", next));
+  const deployList = listHelpers(deployItems, (next) => change("products.deployItems", next));
+  const statList = listHelpers(stats, (next) => change("products.stats", next));
+  const clientList = listHelpers(clients, (next) => change("products.clients", next));
+  const flowList = listHelpers(flowOrder, (next) => change("products.flowOrder", next));
+  const outcomeList = listHelpers(outcome, (next) => change("products.flowOutcome", next));
+  const capabilityList = listHelpers(capabilities, (next) => change("products.featuredCapabilities", next));
+
+  return (
+    <>
+      <SectionHead eyebrow="PRODUCTS" title="Products page" description="Every block, product, and label on the public products page is managed here. Clear the product list and the page falls back to its empty state." />
+      <div className="editor-card-body">
+        <div className="field-grid">
+          <TextField label="Eyebrow" value={value("products.eyebrow")} onChange={(v) => change("products.eyebrow", v)} />
+          <TextField label="Main title" value={value("products.title")} onChange={(v) => change("products.title", v)} />
+          <TextField label="Highlighted second line" value={value("products.highlight")} onChange={(v) => change("products.highlight", v)} />
+          <TextField label="Primary CTA" value={value("products.primaryCta")} onChange={(v) => change("products.primaryCta", v)} />
+          <div className="field full"><TextArea label="Intro body" value={value("products.body")} onChange={(v) => change("products.body", v)} /></div>
+          <TextField label="Hero image path" value={value("products.heroImage")} onChange={(v) => change("products.heroImage", v)} hint="Blank keeps the built-in console mockup." />
+          <TextField label="Hero image alt text" value={value("products.heroImageAlt")} onChange={(v) => change("products.heroImageAlt", v)} />
+        </div>
+
+        <div className="subcard-head"><strong>Hero highlights</strong><button className="ap-button ap-button-soft" type="button" onClick={() => highlightList.add({ title: "New highlight", body: "", icon: "box" })}>Add highlight</button></div>
+        <div className="array-stack">
+          {highlights.map((item, index) => (
+            <div className="subcard" key={`hl-${index}`}>
+              <div className="subcard-head"><strong>{item.title || `Highlight ${index + 1}`}</strong><ListControls index={index} length={highlights.length} onMove={highlightList.move} onRemove={highlightList.remove} /></div>
+              <div className="field-grid three">
+                <TextField label="Title" value={item.title} onChange={(v) => change(`products.heroHighlights.${index}.title`, v)} />
+                <TextField label="Body" value={item.body} onChange={(v) => change(`products.heroHighlights.${index}.body`, v)} />
+                <SelectField label="Icon" value={item.icon ?? "box"} options={PRODUCT_ICON_CHOICES} onChange={(v) => change(`products.heroHighlights.${index}.icon`, v)} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Suite eyebrow" value={value("products.suiteEyebrow")} onChange={(v) => change("products.suiteEyebrow", v)} />
+          <TextField label="Suite title" value={value("products.suiteTitle")} onChange={(v) => change("products.suiteTitle", v)} />
+          <TextField label="Empty-state title" value={value("products.emptyTitle")} onChange={(v) => change("products.emptyTitle", v)} />
+          <div className="field full"><TextArea label="Empty-state body (shown when there are no products)" value={value("products.emptyBody")} onChange={(v) => change("products.emptyBody", v)} rows={2} /></div>
+        </div>
+
+        <div className="subcard-head">
+          <div><strong>Products</strong><span style={{ display: "block" }}>{items.length ? `${items.length} published on the products page` : "None published — the public page shows the empty state."}</span></div>
+          <button className="ap-button ap-button-primary" type="button" onClick={() => itemList.add({ name: "New product", category: "Category", body: "", features: [], icon: "layers", cta: "Explore" })}><AP_AdminIcon name="check" /> Add product</button>
+        </div>
+        {items.length ? (
+          <div className="array-stack">
+            {items.map((item, index) => {
+              const featureList = listHelpers(item.features ?? [], (next) => change(`products.items.${index}.features`, next));
+              return (
+                <div className="subcard" key={`prod-${index}`}>
+                  <div className="subcard-head"><strong>{item.name || `Product ${index + 1}`}</strong><ListControls index={index} length={items.length} onMove={itemList.move} onRemove={itemList.remove} /></div>
+                  <div className="field-grid three">
+                    <TextField label="Name" value={item.name} onChange={(v) => change(`products.items.${index}.name`, v)} />
+                    <TextField label="Category" value={item.category} onChange={(v) => change(`products.items.${index}.category`, v)} />
+                    <SelectField label="Icon" value={item.icon ?? "layers"} options={PRODUCT_ICON_CHOICES} onChange={(v) => change(`products.items.${index}.icon`, v)} />
+                    <TextField label="Link label" value={item.cta ?? ""} onChange={(v) => change(`products.items.${index}.cta`, v)} />
+                    <div className="field full"><TextArea label="Description" value={item.body} onChange={(v) => change(`products.items.${index}.body`, v)} rows={2} /></div>
+                  </div>
+                  <div className="subcard-head" style={{ marginTop: 12 }}><strong>Capabilities</strong><button className="ap-button ap-button-soft" type="button" onClick={() => featureList.add("New capability")}>Add capability</button></div>
+                  <div className="field-grid">
+                    {(item.features ?? []).map((feature, position) => (
+                      <div className="field" key={`f-${index}-${position}`}>
+                        <label>Capability {position + 1}</label>
+                        <div style={{ display: "flex", gap: 8 }}>
+                          <input className="ap-input" value={feature} onChange={(e: ChangeEvent<HTMLInputElement>) => change(`products.items.${index}.features.${position}`, e.target.value)} />
+                          <button className="ap-button ap-button-soft" type="button" onClick={() => featureList.remove(position)}>Remove</button>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        ) : (
+          <div className="editor-empty">
+            <div className="empty-icon"><AP_AdminIcon name="products" /></div>
+            <h3>No products are published.</h3>
+            <p>Use “Add product” when a product is ready. Until then the public page shows your empty-state message.</p>
+          </div>
+        )}
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Flow eyebrow" value={value("products.flowEyebrow")} onChange={(v) => change("products.flowEyebrow", v)} />
+          <TextField label="Flow title" value={value("products.flowTitle")} onChange={(v) => change("products.flowTitle", v)} />
+        </div>
+        <div className="subcard-head"><strong>Flow order</strong><button className="ap-button ap-button-soft" type="button" onClick={() => flowList.add(items[0]?.name ?? "")}>Add step</button></div>
+        <div className="field-grid">
+          {flowOrder.map((name, index) => (
+            <div className="field" key={`flow-${index}`}>
+              <label>Step {index + 1}</label>
+              <div style={{ display: "flex", gap: 8 }}>
+                <select className="ap-select" value={name} onChange={(e: ChangeEvent<HTMLSelectElement>) => change(`products.flowOrder.${index}`, e.target.value)}>
+                  {items.map((item) => <option key={item.name} value={item.name}>{item.name}</option>)}
+                </select>
+                <button className="ap-button ap-button-soft" type="button" onClick={() => flowList.remove(index)}>Remove</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="subcard-head"><strong>Flow outcome lines</strong><button className="ap-button ap-button-soft" type="button" onClick={() => outcomeList.add("New line")}>Add line</button></div>
+        <div className="field-grid">
+          {outcome.map((line, index) => (
+            <div className="field" key={`out-${index}`}>
+              <label>Line {index + 1}</label>
+              <div style={{ display: "flex", gap: 8 }}>
+                <input className="ap-input" value={line} onChange={(e: ChangeEvent<HTMLInputElement>) => change(`products.flowOutcome.${index}`, e.target.value)} />
+                <button className="ap-button ap-button-soft" type="button" onClick={() => outcomeList.remove(index)}>Remove</button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Deploy eyebrow" value={value("products.deployEyebrow")} onChange={(v) => change("products.deployEyebrow", v)} />
+          <TextField label="Deploy title" value={value("products.deployTitle")} onChange={(v) => change("products.deployTitle", v)} />
+          <div className="field full"><TextArea label="Deploy body" value={value("products.deployBody")} onChange={(v) => change("products.deployBody", v)} rows={2} /></div>
+          <TextField label="Deploy card title" value={value("products.deployCardTitle")} onChange={(v) => change("products.deployCardTitle", v)} />
+          <TextField label="Deploy card CTA" value={value("products.deployCardCta")} onChange={(v) => change("products.deployCardCta", v)} />
+          <div className="field full"><TextArea label="Deploy card body" value={value("products.deployCardBody")} onChange={(v) => change("products.deployCardBody", v)} rows={2} /></div>
+        </div>
+        <div className="subcard-head"><strong>Deployment benefits</strong><button className="ap-button ap-button-soft" type="button" onClick={() => deployList.add({ title: "New benefit", body: "", icon: "box" })}>Add benefit</button></div>
+        <div className="array-stack">
+          {deployItems.map((item, index) => (
+            <div className="subcard" key={`dep-${index}`}>
+              <div className="subcard-head"><strong>{item.title || `Benefit ${index + 1}`}</strong><ListControls index={index} length={deployItems.length} onMove={deployList.move} onRemove={deployList.remove} /></div>
+              <div className="field-grid three">
+                <TextField label="Title" value={item.title} onChange={(v) => change(`products.deployItems.${index}.title`, v)} />
+                <TextField label="Body" value={item.body} onChange={(v) => change(`products.deployItems.${index}.body`, v)} />
+                <SelectField label="Icon" value={item.icon ?? "box"} options={PRODUCT_ICON_CHOICES} onChange={(v) => change(`products.deployItems.${index}.icon`, v)} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Featured eyebrow" value={value("products.featuredEyebrow")} onChange={(v) => change("products.featuredEyebrow", v)} />
+          <TextField label="Featured product name" value={value("products.featuredName")} onChange={(v) => change("products.featuredName", v)} hint="Leave blank to hide the featured section." />
+          <TextField label="Featured category" value={value("products.featuredCategory")} onChange={(v) => change("products.featuredCategory", v)} />
+          <TextField label="Capabilities heading" value={value("products.featuredCapabilitiesLabel")} onChange={(v) => change("products.featuredCapabilitiesLabel", v)} />
+          <div className="field full"><TextArea label="Featured body" value={value("products.featuredBody")} onChange={(v) => change("products.featuredBody", v)} rows={2} /></div>
+          <TextField label="Featured image path" value={value("products.featuredImage")} onChange={(v) => change("products.featuredImage", v)} hint="Blank keeps the built-in preview mockup." />
+          <TextField label="Featured image alt text" value={value("products.featuredImageAlt")} onChange={(v) => change("products.featuredImageAlt", v)} />
+        </div>
+        <div className="subcard-head"><strong>Featured capabilities</strong><button className="ap-button ap-button-soft" type="button" onClick={() => capabilityList.add("New capability")}>Add capability</button></div>
+        <div className="field-grid">
+          {capabilities.map((capability, index) => (
+            <div className="field" key={`cap-${index}`}>
+              <label>Capability {index + 1}</label>
+              <div style={{ display: "flex", gap: 8 }}>
+                <input className="ap-input" value={capability} onChange={(e: ChangeEvent<HTMLInputElement>) => change(`products.featuredCapabilities.${index}`, e.target.value)} />
+                <button className="ap-button ap-button-soft" type="button" onClick={() => capabilityList.remove(index)}>Remove</button>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="CTA title" value={value("products.ctaTitle")} onChange={(v) => change("products.ctaTitle", v)} />
+          <TextField label="CTA body" value={value("products.ctaBody")} onChange={(v) => change("products.ctaBody", v)} />
+          <TextField label="CTA primary button" value={value("products.ctaPrimary")} onChange={(v) => change("products.ctaPrimary", v)} />
+          <TextField label="CTA secondary button" value={value("products.ctaSecondary")} onChange={(v) => change("products.ctaSecondary", v)} />
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Trust strip eyebrow" value={value("products.trustEyebrow")} onChange={(v) => change("products.trustEyebrow", v)} />
+        </div>
+        <div className="subcard-head"><strong>Client names</strong><button className="ap-button ap-button-soft" type="button" onClick={() => clientList.add("New client")}>Add client</button></div>
+        <div className="field-grid">
+          {clients.map((client, index) => (
+            <div className="field" key={`cl-${index}`}>
+              <label>Client {index + 1}</label>
+              <div style={{ display: "flex", gap: 8 }}>
+                <input className="ap-input" value={client} onChange={(e: ChangeEvent<HTMLInputElement>) => change(`products.clients.${index}`, e.target.value)} />
+                <button className="ap-button ap-button-soft" type="button" onClick={() => clientList.remove(index)}>Remove</button>
+              </div>
+            </div>
+          ))}
+        </div>
+        <div className="subcard-head"><strong>Trust stats</strong><button className="ap-button ap-button-soft" type="button" onClick={() => statList.add({ value: "0+", label: "New stat" })}>Add stat</button></div>
+        <div className="array-stack">
+          {stats.map((stat, index) => (
+            <div className="subcard" key={`st-${index}`}>
+              <div className="subcard-head"><strong>Stat {index + 1}</strong><ListControls index={index} length={stats.length} onMove={statList.move} onRemove={statList.remove} /></div>
+              <div className="field-grid">
+                <TextField label="Figure" value={stat.value} onChange={(v) => change(`products.stats.${index}.value`, v)} />
+                <TextField label="Label" value={stat.label} onChange={(v) => change(`products.stats.${index}.label`, v)} />
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+}
+
+function renderBlogs(content: SiteContent, change: (path: string, value: unknown) => void, value: (path: string) => string) {
+  return <><SectionHead eyebrow="BLOGS & NEWS" title="Newsroom layout" description="Prepare the page language and filtering structure now. Publish actual achievements, collaborations, and news only when they exist." /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("blogs.eyebrow")} onChange={(v) => change("blogs.eyebrow", v)} /><TextField label="Main title" value={value("blogs.title")} onChange={(v) => change("blogs.title", v)} /><TextField label="Highlighted words" value={value("blogs.highlight")} onChange={(v) => change("blogs.highlight", v)} /><div className="field full"><TextArea label="Intro body" value={value("blogs.body")} onChange={(v) => change("blogs.body", v)} /></div><TextField label="Subscribe title" value={value("blogs.subscribeTitle")} onChange={(v) => change("blogs.subscribeTitle", v)} /><TextArea label="Subscribe body" value={value("blogs.subscribeBody")} onChange={(v) => change("blogs.subscribeBody", v)} /><TextField label="Featured label" value={value("blogs.featuredLabel")} onChange={(v) => change("blogs.featuredLabel", v)} /><TextField label="Empty-state title" value={value("blogs.emptyTitle")} onChange={(v) => change("blogs.emptyTitle", v)} /><div className="field full"><TextArea label="Empty-state body" value={value("blogs.emptyBody")} onChange={(v) => change("blogs.emptyBody", v)} /></div><div className="field full"><TextField label="Categories (separate with |)" value={content.blogs.categories.join(" | ")} onChange={(v) => change("blogs.categories", v.split("|").map((s) => s.trim()).filter(Boolean))} /></div></div><div className="editor-empty"><div className="empty-icon"><AP_AdminIcon name="blogs" /></div><h3>No articles are published.</h3><p>The public newsroom can stay visually complete without fake Series B rounds, vendor awards, or partnerships. Add real updates once they are approved.</p></div></div></>;
+}
+
 
 function renderCareers(content: SiteContent, change: (path: string, value: unknown) => void, value: (path: string) => string) {
   const careers = content.careers;
@@ -390,6 +620,16 @@ function renderCareers(content: SiteContent, change: (path: string, value: unkno
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="form-divider" />
+        <div className="subcard-head"><div><strong>Application form labels</strong><span style={{ display: "block" }}>Every word on the public application form, including placeholders and messages.</span></div></div>
+        <div className="field-grid">
+          {CAREER_FORM_FIELDS.map(([key, label]) => (
+            <TextField key={key} label={label} value={value(`careers.form.${key}`)} onChange={(v) => change(`careers.form.${key}`, v)} />
+          ))}
+          <TextField label="Role card link label" value={value("careers.viewRoleLabel")} onChange={(v) => change("careers.viewRoleLabel", v)} />
+          <TextField label="Hero image alt text" value={value("careers.heroImageAlt")} onChange={(v) => change("careers.heroImageAlt", v)} />
         </div>
 
         <div className="form-divider" />

@@ -5,8 +5,8 @@
  */
 export default function AP_TeamVisual() {
   return (
-    <div className="ap-team-visual" aria-hidden="true">
-      <svg viewBox="0 0 1040 340" preserveAspectRatio="xMidYMid slice" role="presentation">
+    <div className="relative h-full min-h-[240px] w-full overflow-hidden" aria-hidden="true">
+      <svg viewBox="0 0 1040 340" preserveAspectRatio="xMidYMid slice" role="presentation" className="h-full w-full">
         <defs>
           <linearGradient id="teamRoom" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#F1F7F9" /><stop offset="1" stopColor="#DCE9ED" /></linearGradient>
           <linearGradient id="teamDesk" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#E4EDF0" /><stop offset="1" stopColor="#C3D5DB" /></linearGradient>

@@ -1,6 +1,6 @@
 "use client";
 
-import { memo, useEffect, useRef } from "react";
+import { memo, useEffect, useId, useRef } from "react";
 
 type DotFieldProps = {
   dotRadius?: number;
@@ -52,7 +52,9 @@ const AP_DotField = memo(function AP_DotField({
   const propsRef = useRef<RuntimeProps>({ dotRadius, dotSpacing, cursorRadius, cursorForce, bulgeOnly, bulgeStrength, sparkle, waveAmplitude, gradientFrom, gradientTo });
   propsRef.current = { dotRadius, dotSpacing, cursorRadius, cursorForce, bulgeOnly, bulgeStrength, sparkle, waveAmplitude, gradientFrom, gradientTo };
   const rebuildRef = useRef<null | (() => void)>(null);
-  const glowIdRef = useRef(`ap-dot-field-glow-${Math.random().toString(36).slice(2, 9)}`);
+  // useId is stable across server render and hydration; Math.random() here caused
+  // a hydration mismatch that tore down and re-rendered the whole client tree.
+  const glowIdRef = useRef(`ap-dot-field-glow-${useId().replace(/[^a-zA-Z0-9]/g, "")}`);
 
   useEffect(() => {
     const canvas = canvasRef.current;

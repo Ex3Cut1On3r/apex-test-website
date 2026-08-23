@@ -40,31 +40,38 @@
     }
   ],
   "hero": {
-    "eyebrow": "AI & DIGITAL SYSTEMS",
+    "eyebrow": "AI SYSTEMS. ENGINEERED FOR IMPACT.",
     "lines": [
       "Intelligent",
       "systems.",
-      "Real momentum"
+      "Real"
     ],
-    "body": "APEX builds software, AI, data, and workflow systems that help businesses modernize operations and scale with confidence.",
-    "primaryCta": "Explore Solutions",
-    "secondaryCta": "Book a Consultation",
+    "body": "We design and build AI-powered systems that streamline operations, unlock data value, and drive measurable results—at scale.",
+    "primaryCta": "Explore solutions",
+    "secondaryCta": "View case studies",
     "principles": [
       {
         "icon": "shield",
         "title": "Secure by design",
-        "body": "Built with trust from the ground up."
+        "body": "Enterprise-grade security built in from day one."
       },
       {
-        "icon": "nodes",
-        "title": "Connected systems",
-        "body": "Everything works better together."
+        "icon": "spark",
+        "title": "Proven outcomes",
+        "body": "Systems that deliver measurable impact and ROI."
       },
       {
-        "icon": "chart",
-        "title": "Measurable outcomes",
-        "body": "Real impact you can see and scale."
+        "icon": "users",
+        "title": "Built to scale",
+        "body": "Modular, flexible, and ready to grow with you."
       }
+    ],
+    "highlight": "impact.",
+    "architecture": [
+      "Intelligent Applications",
+      "AI & Automation Layer",
+      "Data & Integration Layer",
+      "Cloud Foundation (Secure & Scalable)"
     ]
   },
   "about": {
@@ -73,63 +80,63 @@
     "body": "We start with the system around the work — then apply software, AI, automation, and data where they create measurable value."
   },
   "solutions": {
-    "eyebrow": "SOLUTIONS",
-    "title": "Modern systems for modern business.",
-    "body": "From intelligent automation to full-stack engineering, APEX builds the connected digital systems behind faster, clearer operations.",
-    "cta": "Explore capability",
+    "eyebrow": "WHAT WE DO",
+    "title": "Solutions that power progress",
+    "body": "From intelligent automation to cloud-native platforms, we deliver technology solutions designed around your goals.",
+    "cta": "Explore all solutions",
     "items": [
       {
         "key": "ai",
         "number": "01",
         "icon": "brain",
-        "title": "AI & Intelligent Automation",
-        "body": "Apply AI where it removes repetitive work, improves response quality, and accelerates decisions."
+        "title": "AI & Automation",
+        "body": "Intelligent agents and automation that augment human work and accelerate outcomes."
       },
       {
-        "key": "legacy",
+        "key": "software",
         "number": "02",
-        "icon": "layers",
-        "title": "Legacy Modernization",
-        "body": "Modernize aging applications and workflows without discarding the business logic that still matters."
+        "icon": "code",
+        "title": "Custom Software",
+        "body": "Bespoke applications built for your unique workflows and business needs."
       },
       {
         "key": "integration",
         "number": "03",
-        "icon": "nodes",
+        "icon": "share",
         "title": "System Integration",
-        "body": "Connect software, teams, and data so information moves cleanly through the operation."
-      },
-      {
-        "key": "data",
-        "number": "04",
-        "icon": "database",
-        "title": "Data Infrastructure",
-        "body": "Create dependable data foundations for reporting, analytics, automation, and AI-enabled operations."
-      },
-      {
-        "key": "software",
-        "number": "05",
-        "icon": "code",
-        "title": "Custom Software",
-        "body": "Build internal tools and customer experiences around how the business actually needs to work."
+        "body": "Connect people, systems, and data for seamless and secure operations."
       },
       {
         "key": "workflow",
-        "number": "06",
-        "icon": "flow",
+        "number": "04",
+        "icon": "sitemap",
         "title": "Workflow Automation",
-        "body": "Turn manual handoffs, approvals, follow-ups, and reconciliation into reliable digital flows."
+        "body": "Streamline processes, reduce manual work, and improve consistency."
+      },
+      {
+        "key": "data",
+        "number": "05",
+        "icon": "chart",
+        "title": "Data & Analytics",
+        "body": "Turn complex data into clear insights that drive better decisions."
+      },
+      {
+        "key": "cloud",
+        "number": "06",
+        "icon": "cloud",
+        "title": "Cloud / Infrastructure",
+        "body": "Secure, scalable, and resilient infrastructure built for performance."
       }
     ]
   },
   "industries": {
-    "eyebrow": "INDUSTRIES",
-    "title": "Built for real operations.",
-    "body": "We focus on industries where complex workflows, disconnected systems, and manual work create real friction.",
-    "cta": "Explore this industry",
-    "openDoorTitle": "Have a different operational challenge?",
-    "openDoorBody": "Let’s discuss how we can help.",
-    "openDoorCta": "Talk to our team",
+    "eyebrow": "WHO WE SERVE",
+    "title": "Solutions for mission-driven industries",
+    "body": "We partner with organizations where impact matters most.",
+    "cta": "Explore industries",
+    "openDoorTitle": "Have a unique challenge?",
+    "openDoorBody": "Let's design a solution tailored to your organization.",
+    "openDoorCta": "Start a conversation",
     "items": [
       {
         "key": "education",
@@ -166,6 +173,47 @@
           "Data intelligence",
           "Workflow coordination"
         ]
+      }
+    ],
+    "learnMoreLabel": "Learn more",
+    "pageTitle": "Solutions for mission-driven",
+    "pageHighlight": "industries.",
+    "pageBody": "We partner with organizations where impact matters most—delivering intelligent systems that improve outcomes, streamline operations, and drive meaningful change.",
+    "stats": [
+      {
+        "value": "100+",
+        "label": "Organizations served",
+        "icon": "users"
+      },
+      {
+        "value": "15+",
+        "label": "Industries impacted",
+        "icon": "globe"
+      },
+      {
+        "value": "8+ yrs",
+        "label": "Average partnership",
+        "icon": "compass"
+      }
+    ],
+    "startTitle": "Not sure where to start?",
+    "startBody": "Let's explore your goals and find the right solution path.",
+    "startCta": "Start a conversation",
+    "qualities": [
+      {
+        "icon": "shield",
+        "title": "Secure by design",
+        "body": "Enterprise-grade security built in from day one."
+      },
+      {
+        "icon": "spark",
+        "title": "Proven outcomes",
+        "body": "Partnerships that deliver measurable impact and ROI."
+      },
+      {
+        "icon": "users",
+        "title": "Built to scale",
+        "body": "Modular, flexible, and ready to grow with you."
       }
     ]
   },
@@ -273,20 +321,178 @@
   },
   "products": {
     "eyebrow": "APEX PRODUCTS",
-    "title": "Products built by",
-    "highlight": "APEX.",
-    "body": "A dedicated home for the products and reusable systems APEX develops over time — designed to connect data, automate work, unify insight, and strengthen modern operations.",
-    "secondaryBody": "New products will be added here as they are ready for real-world use. Until then, this page stays intentionally honest and uncluttered.",
+    "title": "Built by APEX.",
+    "highlight": "Built for impact.",
+    "body": "Explore the products and frameworks we've engineered to solve real-world challenges. Deploy them as powerful APEX solutions or bring them to your market under your own brand.",
+    "secondaryBody": "New products are added here as they are ready for real-world use.",
     "primaryCta": "Discuss a product need",
     "secondaryCta": "View our solutions",
-    "suiteEyebrow": "OUR PRODUCT SUITE",
-    "suiteTitle": "A product catalog designed to grow cleanly.",
-    "suiteBody": "Each future product has a dedicated place for its positioning, capabilities, documentation, demos, and deployment options.",
+    "heroImage": "",
+    "heroHighlights": [
+      {
+        "title": "APEX-built",
+        "body": "Engineered in-house by APEX experts.",
+        "icon": "box"
+      },
+      {
+        "title": "Proven & secure",
+        "body": "Enterprise-grade, compliant, and continuously improved.",
+        "icon": "sliders"
+      },
+      {
+        "title": "Deploy your way",
+        "body": "Use as APEX solutions or launch as white-label.",
+        "icon": "shield-check"
+      }
+    ],
+    "suiteEyebrow": "OUR PRODUCTS",
+    "suiteTitle": "An integrated suite of intelligent technologies",
+    "suiteBody": "Each product has a dedicated place for its positioning, capabilities, documentation, demos, and deployment options.",
+    "items": [
+      {
+        "name": "APEX Flow",
+        "category": "Workflow Automation",
+        "icon": "flow",
+        "body": "Design, automate, and optimize end-to-end processes with ease.",
+        "features": [
+          "Visual workflow designer",
+          "Prebuilt templates & connectors",
+          "Real-time monitoring & alerts",
+          "Policy & approval management"
+        ],
+        "cta": "Explore APEX Flow"
+      },
+      {
+        "name": "APEX Insights",
+        "category": "Data & Analytics",
+        "icon": "chart",
+        "body": "Turn data into decisions with intuitive analytics and real-time visibility.",
+        "features": [
+          "Unified data models",
+          "Interactive dashboards & reports",
+          "AI-powered insights",
+          "Data governance & lineage"
+        ],
+        "cta": "Explore APEX Insights"
+      },
+      {
+        "name": "APEX Assist",
+        "category": "AI Assistant",
+        "icon": "sparkles",
+        "body": "Your intelligent copilot for faster work, smarter decisions, and better outcomes.",
+        "features": [
+          "Natural language interface",
+          "Context-aware recommendations",
+          "Task automation & summarization",
+          "Secure enterprise AI"
+        ],
+        "cta": "Explore APEX Assist"
+      },
+      {
+        "name": "APEX Core",
+        "category": "Platform Foundation",
+        "icon": "layers",
+        "body": "The secure, scalable foundation that powers everything.",
+        "features": [
+          "Multi-tenant architecture",
+          "APIs & extensibility",
+          "Security, identity & compliance",
+          "Scalability & high availability"
+        ],
+        "cta": "Explore APEX Core"
+      }
+    ],
     "emptyTitle": "No products published yet.",
     "emptyBody": "The product collection is intentionally empty until APEX is ready to release its first product.",
+    "flowEyebrow": "HOW OUR PRODUCTS WORK TOGETHER",
+    "flowTitle": "One platform. Four products. Endless possibilities.",
+    "flowOrder": [
+      "APEX Core",
+      "APEX Flow",
+      "APEX Insights",
+      "APEX Assist"
+    ],
+    "flowOutcome": [
+      "Better decisions.",
+      "Faster operations.",
+      "Real impact."
+    ],
+    "deployEyebrow": "DEPLOY YOUR WAY",
+    "deployTitle": "Your brand. Our technology. Your market.",
+    "deployBody": "Every APEX product can be deployed as a white-label solution — so you can deliver best-in-class capabilities under your own brand.",
+    "deployItems": [
+      {
+        "title": "Rebrand Everything",
+        "body": "Use your logo, colors, domain, and product name.",
+        "icon": "box"
+      },
+      {
+        "title": "Isolated & Secure",
+        "body": "Tenant isolation, data residency, and compliance built in.",
+        "icon": "lock"
+      },
+      {
+        "title": "Faster Time to Market",
+        "body": "Launch powerful solutions without building from scratch.",
+        "icon": "rocket"
+      },
+      {
+        "title": "We Power, You Lead",
+        "body": "We handle the technology. You own the customer relationship.",
+        "icon": "nodes"
+      }
+    ],
+    "deployCardTitle": "See it in your brand",
+    "deployCardBody": "Book a personalized demo of any APEX product — white-labeled with your brand.",
+    "deployCardCta": "Book a demo",
+    "featuredEyebrow": "FEATURED PRODUCT",
+    "featuredName": "APEX Flow",
+    "featuredCategory": "Workflow Automation",
+    "featuredBody": "Orchestrate complex processes across people, systems, and data. Build once. Run anywhere.",
+    "featuredCapabilitiesLabel": "Key capabilities",
+    "featuredCapabilities": [
+      "Drag-and-drop workflow designer",
+      "Conditional logic & parallel paths",
+      "Prebuilt integrations & connectors",
+      "Real-time visibility & SLA tracking",
+      "Automated approvals & notifications"
+    ],
+    "featuredImage": "",
+    "ctaTitle": "Ready to explore what's possible with APEX products?",
+    "ctaBody": "See how our products can power your operations — or your own branded solutions.",
+    "ctaPrimary": "Book a demo",
+    "ctaSecondary": "Talk to an expert",
+    "trustEyebrow": "TRUSTED BY INNOVATIVE ORGANIZATIONS",
+    "clients": [
+      "TutorBright",
+      "EcoWorks",
+      "City of Riverton",
+      "Northfield Public Schools",
+      "ServiceFirst"
+    ],
+    "stats": [
+      {
+        "value": "100+",
+        "label": "Successful projects"
+      },
+      {
+        "value": "98%",
+        "label": "Client satisfaction"
+      },
+      {
+        "value": "15+",
+        "label": "Industries served"
+      },
+      {
+        "value": "8+ yrs",
+        "label": "Average partnership"
+      }
+    ],
     "ecosystemEyebrow": "BUILT TO WORK TOGETHER",
     "ecosystemTitle": "A future ecosystem, without premature claims.",
-    "ecosystemBody": "The structure supports standalone products, connected product families, documentation links, demos, and white-label deployment details when those become real offerings."
+    "ecosystemBody": "The structure supports standalone products, connected product families, documentation links, demos, and white-label deployment details.",
+    "heroImageAlt": "The APEX product console",
+    "featuredImageAlt": "APEX Flow product preview"
   },
   "blogs": {
     "eyebrow": "APEX UPDATES",
@@ -438,6 +644,65 @@
     ],
     "closingTitle": "Do meaningful work. With great people.",
     "closingBody": "Let's build the future of intelligent systems—together.",
-    "closingCta": "Browse open roles"
+    "closingCta": "Browse open roles",
+    "viewRoleLabel": "View role",
+    "heroImageAlt": "The APEX team collaborating in the studio",
+    "form": {
+      "nameLabel": "Full Name",
+      "namePlaceholder": "e.g., Jane Doe",
+      "emailLabel": "Email",
+      "emailPlaceholder": "jane.doe@email.com",
+      "phoneLabel": "Phone Number",
+      "phonePlaceholder": "+1 (555) 123-4567",
+      "locationLabel": "Location",
+      "locationPlaceholder": "e.g., Toronto, Canada",
+      "roleLabel": "Role Applying For",
+      "rolePlaceholder": "Select a role",
+      "roleGeneralOption": "General interest",
+      "linkedinLabel": "LinkedIn or Portfolio",
+      "linkedinPlaceholder": "https://linkedin.com/in/yourprofile",
+      "resumeLabel": "Resume / CV",
+      "resumeDropTitle": "Drag & drop your file here",
+      "resumeDropBrowse": "or click to browse",
+      "resumeReplace": "Choose a different file",
+      "resumeHint": "PDF, DOC, DOCX (Max 10MB)",
+      "coverLabel": "Cover Letter",
+      "coverPlaceholder": "Tell us why you're a great fit for this role and what excites you about APEX...",
+      "submit": "Submit application",
+      "submitting": "Sending...",
+      "success": "Application received. We'll get back to you soon.",
+      "errorResumeMissing": "Please attach your resume or CV.",
+      "errorResumeType": "Please attach a PDF, DOC, or DOCX file.",
+      "errorResumeSize": "That file is larger than 10MB.",
+      "errorGeneric": "Something went wrong. Please try again."
+    }
+  },
+  "trust": {
+    "eyebrow": "TRUSTED BY INNOVATIVE ORGANIZATIONS",
+    "clients": [
+      "TutorBright",
+      "EcoWorks",
+      "City of Riverton",
+      "Northfield Public Schools",
+      "ServiceFirst"
+    ],
+    "stats": [
+      {
+        "value": "100+",
+        "label": "Successful projects"
+      },
+      {
+        "value": "98%",
+        "label": "Client satisfaction"
+      },
+      {
+        "value": "15+",
+        "label": "Industries served"
+      },
+      {
+        "value": "8+ yrs",
+        "label": "Average partnership"
+      }
+    ]
   }
 }
