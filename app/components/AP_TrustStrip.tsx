@@ -15,7 +15,7 @@ export default function AP_TrustStrip({ trust }: { trust?: TrustContent }) {
           {eyebrow}
         </span>
 
-        <div className="flex min-w-[min(320px,100%)] flex-[2] flex-wrap items-center justify-center gap-x-6 gap-y-3">
+        <div className="flex min-w-[min(700px,100%)] flex-[2] flex-wrap items-center justify-center gap-x-6 gap-y-3">
           {clients.map((client) => (
             <span key={client} className="flex items-center gap-2 text-[13px] font-bold text-hx-ink">
               <AP_Icon name="grid" className="h-4 w-4 shrink-0 text-hx-muted" />{client}
@@ -23,14 +23,14 @@ export default function AP_TrustStrip({ trust }: { trust?: TrustContent }) {
           ))}
         </div>
 
-        <div className="flex min-w-[min(300px,100%)] flex-[1.5] flex-wrap justify-center gap-y-4">
+        <div className="flex min-w-[min(560px,100%)] flex-[1.5] flex-wrap justify-center gap-y-4">
           {stats.map((stat) => (
             <div key={stat.label} className="min-w-[min(140px,46%)] flex-1 basis-1/4 px-2 text-center">
               <strong className="block text-[19px] font-bold leading-tight text-hx-cyan">{stat.value}</strong>
               <small className="mt-0.5 block text-[10px] text-hx-copy">{stat.label}</small>
             </div>
           ))}
-          {stats.map((stat) => <span key={`t-ghost-${stat.label}`} aria-hidden="true" className="h-0 min-w-[min(140px,46%)] flex-1 basis-1/4" />)}
+          {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(140px,46%)] flex-1 basis-1/4" />)}
         </div>
       </div>
     </section>

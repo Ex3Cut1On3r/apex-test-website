@@ -110,7 +110,7 @@ export default async function AP_BlogsScreen() {
                   </div>
                 </div>
               )}
-              {updates.map((update) => <span key={`u-ghost-${update.title}`} aria-hidden="true" className="h-0 min-w-[min(132px,100%)] flex-1 basis-[calc(20%-13px)]" />)}
+              {Array.from({ length: 4 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(132px,100%)] flex-1 basis-[calc(20%-13px)]" />)}
             </div>
           </div>
 

@@ -105,7 +105,7 @@ export default function AP_Industries({ content, standalone = false }: { content
                 </div>
               </div>
             ))}
-            {qualities.map((item) => <span key={`ql-ghost-${item.title}`} aria-hidden="true" className="h-0 min-w-[min(260px,100%)] flex-1 basis-1/3" />)}
+            {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(260px,100%)] flex-1 basis-1/3" />)}
           </div>
         </section>
       </>

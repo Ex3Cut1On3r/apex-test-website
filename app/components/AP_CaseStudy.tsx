@@ -25,7 +25,7 @@ export default function AP_CaseStudy({ content }: { content: CaseStudyContent })
                 </div>
               </div>
             ))}
-            {content.facts.map((fact) => <span key={`f-ghost-${fact.title}`} aria-hidden="true" className="h-0 min-w-[min(190px,100%)] flex-1 basis-1/3" />)}
+            {Array.from({ length: 2 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(190px,100%)] flex-1 basis-1/3" />)}
           </div>
 
           <AP_CaseStudyButton className="mt-6 inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]">

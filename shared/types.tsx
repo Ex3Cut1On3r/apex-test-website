@@ -37,6 +37,7 @@ export type HeroContent = {
   lines: [string, string, string];
   highlight?: string;
   architecture?: string[];
+  architectureCards?: string[];
   body: string;
   primaryCta: string;
   secondaryCta: string;

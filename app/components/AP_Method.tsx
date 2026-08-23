@@ -42,7 +42,7 @@ export default function AP_Method({ content, standalone = false }: { content: Me
               </Link>
             </li>
           ))}
-          {steps.map((step) => <li key={`m-ghost-${step.number}`} aria-hidden="true" className="h-0 min-w-[min(220px,100%)] flex-1 basis-1/5" />)}
+          {Array.from({ length: 4 }).map((_, ghost) => <li key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(220px,100%)] flex-1 basis-1/5" />)}
         </ol>
       </div>
     </section>

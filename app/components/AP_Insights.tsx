@@ -66,7 +66,7 @@ export default function AP_Insights({ blogs, solutions, compact = false }: { blo
               </div>
             </article>
           ))}
-          {posts.map((post) => <span key={`p-ghost-${post.title}`} aria-hidden="true" className="h-0 min-w-[min(250px,100%)] flex-1 basis-[calc(33.333%-14px)]" />)}
+          {Array.from({ length: 2 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(250px,100%)] flex-1 basis-[calc(33.333%-14px)]" />)}
         </div>
       </div>
     </section>

@@ -131,7 +131,7 @@ export default async function AP_CareersScreen() {
                     </div>
                   </article>
                 ))}
-                {page.values.map((value) => <span key={`v-ghost-${value.title}`} aria-hidden="true" className="h-0 min-w-[min(190px,100%)] flex-1 basis-[19.9%]" />)}
+                {Array.from({ length: 4 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(190px,100%)] flex-1 basis-[19.9%]" />)}
               </div>
             </div>
           </div>
@@ -226,7 +226,7 @@ export default async function AP_CareersScreen() {
                     )}
                   </li>
                 ))}
-                {steps.map((step) => <li key={`s-ghost-${step.title}`} aria-hidden="true" className="h-0 min-w-[min(185px,100%)] flex-1 basis-[19.9%]" />)}
+                {Array.from({ length: 4 }).map((_, ghost) => <li key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(190px,100%)] flex-1 basis-[19.9%]" />)}
               </ol>
             </div>
           </div>

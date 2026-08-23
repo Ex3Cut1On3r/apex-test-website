@@ -39,8 +39,8 @@ export default function AP_Solutions({ content, standalone = false }: { content:
               </span>
             </article>
           ))}
-          {content.items.map((item) => (
-            <span key={`s-ghost-${item.key}`} aria-hidden="true" className="h-0 min-w-[min(240px,100%)] flex-1 basis-[calc(33.333%-14px)]" />
+          {Array.from({ length: 2 }).map((_, ghost) => (
+            <span key={`s-ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(240px,100%)] flex-1 basis-[calc(33.333%-14px)]" />
           ))}
         </div>
       </div>

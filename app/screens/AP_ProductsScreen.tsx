@@ -61,7 +61,7 @@ export default async function AP_ProductsScreen() {
                     </div>
                   </div>
                 ))}
-                {highlights.map((highlight) => <span key={`h-ghost-${highlight.title}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/3" />)}
+                {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/3" />)}
               </div>
             </div>
 
@@ -110,7 +110,7 @@ export default async function AP_ProductsScreen() {
                   </div>
                 </div>
               )}
-              {items.map((item) => <span key={`i-ghost-${item.name}`} aria-hidden="true" className="h-0 min-w-[min(260px,100%)] flex-1 basis-[calc(25%-12px)]" />)}
+              {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(260px,100%)] flex-1 basis-[calc(25%-12px)]" />)}
             </div>
           </div>
         </section>
@@ -170,7 +170,7 @@ export default async function AP_ProductsScreen() {
                   </div>
                 </div>
               ))}
-              {deployItems.map((item) => <span key={`d-ghost-${item.title}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/4" />)}
+              {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/4" />)}
             </div>
 
             <div className="min-w-[min(240px,100%)] flex-1 basis-[20%] rounded-xl border border-px-line bg-white p-4">
@@ -254,7 +254,7 @@ export default async function AP_ProductsScreen() {
                   <small className="mt-0.5 block text-[10px] text-px-copy">{stat.label}</small>
                 </div>
               ))}
-              {stats.map((stat) => <span key={`s-ghost-${stat.label}`} aria-hidden="true" className="h-0 min-w-[min(110px,100%)] flex-1 basis-1/4" />)}
+              {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/4" />)}
             </div>
           </div>
         </section>

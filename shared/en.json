@@ -40,38 +40,45 @@
     }
   ],
   "hero": {
-    "eyebrow": "AI SYSTEMS. ENGINEERED FOR IMPACT.",
+    "eyebrow": "AI & DIGITAL SYSTEMS",
     "lines": [
       "Intelligent",
       "systems.",
-      "Real"
+      "Real momentum"
     ],
-    "body": "We design and build AI-powered systems that streamline operations, unlock data value, and drive measurable results—at scale.",
-    "primaryCta": "Explore solutions",
-    "secondaryCta": "View case studies",
+    "body": "APEX builds software, AI, data, and workflow systems that help businesses modernize operations and scale with confidence.",
+    "primaryCta": "Explore Solutions",
+    "secondaryCta": "Book a Consultation",
     "principles": [
       {
         "icon": "shield",
         "title": "Secure by design",
-        "body": "Enterprise-grade security built in from day one."
+        "body": "Built with trust from the ground up."
       },
       {
-        "icon": "spark",
-        "title": "Proven outcomes",
-        "body": "Systems that deliver measurable impact and ROI."
+        "icon": "nodes",
+        "title": "Connected systems",
+        "body": "Everything works better together."
       },
       {
-        "icon": "users",
-        "title": "Built to scale",
-        "body": "Modular, flexible, and ready to grow with you."
+        "icon": "chart",
+        "title": "Measurable outcomes",
+        "body": "Real impact you can see and scale."
       }
     ],
-    "highlight": "impact.",
+    "highlight": ".",
     "architecture": [
-      "Intelligent Applications",
-      "AI & Automation Layer",
-      "Data & Integration Layer",
-      "Cloud Foundation (Secure & Scalable)"
+      "AI OPERATING SYSTEM",
+      "WORKFLOW ENGINE",
+      "DATA LAYER",
+      "INTEGRATION LAYER"
+    ],
+    "architectureCards": [
+      "AUTOMATION",
+      "ANALYTICS",
+      "DATA",
+      "AI MODELS",
+      "INTEGRATIONS"
     ]
   },
   "about": {

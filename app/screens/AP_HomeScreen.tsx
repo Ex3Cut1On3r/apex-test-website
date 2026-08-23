@@ -31,7 +31,7 @@ export default async function AP_HomeScreen() {
                 <strong className="min-w-0 text-[11.5px] font-bold leading-[1.35] text-hx-ink">{item.title}</strong>
               </div>
             ))}
-            {data.solutions.items.map((item) => <span key={`c-ghost-${item.key}`} aria-hidden="true" className="h-0 min-w-[min(180px,46%)] flex-1 basis-1/6" />)}
+            {Array.from({ length: 5 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(180px,46%)] flex-1 basis-1/6" />)}
           </div>
         </section>
         <AP_Method content={data.method} />
