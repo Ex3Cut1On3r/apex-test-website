@@ -252,7 +252,46 @@ export type ProductsPageContent = {
   stats?: ProductStat[];
 };
 
+export type BlogFeatured = {
+  label: string;
+  title: string;
+  body: string;
+  cta: string;
+  statValue?: string;
+  statLabel?: string;
+  badge?: string;
+  image?: string;
+};
+
+export type BlogMilestone = {
+  date: string;
+  title: string;
+  body: string;
+  icon?: AP_IconName;
+};
+
+export type BlogUpdate = {
+  category: string;
+  date: string;
+  title: string;
+  body: string;
+  cta?: string;
+  image?: string;
+  href?: string;
+};
+
 export type BlogsPageContent = {
+  subscribePlaceholder?: string;
+  subscribeCta?: string;
+  privacyNote?: string;
+  featured?: BlogFeatured;
+  updates?: BlogUpdate[];
+  milestonesTitle?: string;
+  milestonesCta?: string;
+  milestones?: BlogMilestone[];
+  bottomEyebrow?: string;
+  bottomTitle?: string;
+  bottomBody?: string;
   insightsEyebrow?: string;
   insightsTitle?: string;
   insightsBody?: string;

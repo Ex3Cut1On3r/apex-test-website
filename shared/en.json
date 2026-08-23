@@ -593,17 +593,17 @@
     "featuredImageAlt": "APEX Flow product preview"
   },
   "blogs": {
-    "eyebrow": "APEX UPDATES",
-    "title": "News, achievements, and",
-    "highlight": "milestones.",
-    "body": "The publishing home for APEX achievements, collaborations, product announcements, events, and company news.",
-    "subscribeTitle": "Get updates from APEX",
-    "subscribeBody": "Subscribe to receive future product releases, company milestones, partnerships, and news.",
+    "eyebrow": "BLOG",
+    "title": "Building the future.",
+    "highlight": "Sharing what's next.",
+    "body": "Updates on our milestones, product innovations, partnerships, events, and everything happening at APEX.",
+    "subscribeTitle": "Stay in the loop",
+    "subscribeBody": "Get the latest updates on milestones, product news, and company updates delivered to your inbox.",
     "featuredLabel": "FEATURED",
     "emptyTitle": "No updates published yet.",
     "emptyBody": "The editorial layout is ready. Real APEX updates will appear here as they are published.",
     "categories": [
-      "All",
+      "All Updates",
       "Milestones",
       "Product Updates",
       "Partnerships",
@@ -639,7 +639,93 @@
         "readTime": "7 min read",
         "image": ""
       }
-    ]
+    ],
+    "subscribePlaceholder": "Enter your work email",
+    "subscribeCta": "Subscribe",
+    "privacyNote": "We respect your privacy. Unsubscribe anytime.",
+    "featured": {
+      "label": "FEATURED",
+      "title": "APEX Reaches $250M ARR and Accelerates Global Impact",
+      "body": "A major milestone in our journey—driven by our customers, our team, and our mission to build intelligent systems that power progress.",
+      "cta": "Read more",
+      "statValue": "$250M",
+      "statLabel": "ANNUAL RECURRING REVENUE",
+      "badge": "A Milestone. A Movement.",
+      "image": ""
+    },
+    "updates": [
+      {
+        "category": "MILESTONES",
+        "date": "May 20, 2024",
+        "title": "APEX Reaches $250M ARR",
+        "body": "A look at the people, customers, and innovation behind this major milestone.",
+        "cta": "Read more",
+        "image": ""
+      },
+      {
+        "category": "PRODUCT UPDATES",
+        "date": "Apr 10, 2024",
+        "title": "Introducing the AI Automation Layer",
+        "body": "A new layer of intelligence to orchestrate, automate, and optimize operations.",
+        "cta": "Read more",
+        "image": ""
+      },
+      {
+        "category": "PARTNERSHIPS",
+        "date": "Mar 18, 2024",
+        "title": "Strategic Partnership with Microsoft",
+        "body": "Together, we're delivering secure, scalable cloud and AI solutions.",
+        "cta": "Read more",
+        "image": ""
+      },
+      {
+        "category": "EVENTS",
+        "date": "Feb 22, 2024",
+        "title": "APEX Momentum 2024 Recap",
+        "body": "Key highlights, announcements, and customer stories from our flagship event.",
+        "cta": "Read more",
+        "image": ""
+      },
+      {
+        "category": "COMPANY NEWS",
+        "date": "Jan 30, 2024",
+        "title": "APEX Named a Top Workplace",
+        "body": "Proud to be recognized for our culture, people, and impact.",
+        "cta": "Read more",
+        "image": ""
+      }
+    ],
+    "milestonesTitle": "RECENT MILESTONES",
+    "milestonesCta": "View all milestones",
+    "milestones": [
+      {
+        "date": "MAY 20, 2024",
+        "title": "APEX Reaches $250M ARR",
+        "body": "A major milestone in our growth journey.",
+        "icon": "trend-up"
+      },
+      {
+        "date": "APR 10, 2024",
+        "title": "APEX AI Automation Layer Launch",
+        "body": "Introducing the next generation of intelligent automation.",
+        "icon": "sparkles"
+      },
+      {
+        "date": "MAR 18, 2024",
+        "title": "Strategic Partnership with Microsoft",
+        "body": "Expanding our cloud and AI roadmap together.",
+        "icon": "share"
+      },
+      {
+        "date": "FEB 28, 2024",
+        "title": "APEX Opens New Innovation Lab",
+        "body": "New center to advance R&D and customer co-creation.",
+        "icon": "grid"
+      }
+    ],
+    "bottomEyebrow": "BE PART OF WHAT'S NEXT",
+    "bottomTitle": "Get the latest milestones and updates from APEX.",
+    "bottomBody": "Sign up for our newsletter and never miss an important update."
   },
   "social": {
     "whatsapp": "https://wa.me/10000000000?text=Hello%20APEX",
