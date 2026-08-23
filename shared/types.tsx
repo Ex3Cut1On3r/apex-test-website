@@ -5,7 +5,9 @@ export type AP_IconName =
   | "briefcase" | "compass" | "grid" | "chart" | "shield"
   | "arrow-up-right" | "arrow-right" | "menu" | "graduation" | "leaf"
   | "check" | "search" | "calendar" | "message" | "lock" | "globe"
-  | "spark" | "mail" | "box";
+  | "spark" | "mail" | "box"
+  | "shield-check" | "sparkles" | "users" | "bulb" | "rocket"
+  | "cloud" | "trend-up" | "upload-cloud" | "pin" | "building" | "chevron-down";
 
 export type NavItem = {
   label: string;
@@ -167,6 +169,7 @@ export type SocialContent = {
 export type CareerValue = {
   title: string;
   body: string;
+  icon?: AP_IconName;
 };
 
 export type CareerRole = {
@@ -174,6 +177,18 @@ export type CareerRole = {
   type: string;
   location: string;
   summary: string;
+  icon?: AP_IconName;
+};
+
+export type CareerStat = {
+  value: string;
+  label: string;
+  icon?: AP_IconName;
+};
+
+export type CareerStep = {
+  title: string;
+  body: string;
 };
 
 export type CareersPageContent = {
@@ -182,6 +197,7 @@ export type CareersPageContent = {
   highlight: string;
   body: string;
   primaryCta: string;
+  secondaryCta?: string;
   valuesEyebrow: string;
   valuesTitle: string;
   values: CareerValue[];
@@ -191,6 +207,19 @@ export type CareersPageContent = {
   emptyTitle: string;
   emptyBody: string;
   roles: CareerRole[];
+  heroImage?: string;
+  heroStats?: CareerStat[];
+  viewAllLabel?: string;
+  applyEyebrow?: string;
+  applyTitle?: string;
+  applyBody?: string;
+  applyNote?: string;
+  processEyebrow?: string;
+  processTitle?: string;
+  steps?: CareerStep[];
+  closingTitle?: string;
+  closingBody?: string;
+  closingCta?: string;
 };
 
 export type SiteMeta = {

@@ -317,32 +317,127 @@
     "chatbotSubtitle": "A guided path to the right conversation."
   },
   "careers": {
-    "eyebrow": "CAREERS",
-    "title": "Build systems that",
-    "highlight": "move real businesses.",
-    "body": "APEX is building a team around thoughtful engineering, operational clarity, and technology that earns its place in the workflow.",
-    "primaryCta": "Introduce yourself",
-    "valuesEyebrow": "HOW WE WORK",
-    "valuesTitle": "High standards. Low theatre.",
+    "eyebrow": "CAREERS AT APEX",
+    "title": "Build intelligent systems.",
+    "highlight": "Create real impact.",
+    "body": "At APEX, we engineer AI-powered solutions that solve complex problems and improve how the world works. Join a team of builders, thinkers, and innovators who care deeply about what they create.",
+    "primaryCta": "Browse open roles",
+    "secondaryCta": "Life at APEX",
+    "heroImage": "",
+    "heroStats": [
+      {
+        "value": "100+",
+        "label": "Builders & innovators working worldwide",
+        "icon": "users"
+      },
+      {
+        "value": "15+",
+        "label": "Countries represented",
+        "icon": "globe"
+      }
+    ],
+    "valuesEyebrow": "OUR VALUES",
+    "valuesTitle": "The way we build",
     "values": [
       {
-        "title": "Own the outcome",
-        "body": "We care about whether the system works in the real operation, not whether the demo looked impressive."
+        "title": "Impact First",
+        "body": "We focus on outcomes that create meaningful change.",
+        "icon": "shield-check"
       },
       {
-        "title": "Make complexity legible",
-        "body": "Strong builders simplify decisions, interfaces, handoffs, and technical systems without hiding the important details."
+        "title": "Build with Integrity",
+        "body": "We do the right thing, even when it's hard.",
+        "icon": "sparkles"
       },
       {
-        "title": "Build for momentum",
-        "body": "We favor durable foundations, fast feedback, and improvements that compound instead of creating more maintenance."
+        "title": "One Team",
+        "body": "We collaborate openly and win together.",
+        "icon": "users"
+      },
+      {
+        "title": "Always Learning",
+        "body": "We stay curious and push the boundaries.",
+        "icon": "bulb"
+      },
+      {
+        "title": "Move Fast",
+        "body": "We iterate, adapt, and deliver.",
+        "icon": "rocket"
       }
     ],
     "rolesEyebrow": "OPEN ROLES",
-    "rolesTitle": "The next seat could be yours.",
-    "rolesBody": "Approved openings will appear here. We do not publish placeholder jobs or roles that are not actively being hired for.",
+    "rolesTitle": "Join our mission",
+    "rolesBody": "Approved openings are published here as soon as they open.",
+    "viewAllLabel": "View all roles",
     "emptyTitle": "No public openings right now.",
     "emptyBody": "If APEX feels like the kind of team you want to build with, you can still introduce yourself and tell us where you create unusual value.",
-    "roles": []
+    "roles": [
+      {
+        "title": "Senior AI Engineer",
+        "location": "Remote",
+        "type": "Engineering",
+        "summary": "Design and build scalable AI systems that solve real-world problems.",
+        "icon": "code"
+      },
+      {
+        "title": "Machine Learning Engineer",
+        "location": "Remote",
+        "type": "Engineering",
+        "summary": "Build, train, and deploy ML models that drive impact at scale.",
+        "icon": "brain"
+      },
+      {
+        "title": "Cloud Solutions Architect",
+        "location": "Remote",
+        "type": "Solutions",
+        "summary": "Architect secure, high-performance cloud solutions for our customers.",
+        "icon": "cloud"
+      },
+      {
+        "title": "Product Manager",
+        "location": "Remote",
+        "type": "Product",
+        "summary": "Define product strategy and ship solutions customers love.",
+        "icon": "chart"
+      },
+      {
+        "title": "Data Scientist",
+        "location": "Remote",
+        "type": "Data",
+        "summary": "Turn data into insights that inform decisions and drive value.",
+        "icon": "trend-up"
+      }
+    ],
+    "applyEyebrow": "APPLY NOW",
+    "applyTitle": "We'd love to hear from you",
+    "applyBody": "Tell us about yourself and why you're excited to join APEX. We review every application with care.",
+    "applyNote": "Your information is safe with us. We'll only use it to review your application and will never share it without your consent.",
+    "processEyebrow": "OUR HIRING PROCESS",
+    "processTitle": "What to expect",
+    "steps": [
+      {
+        "title": "Application Review",
+        "body": "We review your application and get back to you."
+      },
+      {
+        "title": "Intro Call",
+        "body": "A quick call to learn more about you and the role."
+      },
+      {
+        "title": "Skills & Culture",
+        "body": "Technical or practical assessment and team conversation."
+      },
+      {
+        "title": "Final Interview",
+        "body": "Meet with leaders and align on impact and growth."
+      },
+      {
+        "title": "Offer & Onboard",
+        "body": "We extend an offer and prepare you for an amazing start."
+      }
+    ],
+    "closingTitle": "Do meaningful work. With great people.",
+    "closingBody": "Let's build the future of intelligent systems—together.",
+    "closingCta": "Browse open roles"
   }
 }

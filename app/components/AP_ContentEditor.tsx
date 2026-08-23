@@ -2,7 +2,7 @@
 
 import { useEffect, useMemo, useState, type ChangeEvent } from "react";
 import { AP_AdminIcon } from "@/app/components/AP_AdminIcons";
-import type { Locale, SiteContent } from "@/shared/types";
+import type { AP_IconName, Locale, SiteContent } from "@/shared/types";
 
 type EditorMode = "site" | "products" | "blogs" | "careers";
 type SiteSection = "meta" | "hero" | "about" | "solutions" | "industries" | "caseStudy" | "method" | "social" | "footer";
@@ -230,6 +230,175 @@ function renderBlogs(content: SiteContent, change: (path: string, value: unknown
 }
 
 
+const ROLE_ICON_CHOICES: AP_IconName[] = ["code", "brain", "cloud", "chart", "trend-up", "database", "layers", "nodes", "flow", "briefcase", "shield", "globe", "grid", "compass", "spark", "graduation", "leaf", "box", "message", "search", "lock", "calendar", "mail"];
+const STAT_ICON_CHOICES: AP_IconName[] = ["users", "globe", "chart", "spark", "shield", "grid", "nodes", "briefcase"];
+const VALUE_ICON_CHOICES: AP_IconName[] = ["shield-check", "sparkles", "users", "bulb", "rocket", "shield", "spark", "compass", "graduation", "leaf", "check", "flow"];
+
+function SelectField({ label, value, options, onChange }: { label: string; value: string; options: string[]; onChange: (value: string) => void }) {
+  return (
+    <div className="field">
+      <label>{label}</label>
+      <select className="ap-select" value={value} onChange={(e: ChangeEvent<HTMLSelectElement>) => onChange(e.target.value)}>
+        {options.map((option) => <option key={option} value={option}>{option}</option>)}
+      </select>
+    </div>
+  );
+}
+
+/** Add / remove / reorder controls shared by every editable list on the careers page. */
+function ListControls({ index, length, onMove, onRemove }: { index: number; length: number; onMove: (index: number, direction: number) => void; onRemove: (index: number) => void }) {
+  return (
+    <div style={{ display: "flex", gap: 6 }}>
+      <button className="ap-button ap-button-soft" type="button" disabled={index === 0} onClick={() => onMove(index, -1)} aria-label="Move up">↑</button>
+      <button className="ap-button ap-button-soft" type="button" disabled={index === length - 1} onClick={() => onMove(index, 1)} aria-label="Move down">↓</button>
+      <button className="ap-button ap-button-soft" type="button" onClick={() => onRemove(index)}>Remove</button>
+    </div>
+  );
+}
+
+function listHelpers<T>(items: T[], commit: (next: T[]) => void) {
+  return {
+    add: (item: T) => commit([...items, item]),
+    remove: (index: number) => commit(items.filter((_, position) => position !== index)),
+    move: (index: number, direction: number) => {
+      const next = [...items];
+      const target = index + direction;
+      if (target < 0 || target >= next.length) return;
+      [next[index], next[target]] = [next[target], next[index]];
+      commit(next);
+    },
+  };
+}
+
 function renderCareers(content: SiteContent, change: (path: string, value: unknown) => void, value: (path: string) => string) {
-  return <><SectionHead eyebrow="CAREERS" title="Careers page" description="Manage the careers narrative and approved roles. The public page remains credible when the roles list is empty." /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("careers.eyebrow")} onChange={(v) => change("careers.eyebrow", v)} /><TextField label="Main title" value={value("careers.title")} onChange={(v) => change("careers.title", v)} /><TextField label="Highlighted words" value={value("careers.highlight")} onChange={(v) => change("careers.highlight", v)} /><div className="field full"><TextArea label="Intro body" value={value("careers.body")} onChange={(v) => change("careers.body", v)} /></div><TextField label="Primary CTA" value={value("careers.primaryCta")} onChange={(v) => change("careers.primaryCta", v)} /><TextField label="Values eyebrow" value={value("careers.valuesEyebrow")} onChange={(v) => change("careers.valuesEyebrow", v)} /><TextField label="Values title" value={value("careers.valuesTitle")} onChange={(v) => change("careers.valuesTitle", v)} /></div><div className="form-divider" /><div className="array-stack">{content.careers.values.map((item, index) => <div className="subcard" key={`${item.title}-${index}`}><div className="subcard-head"><strong>Value {index + 1}</strong></div><div className="field-grid"><TextField label="Title" value={item.title} onChange={(v) => change(`careers.values.${index}.title`, v)} /><TextArea label="Body" value={item.body} onChange={(v) => change(`careers.values.${index}.body`, v)} /></div></div>)}</div><div className="form-divider" /><div className="field-grid"><TextField label="Roles eyebrow" value={value("careers.rolesEyebrow")} onChange={(v) => change("careers.rolesEyebrow", v)} /><TextField label="Roles title" value={value("careers.rolesTitle")} onChange={(v) => change("careers.rolesTitle", v)} /><div className="field full"><TextArea label="Roles intro" value={value("careers.rolesBody")} onChange={(v) => change("careers.rolesBody", v)} /></div><TextField label="Empty-state title" value={value("careers.emptyTitle")} onChange={(v) => change("careers.emptyTitle", v)} /><div className="field full"><TextArea label="Empty-state body" value={value("careers.emptyBody")} onChange={(v) => change("careers.emptyBody", v)} /></div></div><div className="editor-empty"><div className="empty-icon"><AP_AdminIcon name="products" /></div><h3>{content.careers.roles.length ? `${content.careers.roles.length} approved role(s)` : "No public roles are published."}</h3><p>Role CRUD can be added when the hiring workflow is approved. For now the content model already supports a typed roles array without inventing openings.</p></div></div></>;
+  const careers = content.careers;
+  const roles = careers.roles ?? [];
+  const values = careers.values ?? [];
+  const stats = careers.heroStats ?? [];
+  const steps = careers.steps ?? [];
+
+  const roleList = listHelpers(roles, (next) => change("careers.roles", next));
+  const valueList = listHelpers(values, (next) => change("careers.values", next));
+  const statList = listHelpers(stats, (next) => change("careers.heroStats", next));
+  const stepList = listHelpers(steps, (next) => change("careers.steps", next));
+
+  return (
+    <>
+      <SectionHead eyebrow="CAREERS" title="Careers page" description="Every block on the public careers page is managed here — hero, values, open roles, the application section, and the hiring process. Openings are published the moment you add them and the page falls back to its empty state when the list is cleared." />
+      <div className="editor-card-body">
+        <div className="field-grid">
+          <TextField label="Eyebrow" value={value("careers.eyebrow")} onChange={(v) => change("careers.eyebrow", v)} />
+          <TextField label="Main title" value={value("careers.title")} onChange={(v) => change("careers.title", v)} />
+          <TextField label="Highlighted second line" value={value("careers.highlight")} onChange={(v) => change("careers.highlight", v)} />
+          <div className="field full"><TextArea label="Intro body" value={value("careers.body")} onChange={(v) => change("careers.body", v)} /></div>
+          <TextField label="Primary CTA" value={value("careers.primaryCta")} onChange={(v) => change("careers.primaryCta", v)} />
+          <TextField label="Secondary link" value={value("careers.secondaryCta")} onChange={(v) => change("careers.secondaryCta", v)} />
+          <div className="field full"><TextField label="Hero image path" hint="Leave blank to keep the illustrated placeholder. Point it at an uploaded file, e.g. /api/assets/team/careers.jpg" value={value("careers.heroImage")} onChange={(v) => change("careers.heroImage", v)} /></div>
+        </div>
+
+        <div className="form-divider" />
+        <div className="subcard-head"><strong>Hero stat cards</strong><button className="ap-button ap-button-soft" type="button" onClick={() => statList.add({ value: "0+", label: "New stat", icon: "users" })}>Add stat</button></div>
+        <div className="array-stack">
+          {stats.map((item, index) => (
+            <div className="subcard" key={`stat-${index}`}>
+              <div className="subcard-head"><strong>Stat {index + 1}</strong><ListControls index={index} length={stats.length} onMove={statList.move} onRemove={statList.remove} /></div>
+              <div className="field-grid three">
+                <TextField label="Figure" value={item.value} onChange={(v) => change(`careers.heroStats.${index}.value`, v)} />
+                <TextField label="Label" value={item.label} onChange={(v) => change(`careers.heroStats.${index}.label`, v)} />
+                <SelectField label="Icon" value={item.icon ?? "users"} options={STAT_ICON_CHOICES} onChange={(v) => change(`careers.heroStats.${index}.icon`, v)} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Values eyebrow" value={value("careers.valuesEyebrow")} onChange={(v) => change("careers.valuesEyebrow", v)} />
+          <TextField label="Values title" value={value("careers.valuesTitle")} onChange={(v) => change("careers.valuesTitle", v)} />
+        </div>
+        <div className="subcard-head"><strong>Values</strong><button className="ap-button ap-button-soft" type="button" onClick={() => valueList.add({ title: "New value", body: "", icon: "spark" })}>Add value</button></div>
+        <div className="array-stack">
+          {values.map((item, index) => (
+            <div className="subcard" key={`value-${index}`}>
+              <div className="subcard-head"><strong>Value {index + 1}</strong><ListControls index={index} length={values.length} onMove={valueList.move} onRemove={valueList.remove} /></div>
+              <div className="field-grid">
+                <TextField label="Title" value={item.title} onChange={(v) => change(`careers.values.${index}.title`, v)} />
+                <SelectField label="Icon" value={item.icon ?? "spark"} options={VALUE_ICON_CHOICES} onChange={(v) => change(`careers.values.${index}.icon`, v)} />
+                <div className="field full"><TextArea label="Body" value={item.body} onChange={(v) => change(`careers.values.${index}.body`, v)} rows={2} /></div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Roles eyebrow" value={value("careers.rolesEyebrow")} onChange={(v) => change("careers.rolesEyebrow", v)} />
+          <TextField label="Roles title" value={value("careers.rolesTitle")} onChange={(v) => change("careers.rolesTitle", v)} />
+          <TextField label="View-all link label" value={value("careers.viewAllLabel")} onChange={(v) => change("careers.viewAllLabel", v)} />
+          <TextField label="Empty-state title" value={value("careers.emptyTitle")} onChange={(v) => change("careers.emptyTitle", v)} />
+          <div className="field full"><TextArea label="Empty-state body (shown when there are no open roles)" value={value("careers.emptyBody")} onChange={(v) => change("careers.emptyBody", v)} rows={2} /></div>
+        </div>
+
+        <div className="subcard-head">
+          <div><strong>Open roles</strong><span style={{ display: "block" }}>{roles.length ? `${roles.length} published on the careers page` : "None published — the public page shows the empty state."}</span></div>
+          <button className="ap-button ap-button-primary" type="button" onClick={() => roleList.add({ title: "New role", type: "Engineering", location: "Remote", summary: "", icon: "code" })}><AP_AdminIcon name="check" /> Add role</button>
+        </div>
+        {roles.length ? (
+          <div className="array-stack">
+            {roles.map((role, index) => (
+              <div className="subcard" key={`role-${index}`}>
+                <div className="subcard-head"><strong>{role.title || `Role ${index + 1}`}</strong><ListControls index={index} length={roles.length} onMove={roleList.move} onRemove={roleList.remove} /></div>
+                <div className="field-grid three">
+                  <TextField label="Title" value={role.title} onChange={(v) => change(`careers.roles.${index}.title`, v)} />
+                  <TextField label="Department" value={role.type} onChange={(v) => change(`careers.roles.${index}.type`, v)} />
+                  <TextField label="Location" value={role.location} onChange={(v) => change(`careers.roles.${index}.location`, v)} />
+                  <SelectField label="Icon" value={role.icon ?? "code"} options={ROLE_ICON_CHOICES} onChange={(v) => change(`careers.roles.${index}.icon`, v)} />
+                  <div className="field full"><TextArea label="Summary" value={role.summary} onChange={(v) => change(`careers.roles.${index}.summary`, v)} rows={2} /></div>
+                </div>
+              </div>
+            ))}
+          </div>
+        ) : (
+          <div className="editor-empty">
+            <div className="empty-icon"><AP_AdminIcon name="products" /></div>
+            <h3>No public roles are published.</h3>
+            <p>Use “Add role” when an opening is approved. Until then the careers page shows your empty-state message instead of inventing openings.</p>
+          </div>
+        )}
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Apply eyebrow" value={value("careers.applyEyebrow")} onChange={(v) => change("careers.applyEyebrow", v)} />
+          <TextField label="Apply title" value={value("careers.applyTitle")} onChange={(v) => change("careers.applyTitle", v)} />
+          <div className="field full"><TextArea label="Apply intro" value={value("careers.applyBody")} onChange={(v) => change("careers.applyBody", v)} rows={2} /></div>
+          <div className="field full"><TextArea label="Privacy note" value={value("careers.applyNote")} onChange={(v) => change("careers.applyNote", v)} rows={2} /></div>
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Process eyebrow" value={value("careers.processEyebrow")} onChange={(v) => change("careers.processEyebrow", v)} />
+          <TextField label="Process title" value={value("careers.processTitle")} onChange={(v) => change("careers.processTitle", v)} />
+        </div>
+        <div className="subcard-head"><strong>Hiring steps</strong><button className="ap-button ap-button-soft" type="button" onClick={() => stepList.add({ title: "New step", body: "" })}>Add step</button></div>
+        <div className="array-stack">
+          {steps.map((step, index) => (
+            <div className="subcard" key={`step-${index}`}>
+              <div className="subcard-head"><strong>Step {index + 1}</strong><ListControls index={index} length={steps.length} onMove={stepList.move} onRemove={stepList.remove} /></div>
+              <div className="field-grid">
+                <TextField label="Title" value={step.title} onChange={(v) => change(`careers.steps.${index}.title`, v)} />
+                <TextArea label="Body" value={step.body} onChange={(v) => change(`careers.steps.${index}.body`, v)} rows={2} />
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div className="form-divider" />
+        <div className="field-grid">
+          <TextField label="Closing title" value={value("careers.closingTitle")} onChange={(v) => change("careers.closingTitle", v)} />
+          <TextField label="Closing CTA" value={value("careers.closingCta")} onChange={(v) => change("careers.closingCta", v)} />
+          <div className="field full"><TextArea label="Closing body" value={value("careers.closingBody")} onChange={(v) => change("careers.closingBody", v)} rows={2} /></div>
+        </div>
+      </div>
+    </>
+  );
 }

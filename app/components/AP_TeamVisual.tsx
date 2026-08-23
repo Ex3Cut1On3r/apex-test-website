@@ -1,23 +1,82 @@
+/**
+ * Wide-format placeholder for the careers hero photograph.
+ * Set `careers.heroImage` in the CMS to replace it with a real team photo —
+ * the frame is a full-bleed cover slot, so any wide image drops straight in.
+ */
 export default function AP_TeamVisual() {
   return (
     <div className="ap-team-visual" aria-hidden="true">
-      <svg viewBox="0 0 700 430" role="presentation">
+      <svg viewBox="0 0 1040 340" preserveAspectRatio="xMidYMid slice" role="presentation">
         <defs>
-          <linearGradient id="teamBg" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#EEF7F7"/><stop offset="1" stopColor="#DDEBED"/></linearGradient>
-          <linearGradient id="teamDesk" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#D7E2E5"/><stop offset="1" stopColor="#B7CAD0"/></linearGradient>
+          <linearGradient id="teamRoom" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#F1F7F9" /><stop offset="1" stopColor="#DCE9ED" /></linearGradient>
+          <linearGradient id="teamDesk" x1="0" y1="0" x2="1" y2="0"><stop stopColor="#E4EDF0" /><stop offset="1" stopColor="#C3D5DB" /></linearGradient>
+          <linearGradient id="teamScreen" x1="0" y1="0" x2="1" y2="1"><stop stopColor="#0E2534" /><stop offset="1" stopColor="#123B4E" /></linearGradient>
         </defs>
-        <rect width="700" height="430" rx="22" fill="url(#teamBg)"/>
-        <path d="M0 74h700M92 0v430M600 0v430" stroke="#C9DADD" strokeOpacity=".7"/>
-        <rect x="110" y="302" width="480" height="26" rx="10" fill="url(#teamDesk)"/>
-        <rect x="270" y="238" width="160" height="88" rx="12" fill="#fff" stroke="#BFD0D4"/><rect x="287" y="253" width="126" height="58" rx="7" fill="#0C202B"/><path d="M310 290c25-37 48 23 84-21" stroke="#26C7B9" strokeWidth="4" fill="none"/>
-        <g><circle cx="192" cy="185" r="38" fill="#E9B798"/><path d="M148 290c0-64 18-91 46-91s48 27 48 91" fill="#2C5461"/><path d="M158 178c5-45 66-49 75 0-21-11-53-10-75 0Z" fill="#263D45"/></g>
-        <g><circle cx="300" cy="164" r="35" fill="#DFA989"/><path d="M261 286c0-59 16-86 40-86 27 0 47 27 47 86" fill="#E8F1F2"/><path d="M266 153c6-38 55-49 69-5-17-7-47-7-69 5Z" fill="#1E3138"/></g>
-        <g><circle cx="410" cy="169" r="37" fill="#9C654E"/><path d="M369 288c0-64 17-91 43-91 29 0 51 27 51 91" fill="#153B45"/><path d="M371 157c2-39 64-46 76-2-22-10-51-9-76 2Z" fill="#142C33"/></g>
-        <g><circle cx="523" cy="190" r="36" fill="#F0C3A6"/><path d="M481 290c0-60 18-87 44-87 28 0 49 27 49 87" fill="#8AB9C0"/><path d="M486 179c9-43 62-44 76-3-20-9-55-8-76 3Z" fill="#6A493E"/></g>
-        <circle cx="566" cy="70" r="8" fill="#00B3A4" opacity=".7"/><circle cx="122" cy="98" r="5" fill="#00B3A4" opacity=".55"/>
+
+        <rect width="1040" height="340" fill="url(#teamRoom)" />
+
+        {/* room structure */}
+        <path d="M0 58h1040M150 0v340M470 0v58M760 0v58" stroke="#CFDFE3" strokeOpacity=".8" />
+        <rect x="18" y="86" width="112" height="150" rx="4" fill="#E6F0F3" />
+        <rect x="18" y="86" width="112" height="150" rx="4" fill="none" stroke="#D2E1E5" />
+        <path d="M18 124h112M18 162h112M18 200h112" stroke="#D8E6E9" />
+
+        {/* wall display */}
+        <rect x="800" y="74" width="212" height="150" rx="8" fill="url(#teamScreen)" />
+        <g stroke="#37C6E0" strokeOpacity=".55" fill="none">
+          <path d="M836 176c22-30 46 6 68-28s44 10 70-26" />
+          <circle cx="836" cy="176" r="4" /><circle cx="904" cy="148" r="4" /><circle cx="974" cy="122" r="4" />
+          <rect x="836" y="98" width="34" height="24" rx="3" /><rect x="882" y="98" width="34" height="24" rx="3" />
+        </g>
+        <text x="906" y="204" textAnchor="middle" fill="#DCEFF5" fillOpacity=".8" fontFamily="Segoe UI, Arial, sans-serif" fontSize="19" fontWeight="700" letterSpacing="5">APEX</text>
+
+        {/* background colleagues */}
+        <g opacity=".35">
+          <circle cx="716" cy="150" r="17" fill="#C6A48D" /><path d="M694 214c0-28 9-40 22-40s22 12 22 40" fill="#9FB9C2" />
+          <circle cx="770" cy="158" r="15" fill="#DBB79C" /><path d="M751 214c0-25 8-36 19-36s19 11 19 36" fill="#8FAAB4" />
+        </g>
+
+        {/* desk */}
+        <rect x="150" y="262" width="740" height="20" rx="7" fill="url(#teamDesk)" />
+        <rect x="150" y="282" width="740" height="58" fill="#EDF4F6" />
+
+        {/* team */}
+        <g>
+          <circle cx="286" cy="132" r="42" fill="#EABE9F" />
+          <path d="M235 262c0-62 21-88 51-88s51 26 51 88Z" fill="#AFC9DA" />
+          <path d="M247 124c4-48 71-52 79 0-22-12-56-11-79 0Z" fill="#2A3B44" />
+          <path d="M247 124c-6 26 2 44 12 52-14-6-24-28-12-52Z" fill="#22323A" />
+        </g>
+        <g>
+          <circle cx="424" cy="120" r="39" fill="#E3AE8C" />
+          <path d="M377 262c0-58 20-82 47-82s47 24 47 82Z" fill="#1E2E38" />
+          <path d="M386 112c6-42 60-47 76-4-19-8-52-8-76 4Z" fill="#141F26" />
+        </g>
+        <g>
+          <circle cx="556" cy="112" r="41" fill="#9C6A4F" />
+          <path d="M507 262c0-62 22-88 49-88s49 26 49 88Z" fill="#15384A" />
+          <path d="M515 104c3-42 68-49 81-3-23-11-55-10-81 3Z" fill="#12262F" />
+        </g>
+        <g>
+          <circle cx="690" cy="134" r="40" fill="#F2C6A8" />
+          <path d="M642 262c0-60 21-85 48-85s48 25 48 85Z" fill="#DCE6E6" />
+          <path d="M648 126c9-46 68-47 83-3-22-10-60-9-83 3Z" fill="#7E5745" />
+        </g>
+
+        {/* laptop, mug, plant */}
+        <rect x="452" y="196" width="140" height="70" rx="7" fill="#FFFFFF" stroke="#C4D5DA" />
+        <rect x="466" y="208" width="112" height="46" rx="4" fill="#0D2130" />
+        <path d="M486 240c19-28 37 17 64-16" stroke="#2ECAD4" strokeWidth="3.5" fill="none" />
+        <rect x="440" y="266" width="164" height="7" rx="3" fill="#DAE6EA" />
+        <path d="M392 240h26v22a5 5 0 0 1-5 5h-16a5 5 0 0 1-5-5Z" fill="#FFFFFF" stroke="#CBDBE0" />
+        <path d="M418 245h9a6 6 0 0 1 0 12h-9" fill="none" stroke="#CBDBE0" />
+        <path d="M626 244h30l-4 23h-22Z" fill="#D8E3E6" />
+        <path d="M641 244c-14-6-19-18-16-30 12 1 20 9 22 20 4-11 12-18 24-18 1 13-8 24-22 28Z" fill="#5FA98F" />
+
+        {/* accents */}
+        <circle cx="176" cy="86" r="5" fill="#00B3A4" opacity=".5" />
+        <circle cx="778" cy="66" r="7" fill="#00B3A4" opacity=".45" />
       </svg>
-      <div className="ap-team-signal ap-team-signal-a"><strong>Outcome ownership</strong><small>Build for the real operation</small></div>
-      <div className="ap-team-signal ap-team-signal-b"><strong>Systems thinking</strong><small>Connect product, data, and people</small></div>
     </div>
   );
 }
