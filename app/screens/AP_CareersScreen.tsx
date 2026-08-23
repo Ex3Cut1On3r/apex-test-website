@@ -54,9 +54,9 @@ const ghost = "h-0 min-w-[min(180px,100%)] flex-1 basis-[calc(20%-14px)]";
 const shell = "mx-auto w-full max-w-[1640px] px-[clamp(1rem,3vw,2rem)]";
 const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-cx-cyan2";
 const button = "inline-flex h-[34px] items-center justify-center gap-2 rounded px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] transition-colors [&_svg]:h-[13px] [&_svg]:w-[13px]";
-const buttonPrimary = `${button} bg-cx-cyan text-white hover:bg-[#0a7ea3]`;
+const buttonPrimary = `${button} bg-cx-cyan text-white hover:bg-[#0c7fae]`;
 const buttonLight = `${button} bg-white text-cx-cyan hover:bg-[#eaf7fb]`;
-const textLink = "inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-cx-cyan transition-colors hover:text-[#0a7ea3] [&_svg]:h-[13px] [&_svg]:w-[13px]";
+const textLink = "inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-cx-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]";
 /* Label column beside a content column; the content wraps underneath when cramped. */
 const split = "flex flex-wrap gap-x-2.5 gap-y-5";
 const splitLabel = "min-w-[min(16rem,100%)] shrink-0 grow-0 basis-64";
@@ -162,7 +162,7 @@ export default async function AP_CareersScreen() {
                       <span className="inline-flex items-center gap-1.5"><AP_Icon name="building" className="h-3 w-3" />{role.type}</span>
                     </div>
                     <p className="mt-[11px] text-[11px] leading-[1.55] text-cx-copy">{role.summary}</p>
-                    <a href="#apply" data-apply-role={role.title} className="mt-auto inline-flex items-center gap-1.5 pt-3 text-[10.5px] font-bold text-cx-cyan hover:text-[#0a7ea3]">
+                    <a href="#apply" data-apply-role={role.title} className="mt-auto inline-flex items-center gap-1.5 pt-3 text-[10.5px] font-bold text-cx-cyan hover:text-[#0c7fae]">
                       <span>{page.viewRoleLabel ?? "View role"}</span><AP_Icon name="arrow-right" className="h-3 w-3" />
                     </a>
                   </article>

@@ -90,8 +90,8 @@ p, h1, h2, h3 { overflow-wrap: break-word; }
 .button svg { width: 16px; height: 16px; }
 .button:hover { transform: translateY(-1px); }
 .button:focus-visible, a:focus-visible, .mobile-menu-button:focus-visible { outline: 3px solid rgba(0,179,164,.22); outline-offset: 3px; }
-.button-primary { background: var(--teal); color: #062E2A; box-shadow: 0 12px 28px rgba(0,179,164,.18); }
-.button-primary:hover { background: #10BDAE; box-shadow: 0 15px 34px rgba(0,179,164,.22); }
+.button-primary { background: var(--ap-ref-cyan); color: #fff; box-shadow: 0 12px 28px rgba(15,155,212,.18); }
+.button-primary:hover { background: var(--ap-ref-cyan-dark); box-shadow: 0 15px 34px rgba(15,155,212,.22); }
 .button-secondary { background: #fff !important; color: var(--ink) !important; border: 1px solid #B7C1C6 !important; box-shadow: none !important; }
 .button-secondary:hover { border-color: #87949A !important; background: #FBFCFC !important; }
 .nav-button { min-height: 42px; padding-inline: 18px; }
@@ -1091,8 +1091,8 @@ p, h1, h2, h3 { overflow-wrap: break-word; }
 
 :root {
   --ap-ref-max: 1180px;
-  --ap-ref-cyan: #159db8;
-  --ap-ref-cyan-dark: #0f8097;
+  --ap-ref-cyan: #0f9bd4;
+  --ap-ref-cyan-dark: #0c7fae;
   --ap-ref-ink: #0d2537;
   --ap-ref-copy: #5e6e79;
   --ap-ref-line: #dfe8eb;
@@ -1653,3 +1653,37 @@ body { color: var(--ap-ref-ink); background: #fff; }
   mask-image: radial-gradient(90% 80% at 75% 50%, #000 0%, rgba(0,0,0,.5) 48%, transparent 80%);
   -webkit-mask-image: radial-gradient(90% 80% at 75% 50%, #000 0%, rgba(0,0,0,.5) 48%, transparent 80%);
 }
+
+/* ---- Footer: social buttons and the joined subscribe control ---- */
+.ap-footer-social .ap-social-row { display: flex; gap: 10px; }
+.ap-footer-social .ap-social-link {
+  width: 36px; height: 36px; display: grid; place-items: center;
+  border: 1px solid #dbe7f0; border-radius: 10px; background: #fff;
+  color: #5a6b7c; transition: color .16s ease, border-color .16s ease, background .16s ease, transform .16s ease;
+}
+.ap-footer-social .ap-social-link svg { width: 17px; height: 17px; }
+.ap-footer-social .ap-social-link:hover {
+  color: #fff; background: var(--ap-ref-cyan); border-color: var(--ap-ref-cyan); transform: translateY(-1px);
+}
+
+/* input and button read as one control rather than two mismatched boxes */
+.ap-footer-subscribe .subscribe-form {
+  margin-top: 0; display: flex; gap: 0; align-items: stretch;
+  border: 1px solid #dbe7f0; border-radius: 10px; background: #fff; overflow: hidden;
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+.ap-footer-subscribe .subscribe-form:focus-within {
+  border-color: var(--ap-ref-cyan); box-shadow: 0 0 0 3px rgba(15,155,212,.14);
+}
+.ap-footer-subscribe .subscribe-form .ap-textbox {
+  flex: 1; min-width: 0; height: 40px; padding: 0 12px;
+  border: 0; background: transparent; box-shadow: none; font-size: 11.5px; color: #0b2233;
+}
+.ap-footer-subscribe .subscribe-form .ap-textbox:focus { outline: none; box-shadow: none; }
+.ap-footer-subscribe .subscribe-form .button {
+  min-height: 40px; height: 40px; margin: 0; padding: 0 16px; border-radius: 0;
+  font-size: 10.5px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase;
+  box-shadow: none !important; white-space: nowrap;
+}
+.ap-footer-subscribe .subscribe-form .button svg { display: none; }
+.ap-footer-subscribe .subscribe-status { flex-basis: 100%; margin: 8px 0 0; padding: 0 12px 8px; font-size: 10.5px; }

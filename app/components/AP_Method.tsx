@@ -19,7 +19,7 @@ export default function AP_Method({ content, standalone = false }: { content: Me
           <p className="mx-auto mt-3 max-w-[620px] text-[11.5px] leading-[1.6] text-hx-copy">{content.body}</p>
         </div>
 
-        <ol className="mt-9 flex list-none flex-wrap justify-center gap-y-8 p-0">
+        <ol className="mt-9 flex list-none flex-wrap justify-center gap-y-8 overflow-hidden p-0">
           {steps.map((step, index) => (
             <li key={step.number} className="relative flex min-w-[min(220px,100%)] flex-1 basis-1/5 flex-col items-center px-3 text-center">
               {/* badge + ring */}

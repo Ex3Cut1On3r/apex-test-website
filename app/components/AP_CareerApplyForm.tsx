@@ -192,7 +192,7 @@ export default function AP_CareerApplyForm({ roles, locations, note, labels }: P
         <button
           type="submit"
           disabled={sending}
-          className="inline-flex h-[34px] shrink-0 items-center justify-center gap-2 rounded bg-cx-cyan px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#0a7ea3] disabled:cursor-not-allowed disabled:opacity-60 [&_svg]:h-[13px] [&_svg]:w-[13px]"
+          className="inline-flex h-[34px] shrink-0 items-center justify-center gap-2 rounded bg-cx-cyan px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#0c7fae] disabled:cursor-not-allowed disabled:opacity-60 [&_svg]:h-[13px] [&_svg]:w-[13px]"
         >
           <span>{sending ? labels.submitting : labels.submit}</span>
           <AP_Icon name="arrow-right" />

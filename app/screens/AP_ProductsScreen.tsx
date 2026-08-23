@@ -18,7 +18,7 @@ const ITEM_ICONS: AP_IconName[] = ["flow", "chart", "sparkles", "layers"];
 const shell = "mx-auto w-full max-w-[1640px] px-[clamp(1rem,3vw,2rem)]";
 const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-px-cyan2";
 const button = "inline-flex h-[34px] items-center justify-center gap-2 rounded px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] transition-colors [&_svg]:h-[13px] [&_svg]:w-[13px]";
-const textLink = "inline-flex items-center gap-2 text-[10.5px] font-extrabold text-px-cyan transition-colors hover:text-[#166f9f] [&_svg]:h-[13px] [&_svg]:w-[13px]";
+const textLink = "inline-flex items-center gap-2 text-[10.5px] font-extrabold text-px-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]";
 const split = "flex flex-wrap gap-x-2.5 gap-y-5";
 const splitLabel = "min-w-[min(16rem,100%)] shrink-0 grow-0 basis-64";
 const splitBody = "min-w-[min(560px,100%)] flex-1";
@@ -176,7 +176,7 @@ export default async function AP_ProductsScreen() {
             <div className="min-w-[min(240px,100%)] flex-1 basis-[20%] rounded-xl border border-px-line bg-white p-4">
               <strong className="block text-[13px] font-bold text-px-ink">{page.deployCardTitle ?? "See it in your brand"}</strong>
               <p className="mt-2 text-[11px] leading-[1.55] text-px-copy">{page.deployCardBody}</p>
-              <a href="#cta" className={`${button} mt-4 bg-px-cyan text-white hover:bg-[#166f9f]`}>
+              <a href="#cta" className={`${button} mt-4 bg-px-cyan text-white hover:bg-[#0c7fae]`}>
                 <span>{page.deployCardCta ?? "Book a demo"}</span><AP_Icon name="arrow-right" />
               </a>
             </div>

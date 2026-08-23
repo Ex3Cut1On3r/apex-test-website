@@ -14,43 +14,60 @@ export default function AP_Footer({ nav, content, social }: { nav: NavItem[]; co
     : [{ title: "Company", links: nav.map((item) => ({ label: item.label, href: item.href })) }];
 
   return (
-    <footer id="about" className="border-t border-hx-line bg-white pt-[clamp(2rem,4vw,3rem)]">
-      <div className={`${shell} flex flex-wrap gap-x-[clamp(1.25rem,2.5vw,2.5rem)] gap-y-8`}>
-        <div className="min-w-[min(240px,100%)] flex-[1.4] basis-[24%]">
-          <Link prefetch={false} href="/" aria-label="APEX home">
-            <Image src="/api/assets/logo/apex-logo.svg" alt="APEX" width={146} height={45} />
+    <footer id="about" className="border-t border-hx-line bg-[linear-gradient(180deg,#f7fafd_0%,#eef5fa_100%)] text-hx-ink">
+      <div className={`${shell} flex flex-wrap gap-x-[clamp(1.25rem,2.5vw,3rem)] gap-y-10 pb-10 pt-[clamp(2.5rem,4.5vw,3.5rem)]`}>
+        {/* brand */}
+        <div className="min-w-[min(240px,100%)] flex-[1.5] basis-[23%]">
+          <Link prefetch={false} href="/" aria-label="APEX home" className="inline-block">
+            <Image src="/api/assets/logo/apex-logo.svg" alt="APEX" width={140} height={43} />
           </Link>
-          {content.tagline && <p className="mt-3 text-[11.5px] font-bold text-hx-cyan">{content.tagline}</p>}
-          {content.body && <p className="mt-2 max-w-[300px] text-[11px] leading-[1.6] text-hx-copy">{content.body}</p>}
-          <div className="mt-4"><AP_SocialLinks social={social} /></div>
+          {content.tagline && <p className="mt-4 text-[12px] font-bold tracking-[-0.01em] text-hx-cyan">{content.tagline}</p>}
+          {content.body && <p className="mt-2.5 max-w-[300px] text-[11.5px] leading-[1.7] text-hx-copy">{content.body}</p>}
+          <div className="ap-footer-social mt-6"><AP_SocialLinks social={social} /></div>
         </div>
 
+        {/* link columns */}
         {columns.map((column) => (
-          <nav key={column.title} className="min-w-[min(140px,100%)] flex-1 basis-[14%]" aria-label={column.title}>
-            <strong className="block text-[11.5px] font-bold text-hx-ink">{column.title}</strong>
-            <ul className="mt-3 flex list-none flex-col gap-2 p-0">
+          <nav key={column.title} className="min-w-[min(145px,100%)] flex-1 basis-[13%]" aria-label={column.title}>
+            <strong className="block text-[10px] font-extrabold uppercase tracking-[0.15em] text-hx-ink/70">{column.title}</strong>
+            <span aria-hidden="true" className="mt-3 block h-px w-8 bg-hx-cyan/45" />
+            <ul className="mt-4 flex list-none flex-col gap-2.5 p-0">
               {column.links.map((link) => (
                 <li key={`${column.title}-${link.label}`}>
-                  <Link prefetch={false} href={link.href} className="text-[11px] leading-[1.5] text-hx-copy transition-colors hover:text-hx-cyan">{link.label}</Link>
+                  <Link
+                    prefetch={false}
+                    href={link.href}
+                    className="inline-block text-[11.5px] leading-[1.45] text-hx-copy transition-colors duration-150 hover:text-hx-cyan"
+                  >{link.label}</Link>
                 </li>
               ))}
             </ul>
           </nav>
         ))}
 
-        <div className="min-w-[min(230px,100%)] flex-[1.3] basis-[20%]">
-          <strong className="block text-[11.5px] font-bold text-hx-ink">{content.newsletterTitle ?? ""}</strong>
-          <p className="mt-2 max-w-[300px] text-[11px] leading-[1.55] text-hx-copy">{content.newsletterBody ?? ""}</p>
-          <div className="mt-4"><AP_SubscribeForm /></div>
+        {/* newsletter */}
+        <div className="min-w-[min(250px,100%)] flex-[1.4] basis-[20%]">
+          <strong className="block text-[10px] font-extrabold uppercase tracking-[0.15em] text-hx-ink/70">{content.newsletterTitle ?? ""}</strong>
+          <span aria-hidden="true" className="mt-3 block h-px w-8 bg-hx-cyan/45" />
+          <p className="mt-4 max-w-[300px] text-[11.5px] leading-[1.6] text-hx-copy">{content.newsletterBody ?? ""}</p>
+          <div className="ap-footer-subscribe mt-4 max-w-[320px]"><AP_SubscribeForm /></div>
         </div>
       </div>
 
-      <div className={`${shell} mt-[clamp(1.5rem,3vw,2.5rem)] flex flex-wrap items-center justify-between gap-x-6 gap-y-3 border-t border-hx-line py-5`}>
-        <span className="text-[10.5px] text-hx-muted">© {new Date().getFullYear()} {content.legal}</span>
-        <div className="flex flex-wrap gap-x-6 gap-y-2">
-          {(content.legalLinks ?? []).map((link) => (
-            <Link key={link.label} prefetch={false} href={link.href} className="text-[10.5px] text-hx-muted transition-colors hover:text-hx-cyan">{link.label}</Link>
-          ))}
+      {/* bottom bar */}
+      <div className="border-t border-hx-line/80">
+        <div className={`${shell} flex flex-wrap items-center justify-between gap-x-6 gap-y-3 py-5`}>
+          <span className="text-[10.5px] text-hx-muted">© {new Date().getFullYear()} {content.legal}</span>
+          <div className="flex flex-wrap gap-x-7 gap-y-2">
+            {(content.legalLinks ?? []).map((link) => (
+              <Link
+                key={link.label}
+                prefetch={false}
+                href={link.href}
+                className="text-[10.5px] text-hx-muted transition-colors duration-150 hover:text-hx-cyan"
+              >{link.label}</Link>
+            ))}
+          </div>
         </div>
       </div>
     </footer>
