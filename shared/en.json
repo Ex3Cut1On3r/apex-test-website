@@ -260,8 +260,8 @@
   },
   "method": {
     "eyebrow": "THE APEX METHOD",
-    "title": "From friction to impact.",
-    "body": "A disciplined, proven approach that connects what’s broken to what’s possible. Every step narrows uncertainty and compounds value.",
+    "title": "A proven process.",
+    "body": "Our five-step method ensures every solution is purpose-built, seamlessly integrated, and engineered to evolve with your business.",
     "principles": [
       {
         "icon": "compass",
@@ -282,42 +282,140 @@
     "steps": [
       {
         "number": "01",
-        "icon": "compass",
+        "icon": "search",
         "title": "Discover",
-        "body": "Map the workflow, users, constraints, data, and the real source of friction."
+        "body": "We dive deep into your goals, challenges, and opportunities to define what success looks like."
       },
       {
         "number": "02",
         "icon": "grid",
         "title": "Architect",
-        "body": "Define the target system and the cleanest path from today’s environment to the new one."
+        "body": "We design the right system architecture, technology stack, and roadmap to deliver measurable impact."
       },
       {
         "number": "03",
-        "icon": "code",
+        "icon": "box",
         "title": "Build",
-        "body": "Develop the highest-value components first and validate them against real operational needs."
+        "body": "We develop, test, and validate solutions with quality and security built in from the ground up."
       },
       {
         "number": "04",
-        "icon": "nodes",
+        "icon": "share",
         "title": "Integrate",
-        "body": "Connect the new layer to the software, data, and people already inside the business."
+        "body": "We connect systems, migrate data, and ensure everything works together seamlessly and securely."
       },
       {
         "number": "05",
-        "icon": "chart",
+        "icon": "trend-up",
         "title": "Evolve",
-        "body": "Measure what changed, strengthen the system, and expand where the value is clear."
+        "body": "We optimize, scale, and adapt your system as your business and technology needs evolve."
       }
     ],
-    "ctaTitle": "Turn operational friction into compounding",
-    "ctaHighlight": "business impact.",
-    "ctaBody": "Let’s build the connected system your business can grow on.",
-    "cta": "Start a Conversation"
+    "ctaTitle": "Let's build the system",
+    "ctaHighlight": "grow on.",
+    "ctaBody": "Ready to streamline operations, unlock data value, and drive measurable impact?",
+    "cta": "Let's build together",
+    "highlight": "Predictable outcomes.",
+    "stepCta": "Learn more",
+    "ctaBodyLead": "your business can"
   },
   "footer": {
-    "legal": "APEX. All rights reserved."
+    "legal": "APEX Systems. All rights reserved.",
+    "tagline": "AI systems. Engineered for impact.",
+    "body": "We design and build intelligent systems that streamline operations, unlock data value, and drive measurable results.",
+    "columns": [
+      {
+        "title": "Solutions",
+        "links": [
+          {
+            "label": "AI & Automation",
+            "href": "/solutions#ai"
+          },
+          {
+            "label": "Custom Software",
+            "href": "/solutions#software"
+          },
+          {
+            "label": "System Integration",
+            "href": "/solutions#integration"
+          },
+          {
+            "label": "Data & Analytics",
+            "href": "/solutions#data"
+          },
+          {
+            "label": "Cloud & Infrastructure",
+            "href": "/solutions#cloud"
+          }
+        ]
+      },
+      {
+        "title": "Industries",
+        "links": [
+          {
+            "label": "Education",
+            "href": "/industries"
+          },
+          {
+            "label": "Service Operations",
+            "href": "/industries"
+          },
+          {
+            "label": "Public & Environmental Systems",
+            "href": "/industries"
+          },
+          {
+            "label": "and more",
+            "href": "/industries"
+          }
+        ]
+      },
+      {
+        "title": "Company",
+        "links": [
+          {
+            "label": "About",
+            "href": "/#about"
+          },
+          {
+            "label": "Careers",
+            "href": "/careers"
+          },
+          {
+            "label": "Case Studies",
+            "href": "/#case-studies"
+          },
+          {
+            "label": "Blog",
+            "href": "/blogs"
+          },
+          {
+            "label": "Contact",
+            "href": "/#contact"
+          }
+        ]
+      }
+    ],
+    "newsletterTitle": "Stay in the loop",
+    "newsletterBody": "Insights, updates, and ideas delivered straight to your inbox.",
+    "legalLinks": [
+      {
+        "label": "Privacy Policy",
+        "href": "/#privacy"
+      },
+      {
+        "label": "Terms of Service",
+        "href": "/#terms"
+      },
+      {
+        "label": "Security",
+        "href": "/#security"
+      },
+      {
+        "label": "Sitemap",
+        "href": "/sitemap.xml"
+      }
+    ]
   },
   "products": {
     "eyebrow": "APEX PRODUCTS",
@@ -511,6 +609,36 @@
       "Partnerships",
       "Events",
       "Company News"
+    ],
+    "insightsEyebrow": "INSIGHTS & UPDATES",
+    "insightsTitle": "Ideas, perspectives, and expertise.",
+    "insightsBody": "Stay informed with the latest insights on AI, automation, and digital transformation.",
+    "insightsCta": "View all insights",
+    "posts": [
+      {
+        "category": "AI & AUTOMATION",
+        "title": "How AI-Powered Systems Drive Measurable ROI",
+        "body": "Explore real-world examples of how intelligent automation is helping businesses reduce costs, improve accuracy, and accelerate growth.",
+        "date": "May 6, 2025",
+        "readTime": "5 min read",
+        "image": ""
+      },
+      {
+        "category": "CLOUD & INFRASTRUCTURE",
+        "title": "Building Scalable Systems on a Future-Ready Foundation",
+        "body": "Learn how modern cloud architectures deliver performance, reliability, and security at scale.",
+        "date": "April 28, 2025",
+        "readTime": "6 min read",
+        "image": ""
+      },
+      {
+        "category": "DIGITAL TRANSFORMATION",
+        "title": "From Manual to Modern: A Transformation Playbook",
+        "body": "A practical guide to transforming legacy processes and systems without disrupting your business.",
+        "date": "April 15, 2025",
+        "readTime": "7 min read",
+        "image": ""
+      }
     ]
   },
   "social": {

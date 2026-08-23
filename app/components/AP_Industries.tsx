@@ -9,7 +9,7 @@ import AP_IndustryVisual from "@/app/components/AP_IndustryVisual";
 export default function AP_Industries({ content, standalone = false }: { content: IndustriesContent; standalone?: boolean }) {
   const shell = "mx-auto w-[min(1640px,86%)]";
   const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan";
-  const ctaLink = "mt-3 inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]";
+  const ctaLink = "mt-2 inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]";
 
   if (standalone) {
     const stats = content.stats ?? [];
@@ -29,10 +29,10 @@ export default function AP_Industries({ content, standalone = false }: { content
               {/* Always one line: no wrap, and the three cells shrink together. */}
               <div className="mt-7 flex flex-nowrap">
                 {stats.map((stat) => (
-                  <div key={stat.label} className="min-w-0 flex-1 basis-1/3 border-l border-hx-line px-3 first:border-l-0 first:pl-0">
+                  <div key={stat.label} className="min-w-0 flex-1 basis-1/3 border-l border-hx-line px-2 first:border-l-0 first:pl-0">
                     <AP_Icon name={stat.icon ?? "users"} className="h-[20px] w-[20px] text-hx-cyan" />
                     <strong className="mt-2 block text-[clamp(16px,1.35vw,22px)] font-bold leading-tight text-hx-cyan">{stat.value}</strong>
-                    <small className="mt-0.5 block text-[10px] leading-[1.35] text-hx-copy">{stat.label}</small>
+                    <small className="mt-0.5 block whitespace-nowrap text-[9px] leading-[1.35] text-hx-copy">{stat.label}</small>
                   </div>
                 ))}
               </div>
@@ -51,11 +51,11 @@ export default function AP_Industries({ content, standalone = false }: { content
             <div className="flex min-w-[min(520px,100%)] flex-[3] basis-[66%] flex-col gap-4">
               {content.items.map((item) => (
                 <article key={item.key} className="flex min-h-[136px] flex-wrap overflow-hidden rounded-xl border border-hx-line bg-white transition hover:border-[#bcdff2] hover:shadow-[0_14px_30px_rgba(11,34,51,.08)]">
-                  <div className="flex min-w-[min(230px,100%)] flex-1 basis-[32%] flex-col justify-center p-4">
-                    <AP_Icon name={item.icon} className="h-[24px] w-[24px] shrink-0 text-hx-cyan" />
-                    <h3 className="mt-2 text-[18px] font-bold leading-tight text-hx-ink">{item.title}</h3>
-                    <p className="mt-1.5 text-[11px] leading-[1.5] text-hx-copy">{item.body}</p>
-                    <Link href="#industries" className="mt-2.5 inline-flex items-center gap-1.5 text-[10.5px] font-bold text-hx-cyan hover:text-[#0c7fae]">
+                  <div className="flex min-w-[min(230px,100%)] flex-1 basis-[32%] flex-col justify-center p-[14px]">
+                    <AP_Icon name={item.icon} className="h-[22px] w-[22px] shrink-0 text-hx-cyan" />
+                    <h3 className="mt-1.5 text-[17px] font-bold leading-[1.2] text-hx-ink">{item.title}</h3>
+                    <p className="mt-1 text-[10.5px] leading-[1.4] text-hx-copy">{item.body}</p>
+                    <Link href="#industries" className="mt-2 inline-flex items-center gap-1.5 text-[10.5px] font-bold text-hx-cyan hover:text-[#0c7fae]">
                       <span>{item.learnMore ?? content.learnMoreLabel ?? "Learn more"}</span><AP_Icon name="arrow-right" className="h-3 w-3" />
                     </Link>
                   </div>
@@ -72,14 +72,14 @@ export default function AP_Industries({ content, standalone = false }: { content
               ))}
 
               <article className="flex min-h-[136px] flex-wrap overflow-hidden rounded-xl border border-hx-line bg-white">
-                <div className="flex min-w-[min(230px,100%)] flex-1 basis-[32%] flex-col justify-center p-4">
-                  <AP_Icon name="message" className="h-[24px] w-[24px] shrink-0 text-hx-cyan" />
-                  <h3 className="mt-2 text-[18px] font-bold leading-tight text-hx-ink">{content.openDoorTitle}</h3>
-                  <p className="mt-1.5 text-[11px] leading-[1.5] text-hx-copy">{content.openDoorBody}</p>
+                <div className="flex min-w-[min(230px,100%)] flex-1 basis-[32%] flex-col justify-center p-[14px]">
+                  <AP_Icon name="message" className="h-[22px] w-[22px] shrink-0 text-hx-cyan" />
+                  <h3 className="mt-1.5 text-[17px] font-bold leading-[1.2] text-hx-ink">{content.openDoorTitle}</h3>
+                  <p className="mt-1 text-[10.5px] leading-[1.4] text-hx-copy">{content.openDoorBody}</p>
                   <AP_ContactLink className={ctaLink}>{content.openDoorCta}</AP_ContactLink>
                 </div>
                 <div className="relative min-h-[136px] min-w-[min(240px,100%)] flex-1 basis-[64%] self-stretch overflow-hidden bg-[linear-gradient(120deg,#eef7fc,#dbeefb)]">
-                  <svg viewBox="0 0 400 160" preserveAspectRatio="none" className="h-full w-full">
+                  <svg viewBox="0 0 400 160" preserveAspectRatio="none" className="absolute inset-0 h-full w-full">
                     {Array.from({ length: 9 }).map((_, i) => (
                       <path key={i} d={`M0 ${28 + i * 14} C 110 ${4 + i * 14}, 250 ${88 + i * 10}, 400 ${34 + i * 12}`} fill="none" stroke="#7fc3e8" strokeOpacity={0.5 - i * 0.04} strokeWidth="1.1" />
                     ))}

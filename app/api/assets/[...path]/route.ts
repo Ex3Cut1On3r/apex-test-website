@@ -25,10 +25,13 @@ export async function GET(
   try {
     const data = await fs.readFile(requested);
     const contentType = MIME[path.extname(requested).toLowerCase()] ?? "application/octet-stream";
+    // The icon sprite keeps its URL while its contents change, so it must be
+    // revalidated rather than cached as immutable.
+    const mutableSprite = path.basename(requested).toLowerCase() === "icons.svg";
     return new NextResponse(new Uint8Array(data), {
       headers: {
         "Content-Type": contentType,
-        "Cache-Control": "public, max-age=31536000, immutable",
+        "Cache-Control": mutableSprite ? "public, max-age=0, must-revalidate" : "public, max-age=31536000, immutable",
       },
     });
   } catch {

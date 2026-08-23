@@ -2,19 +2,61 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { usePathname } from "next/navigation";
+import { useCallback, useEffect, useState } from "react";
 import type { NavItem } from "@/shared/types";
 import AP_Button from "@/app/components/AP_Button";
 import AP_Icon from "@/app/components/AP_Icon";
 
 export default function AP_Header({ nav, activePath = "" }: { nav: NavItem[]; activePath?: string }) {
   const [open, setOpen] = useState(false);
+  const pathname = usePathname();
+  const [hash, setHash] = useState("");
 
   useEffect(() => {
     const close = () => setOpen(false);
     window.addEventListener("resize", close);
     return () => window.removeEventListener("resize", close);
   }, []);
+
+  // Anchor links such as /#case-studies live on the home page, which passes no
+  // activePath — so read the live hash and keep it in sync with navigation.
+  useEffect(() => {
+    const sync = () => setHash(window.location.hash);
+    sync();
+    window.addEventListener("hashchange", sync);
+    window.addEventListener("popstate", sync);
+    return () => {
+      window.removeEventListener("hashchange", sync);
+      window.removeEventListener("popstate", sync);
+    };
+  }, [pathname]);
+
+  const currentPath = activePath || pathname || "/";
+
+  /*
+   * A Next <Link href="/#case-studies"> is a route navigation: it refetches the
+   * RSC payload and re-renders the page, which reads as a flicker. When the
+   * anchor is on the page we are already on, scroll to it directly instead.
+   */
+  const scrollToAnchor = useCallback((event: React.MouseEvent, href: string) => {
+    const [rawRoute, anchor] = href.split("#");
+    if (!anchor || (rawRoute || "/") !== pathname) return;
+    event.preventDefault();
+    const target = document.getElementById(anchor);
+    if (!target) return;
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    target.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+    window.history.pushState(null, "", href);
+    setHash(`#${anchor}`);
+  }, [pathname]);
+
+  const isActive = useCallback((href: string) => {
+    const [rawRoute, anchor] = href.split("#");
+    const route = rawRoute || "/";
+    if (anchor) return route === currentPath && hash === `#${anchor}`;
+    return route === currentPath;
+  }, [currentPath, hash]);
 
   return (
     <header className="topbar ap-ref-header">
@@ -23,11 +65,19 @@ export default function AP_Header({ nav, activePath = "" }: { nav: NavItem[]; ac
           <Image src="/api/assets/logo/apex-logo.svg" alt="APEX" width={170} height={52} priority />
         </Link>
         <nav className="nav-links ap-ref-nav-links" aria-label="Primary navigation">
-          {nav.map((item) => {
-            const route = item.href.split("#")[0] || "/";
-            const isActive = Boolean(activePath && (item.href === activePath || route === activePath));
-            return <Link prefetch={false} className={isActive ? "active" : ""} key={`${item.label}-${item.href}`} href={item.href}>{item.label}</Link>;
-          })}
+          {nav.map((item) => (
+            <Link
+              prefetch={false}
+              className={isActive(item.href) ? "active" : ""}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              key={`${item.label}-${item.href}`}
+              href={item.href}
+              onClick={(event) => {
+                scrollToAnchor(event, item.href);
+                setHash(item.href.includes("#") ? `#${item.href.split("#")[1]}` : "");
+              }}
+            >{item.label}</Link>
+          ))}
         </nav>
         <div className="nav-actions ap-ref-nav-actions">
           <AP_Button className="nav-button ap-ref-nav-cta" contact>Let&apos;s build together</AP_Button>
@@ -36,7 +86,20 @@ export default function AP_Header({ nav, activePath = "" }: { nav: NavItem[]; ac
       </div>
       {open && (
         <nav className="mobile-nav ap-ref-mobile-nav" aria-label="Mobile navigation">
-          {nav.map((item) => <Link prefetch={false} key={`${item.label}-${item.href}`} href={item.href} onClick={() => setOpen(false)}>{item.label}</Link>)}
+          {nav.map((item) => (
+            <Link
+              prefetch={false}
+              className={isActive(item.href) ? "active" : ""}
+              aria-current={isActive(item.href) ? "page" : undefined}
+              key={`${item.label}-${item.href}`}
+              href={item.href}
+              onClick={(event) => {
+                setOpen(false);
+                scrollToAnchor(event, item.href);
+                setHash(item.href.includes("#") ? `#${item.href.split("#")[1]}` : "");
+              }}
+            >{item.label}</Link>
+          ))}
           <AP_Button className="mt-3" contact>Let&apos;s build together</AP_Button>
         </nav>
       )}

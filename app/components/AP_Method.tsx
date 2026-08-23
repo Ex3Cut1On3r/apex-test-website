@@ -1,25 +1,50 @@
+import Link from "next/link";
 import type { MethodContent } from "@/shared/types";
-import AP_Component from "@/app/components/AP_Component";
 import AP_Icon from "@/app/components/AP_Icon";
 
+/* No media queries: the step row is a wrapping flex line closed by ghost items. */
+const shell = "mx-auto w-[min(1640px,86%)]";
+
 export default function AP_Method({ content, standalone = false }: { content: MethodContent; standalone?: boolean }) {
+  const steps = content.steps ?? [];
+
   return (
-    <AP_Component className={`ap-ref-method ${standalone ? "ap-ref-method-page" : ""}`} id="method">
-      <div className="container">
-        <div className="ap-ref-method-head">
-          <span className="eyebrow">{content.eyebrow}</span>
-          <h2>A proven process. <span>Predictable outcomes.</span></h2>
-          <p>{content.body}</p>
+    <section id="method" className={`bg-white ${standalone ? "py-[clamp(2.5rem,5vw,4.5rem)]" : "py-[clamp(2rem,4vw,3.5rem)]"}`}>
+      <div className={shell}>
+        <div className="mx-auto max-w-[760px] text-center">
+          <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan">{content.eyebrow}</span>
+          <h2 className="mt-3 text-[clamp(24px,2.2vw,30px)] font-bold leading-[1.2] tracking-[-0.02em] text-hx-ink">
+            {content.title} <span className="text-hx-cyan">{content.highlight ?? ""}</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-[620px] text-[11.5px] leading-[1.6] text-hx-copy">{content.body}</p>
         </div>
-        <div className="ap-ref-method-timeline">
-          {content.steps.map((step, index) => (
-            <article className="ap-ref-method-step" key={step.number}>
-              <div className="ap-ref-method-marker"><span>{index + 1}</span><div><AP_Icon name={step.icon}/></div></div>
-              <h3>{step.title}</h3><p>{step.body}</p><span className="ap-ref-learn">Learn more →</span>
-            </article>
+
+        <ol className="mt-9 flex list-none flex-wrap justify-center gap-y-8 p-0">
+          {steps.map((step, index) => (
+            <li key={step.number} className="relative flex min-w-[min(220px,100%)] flex-1 basis-1/5 flex-col items-center px-3 text-center">
+              {/* badge + ring */}
+              <span className="relative flex items-center justify-center">
+                <span className="grid h-[62px] w-[62px] place-items-center rounded-full border border-hx-line bg-white text-hx-cyan">
+                  <AP_Icon name={step.icon} className="h-[26px] w-[26px]" />
+                </span>
+                <span className="absolute left-0 top-1/2 grid h-[22px] w-[22px] -translate-x-[62%] -translate-y-1/2 place-items-center rounded-full bg-hx-cyan text-[10px] font-bold text-white ring-4 ring-white">{index + 1}</span>
+              </span>
+
+              {/* dotted connector to the next step */}
+              {index < steps.length - 1 && (
+                <span aria-hidden="true" className="pointer-events-none absolute left-[calc(50%+42px)] right-[calc(-50%+42px)] top-[31px] border-t border-dashed border-[#b6d9ea]" />
+              )}
+
+              <strong className="mt-4 block text-[14px] font-bold text-hx-ink">{step.title}</strong>
+              <p className="mt-2 max-w-[210px] text-[11px] leading-[1.5] text-hx-copy">{step.body}</p>
+              <Link href="/method" className="mt-3 inline-flex items-center gap-1.5 text-[10.5px] font-bold text-hx-cyan hover:text-[#0c7fae]">
+                <span>{content.stepCta ?? "Learn more"}</span><AP_Icon name="arrow-right" className="h-3 w-3" />
+              </Link>
+            </li>
           ))}
-        </div>
+          {steps.map((step) => <li key={`m-ghost-${step.number}`} aria-hidden="true" className="h-0 min-w-[min(220px,100%)] flex-1 basis-1/5" />)}
+        </ol>
       </div>
-    </AP_Component>
+    </section>
   );
 }

@@ -141,18 +141,47 @@ export type MethodStep = {
 
 export type MethodContent = {
   eyebrow: string;
+  highlight?: string;
+  stepCta?: string;
   title: string;
   body: string;
   principles: Principle[];
   steps: MethodStep[];
   ctaTitle: string;
   ctaHighlight: string;
+  ctaBodyLead?: string;
   ctaBody: string;
   cta: string;
 };
 
+export type FooterLink = {
+  label: string;
+  href: string;
+};
+
+export type FooterColumn = {
+  title: string;
+  links: FooterLink[];
+};
+
 export type FooterContent = {
   legal: string;
+  tagline?: string;
+  body?: string;
+  columns?: FooterColumn[];
+  newsletterTitle?: string;
+  newsletterBody?: string;
+  legalLinks?: FooterLink[];
+};
+
+export type InsightPost = {
+  category: string;
+  title: string;
+  body: string;
+  date: string;
+  readTime: string;
+  image?: string;
+  href?: string;
 };
 
 export type ProductHighlight = {
@@ -224,6 +253,11 @@ export type ProductsPageContent = {
 };
 
 export type BlogsPageContent = {
+  insightsEyebrow?: string;
+  insightsTitle?: string;
+  insightsBody?: string;
+  insightsCta?: string;
+  posts?: InsightPost[];
   eyebrow: string;
   title: string;
   highlight: string;
