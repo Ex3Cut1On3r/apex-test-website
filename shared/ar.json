@@ -792,13 +792,15 @@
     "bottomBody": "اشترك في نشرتنا ولا تفوّت أي تحديث مهم."
   },
   "social": {
-    "whatsapp": "https://wa.me/10000000000?text=Hello%20APEX",
+    "whatsapp": "",
     "linkedin": "https://www.linkedin.com/",
     "instagram": "https://www.instagram.com/",
     "whatsappLabel": "تواصل مع APEX عبر واتساب",
     "chatbotLabel": "افتح مساعد APEX الذكي",
     "chatbotTitle": "مساعد APEX",
-    "chatbotSubtitle": "مسار موجّه للوصول إلى المحادثة المناسبة."
+    "chatbotSubtitle": "مسار موجّه للوصول إلى المحادثة المناسبة.",
+    "whatsappNumber": "+961 79 453 181",
+    "whatsappMessage": "مرحباً APEX، أودّ التحدث بشأن مشروع."
   },
   "careers": {
     "eyebrow": "الوظائف في APEX",

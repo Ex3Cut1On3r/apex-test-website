@@ -1,4 +1,5 @@
 import type { SocialContent } from "@/shared/types";
+import { whatsappHref } from "@/shared/whatsapp";
 
 function Logo({ kind }: { kind: "linkedin" | "instagram" | "whatsapp" }) {
   if (kind === "linkedin") return <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6.5 8.2H3.2V19h3.3V8.2ZM4.85 3A1.93 1.93 0 1 0 4.85 6.86 1.93 1.93 0 0 0 4.85 3ZM19.8 12.8c0-3.25-1.73-4.76-4.05-4.76-1.86 0-2.7 1.03-3.17 1.75V8.2H9.3V19h3.28v-5.35c0-1.41.27-2.79 2.03-2.79 1.74 0 1.76 1.63 1.76 2.88V19h3.28l.15-6.2Z"/></svg>;
@@ -10,7 +11,7 @@ export default function AP_SocialLinks({ social }: { social: SocialContent }) {
   const links = [
     ["linkedin", social.linkedin || "https://www.linkedin.com/", "LinkedIn"],
     ["instagram", social.instagram || "https://www.instagram.com/", "Instagram"],
-    ["whatsapp", social.whatsapp || "https://wa.me/10000000000?text=Hello%20APEX", "WhatsApp"],
+    ["whatsapp", whatsappHref(social), "WhatsApp"],
   ] as const;
-  return <div className="ap-social-row">{links.map(([kind, href, label]) => <a className="ap-social-link" key={kind} href={href} target="_blank" rel="noreferrer" aria-label={label}><Logo kind={kind}/></a>)}</div>;
+  return <div className="ap-social-row">{links.filter(([, href]) => href).map(([kind, href, label]) => <a className="ap-social-link" key={kind} href={href} target="_blank" rel="noreferrer" aria-label={label}><Logo kind={kind}/></a>)}</div>;
 }

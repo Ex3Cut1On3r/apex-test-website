@@ -792,13 +792,15 @@
     "bottomBody": "Sign up for our newsletter and never miss an important update."
   },
   "social": {
-    "whatsapp": "https://wa.me/10000000000?text=Hello%20APEX",
+    "whatsapp": "",
     "linkedin": "https://www.linkedin.com/",
     "instagram": "https://www.instagram.com/",
     "whatsappLabel": "Contact APEX on WhatsApp",
     "chatbotLabel": "Open APEX AI assistant",
     "chatbotTitle": "APEX Assistant",
-    "chatbotSubtitle": "A guided path to the right conversation."
+    "chatbotSubtitle": "A guided path to the right conversation.",
+    "whatsappNumber": "+961 79 453 181",
+    "whatsappMessage": "Hello APEX, I'd like to talk about a project."
   },
   "careers": {
     "eyebrow": "CAREERS AT APEX",

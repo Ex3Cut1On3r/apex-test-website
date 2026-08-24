@@ -326,7 +326,12 @@ export type BlogsPageContent = {
 
 
 export type SocialContent = {
+  /** Full wa.me URL. Optional override; normally leave blank and set whatsappNumber. */
   whatsapp: string;
+  /** Phone number in any readable format, e.g. "+961 79 453 181". */
+  whatsappNumber?: string;
+  /** Message prefilled in the WhatsApp composer. */
+  whatsappMessage?: string;
   linkedin: string;
   instagram: string;
   whatsappLabel: string;

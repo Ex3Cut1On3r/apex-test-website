@@ -2,6 +2,7 @@
 
 import { useState } from "react";
 import type { SocialContent } from "@/shared/types";
+import { whatsappHref } from "@/shared/whatsapp";
 
 function Icon({ name }: { name: "whatsapp" | "ai" | "arrow" }) {
   if (name === "whatsapp") return <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M20 11.8a8 8 0 0 1-11.7 7.1L4 20l1.2-4.1A8 8 0 1 1 20 11.8Z" stroke="currentColor" strokeWidth="1.8"/><path d="M9 8.2c.4-.3.8-.1 1 .4l.6 1.4c.2.4.1.7-.2 1l-.5.5c.7 1.5 1.8 2.6 3.3 3.3l.5-.6c.3-.3.6-.4 1-.2l1.4.7c.5.2.7.6.4 1-.6 1-1.6 1.4-2.7 1.2-3.6-.8-6.8-4-7.6-7.6-.2-1.1.2-2.1 1.2-2.7Z" fill="currentColor"/></svg>;
@@ -15,10 +16,7 @@ export default function AP_FloatingActions({ social }: { social: SocialContent }
     window.dispatchEvent(new CustomEvent("apex:open-contact"));
     setChatOpen(false);
   }
-  function whatsapp() {
-    const fallbackWhatsapp = "https://wa.me/10000000000?text=Hello%20APEX";
-    window.open(social.whatsapp || fallbackWhatsapp, "_blank", "noopener,noreferrer");
-  }
+  const whatsapp = whatsappHref(social);
   return (
     <>
       {chatOpen && <aside className="ap-mini-chat ap-reveal" aria-label="APEX assistant">
@@ -31,7 +29,15 @@ export default function AP_FloatingActions({ social }: { social: SocialContent }
         </div>
       </aside>}
       <div className="ap-floating-actions" aria-label="Quick contact actions">
-        <button className="ap-float-action ap-float-whatsapp" onClick={whatsapp} aria-label={social.whatsappLabel}><Icon name="whatsapp" /></button>
+        {whatsapp && (
+          <a
+            className="ap-float-action ap-float-whatsapp"
+            href={whatsapp}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label={social.whatsappLabel}
+          ><Icon name="whatsapp" /></a>
+        )}
         <button className="ap-float-action ap-float-ai" onClick={() => setChatOpen((value) => !value)} aria-expanded={chatOpen} aria-label={social.chatbotLabel}><Icon name="ai" /></button>
       </div>
     </>
