@@ -30,7 +30,7 @@ export default function AP_Hero({ hero }: { hero: HeroContent }) {
 
           <div className="mt-8 flex flex-wrap gap-y-4">
             {hero.principles.map((item) => (
-              <div key={item.title} className="flex min-w-[min(200px,100%)] flex-1 basis-1/3 items-start gap-3 border-l border-hx-line px-5 first:border-l-0 first:pl-0">
+              <div key={item.title} className="flex min-w-[min(150px,32%)] flex-1 basis-1/3 items-start gap-2.5 border-l border-hx-line px-3 first:border-l-0 first:pl-0">
                 <AP_Icon name={item.icon} className="mt-0.5 h-[22px] w-[22px] shrink-0 text-hx-cyan" />
                 <div className="min-w-0">
                   <strong className="block text-xs font-bold text-hx-ink">{item.title}</strong>
@@ -38,7 +38,6 @@ export default function AP_Hero({ hero }: { hero: HeroContent }) {
                 </div>
               </div>
             ))}
-            {Array.from({ length: 2 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/3" />)}
           </div>
         </div>
 
