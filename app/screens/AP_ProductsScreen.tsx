@@ -165,7 +165,7 @@ export default async function AP_ProductsScreen() {
 
             <div className="flex min-w-[min(480px,100%)] flex-[2] basis-[52%] flex-wrap rounded-xl border border-px-line bg-px-band px-2 py-4">
               {deployItems.map((item, index) => (
-                <div key={item.title} className="flex min-w-[min(200px,100%)] flex-1 basis-1/4 items-start gap-2.5 border-l border-px-line px-4 first:border-l-0">
+                <div key={item.title} className="flex min-w-[min(150px,24%)] flex-1 basis-1/4 items-start gap-2 border-l border-px-line px-3 first:border-l-0 first:pl-0">
                   <AP_Icon name={item.icon ?? (["box", "lock", "rocket", "nodes"] as AP_IconName[])[index % 4]} className="mt-0.5 h-[18px] w-[18px] shrink-0 text-px-cyan2" />
                   <div className="min-w-0">
                     <strong className="block text-[11.5px] font-bold text-px-ink">{item.title}</strong>
@@ -173,7 +173,6 @@ export default async function AP_ProductsScreen() {
                   </div>
                 </div>
               ))}
-              {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/4" />)}
             </div>
 
             <div className="min-w-[min(240px,100%)] flex-1 basis-[20%] rounded-xl border border-px-line bg-white p-4">

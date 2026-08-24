@@ -136,6 +136,55 @@
         "title": "Cloud Solutions",
         "body": "Scalable, secure, and efficient cloud infrastructure tailored to your needs."
       }
+    ],
+    "pageEyebrow": "SOLUTIONS",
+    "pageTitle": "Modern systems for",
+    "pageHighlight": "modern business.",
+    "pageBody": "From intelligent automation to full-stack engineering, Apex builds the connected digital systems behind faster, clearer operations.",
+    "exploreLabel": "Explore capability",
+    "pageItems": [
+      {
+        "key": "ai",
+        "number": "01",
+        "icon": "brain",
+        "title": "AI & Intelligent Automation",
+        "body": "Apply AI where it removes repetitive work, improves response quality, and accelerates decisions."
+      },
+      {
+        "key": "legacy",
+        "number": "02",
+        "icon": "layers",
+        "title": "Legacy Modernization",
+        "body": "Modernize aging applications and workflows without discarding the business logic that still matters."
+      },
+      {
+        "key": "integration",
+        "number": "03",
+        "icon": "share",
+        "title": "System Integration",
+        "body": "Connect software, teams, and data so information moves cleanly through the operation."
+      },
+      {
+        "key": "data",
+        "number": "04",
+        "icon": "database",
+        "title": "Data Infrastructure",
+        "body": "Create dependable data foundations for reporting, analytics, automation, and AI-enabled operations."
+      },
+      {
+        "key": "software",
+        "number": "05",
+        "icon": "code",
+        "title": "Custom Software",
+        "body": "Build extensions and custom experiences precisely when the business actually needs to evolve."
+      },
+      {
+        "key": "workflow",
+        "number": "06",
+        "icon": "sitemap",
+        "title": "Workflow Automation",
+        "body": "Turn manual handoffs, approvals, follow-ups, and reconciliation into reliable digital flows."
+      }
     ]
   },
   "industries": {

@@ -63,6 +63,12 @@ export type SolutionItem = {
 };
 
 export type SolutionsContent = {
+  pageEyebrow?: string;
+  pageTitle?: string;
+  pageHighlight?: string;
+  pageBody?: string;
+  pageItems?: SolutionItem[];
+  exploreLabel?: string;
   eyebrow: string;
   title: string;
   body: string;

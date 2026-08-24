@@ -1694,3 +1694,17 @@ body { color: var(--ap-ref-ink); background: #fff; }
   mask-image: radial-gradient(115% 115% at 50% 48%, #000 66%, rgba(0,0,0,.35) 86%, transparent 100%);
   -webkit-mask-image: radial-gradient(115% 115% at 50% 48%, #000 66%, rgba(0,0,0,.35) 86%, transparent 100%);
 }
+
+/* Solutions page card grid.
+   Ten columns let the featured card span two rows while 04-06 tuck in beside
+   it, matching the approved artwork. Ten narrow columns are unusable on a
+   phone, so this is the one place the site collapses with a media query -
+   everything else stays flexbox. */
+.ap-sol-grid { grid-template-columns: repeat(20, minmax(0, 1fr)); }
+@media (max-width: 900px) {
+  .ap-sol-grid { grid-template-columns: 1fr; }
+  .ap-sol-grid > * { grid-column: auto !important; grid-row: auto !important; }
+  /* stacked: nothing overlaps, so drop the notch and free the copy */
+  .ap-sol-mask { display: none; }
+  .ap-sol-copy { width: auto; max-width: 100%; }
+}

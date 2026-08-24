@@ -15,6 +15,17 @@ const config: Config = {
           navy: "#0C202B",
           mist: "#F6F8F9",
         },
+        // Solutions page: teal sampled from the approved artwork.
+        sx: {
+          deep: "#013641",
+          mid: "#026164",
+          bright: "#0a7a70",
+          teal: "#0d7d70",
+          tealDark: "#0a5f56",
+          mint: "#e0f3f2",
+          line: "#dbeceb",
+          page: "#f4faf9",
+        },
         // Home reference palette, sampled from the approved design.
         hx: {
           ink: "#0b2233",
