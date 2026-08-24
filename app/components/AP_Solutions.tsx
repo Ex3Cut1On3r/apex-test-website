@@ -34,19 +34,16 @@ function SolutionsPage({ content }: { content: SolutionsContent }) {
   ];
 
   return (
-    <section id="solutions" className="bg-sx-page py-[clamp(2.5rem,5vw,4.5rem)]">
+    <section id="solutions" className="bg-sx-page pb-[clamp(2.5rem,5vw,4.5rem)] pt-[clamp(1.5rem,2.6vw,2.5rem)]">
       <div className={shell}>
         <div className="mx-auto max-w-[820px] text-center">
-          <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-sx-teal">
-            {content.pageEyebrow ?? content.eyebrow}
-          </span>
-          <h1 className="mt-3 text-[clamp(30px,3.4vw,50px)] font-bold leading-[1.1] tracking-[-0.03em] text-hx-ink">
+          <h1 className="text-[clamp(30px,3.4vw,50px)] font-bold leading-[1.1] tracking-[-0.03em] text-hx-ink">
             {content.pageTitle}<br />{content.pageHighlight}
           </h1>
-          <p className="mx-auto mt-4 max-w-[640px] text-[13px] leading-[1.75] text-hx-copy">{content.pageBody}</p>
+          <p className="mx-auto mt-3 max-w-[640px] text-[13px] leading-[1.75] text-hx-copy">{content.pageBody}</p>
         </div>
 
-        <div className="ap-sol-grid mt-[clamp(1.75rem,3.5vw,3rem)] grid gap-5">
+        <div className="ap-sol-grid mt-[clamp(1.25rem,2.4vw,2rem)] grid gap-5">
           {featured && (
             <article
               id={featured.key}
