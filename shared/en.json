@@ -139,8 +139,8 @@
     ],
     "pageEyebrow": "SOLUTIONS",
     "pageTitle": "Modern systems for",
-    "pageHighlight": "modern business.",
-    "pageBody": "From intelligent automation to full-stack engineering, Apex builds the connected digital systems behind faster, clearer operations.",
+    "pageHighlight": "modern business",
+    "pageBody": "From intelligent automation to full-stack engineering,\nApex builds the connected digital systems behind faster, clearer operations.",
     "exploreLabel": "Explore capability",
     "pageItems": [
       {
@@ -185,7 +185,8 @@
         "title": "Workflow Automation",
         "body": "Turn manual handoffs, approvals, follow-ups, and reconciliation into reliable digital flows."
       }
-    ]
+    ],
+    "pageAccent": "."
   },
   "industries": {
     "eyebrow": "WHO WE SERVE",

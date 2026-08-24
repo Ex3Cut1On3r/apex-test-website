@@ -66,6 +66,7 @@ export type SolutionsContent = {
   pageEyebrow?: string;
   pageTitle?: string;
   pageHighlight?: string;
+  pageAccent?: string;
   pageBody?: string;
   pageItems?: SolutionItem[];
   exploreLabel?: string;

@@ -5,7 +5,7 @@ import type { AP_IconName } from "@/shared/types";
  * is served with a long cache. Bump this when you add or edit a symbol so
  * browsers holding an older sprite do not render an empty <use>.
  */
-const SPRITE_VERSION = "4";
+const SPRITE_VERSION = "5";
 
 export default function AP_Icon({ name, className = "" }: { name: AP_IconName; className?: string }) {
   return (

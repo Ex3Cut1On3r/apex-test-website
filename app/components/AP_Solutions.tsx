@@ -9,7 +9,7 @@ import AP_Icon from "@/app/components/AP_Icon";
  */
 const shell = "mx-auto w-[min(1640px,86%)]";
 const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan";
-const exploreRow = "mt-auto flex items-center gap-3 pt-14 text-[13px] font-bold";
+const exploreRow = "mt-auto flex items-center gap-3 pt-[clamp(8px,2.1vh,28px)] text-[clamp(11px,1.6vh,13px)] font-bold";
 const arrowDisc = "grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform group-hover:translate-x-0.5";
 
 /**
@@ -34,20 +34,20 @@ function SolutionsPage({ content }: { content: SolutionsContent }) {
   ];
 
   return (
-    <section id="solutions" className="bg-sx-page pb-[clamp(2.5rem,5vw,4.5rem)] pt-[clamp(1.5rem,2.6vw,2.5rem)]">
+    <section id="solutions" className="bg-sx-page pb-[clamp(0.5rem,3.2vh,4.5rem)] pt-[clamp(0.6rem,1.8vh,2.5rem)]">
       <div className={shell}>
         <div className="mx-auto max-w-[820px] text-center">
-          <h1 className="text-[clamp(30px,3.4vw,50px)] font-bold leading-[1.1] tracking-[-0.03em] text-hx-ink">
-            {content.pageTitle}<br />{content.pageHighlight}
+          <h1 className="text-[clamp(26px,min(3.4vw,5.4vh),50px)] font-bold leading-[1.1] tracking-[-0.03em] text-hx-ink">
+            {content.pageTitle}<br />{content.pageHighlight}{content.pageAccent ? <span className="text-sx-teal">{content.pageAccent}</span> : null}
           </h1>
-          <p className="mx-auto mt-3 max-w-[640px] text-[13px] leading-[1.75] text-hx-copy">{content.pageBody}</p>
+          <p className="mx-auto mt-2 max-w-[700px] whitespace-pre-line text-[clamp(11.5px,1.7vh,13px)] leading-[1.7] text-hx-copy">{content.pageBody}</p>
         </div>
 
         <div className="ap-sol-grid mt-[clamp(1.25rem,2.4vw,2rem)] grid gap-5">
           {featured && (
             <article
               id={featured.key}
-              className="group relative col-[1/9] row-[1/3] flex min-h-[440px] self-start flex-col overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#013641_0%,#025b5f_55%,#0a7a70_100%)] p-8 text-white shadow-[0_0_60px_rgba(10,122,112,.20)]"
+              className="group relative col-[1/9] row-[1/3] flex min-h-[clamp(230px,40vh,360px)] self-start flex-col overflow-hidden rounded-[28px] bg-[linear-gradient(145deg,#013641_0%,#025b5f_55%,#0a7a70_100%)] p-[clamp(12px,2.5vh,28px)] text-white shadow-[0_0_60px_rgba(10,122,112,.20)]"
             >
               {/* flowing light traces, as in the artwork */}
               <svg aria-hidden="true" viewBox="0 0 620 460" preserveAspectRatio="none" className="pointer-events-none absolute inset-0 h-full w-full">
@@ -65,11 +65,11 @@ function SolutionsPage({ content }: { content: SolutionsContent }) {
               </svg>
 
               <span className="relative inline-flex w-fit rounded-xl bg-white/15 px-3 py-1.5 text-[13px] font-bold tracking-[0.06em]">{featured.number}</span>
-              <span className="relative mt-7 grid h-[96px] w-[96px] place-items-center rounded-[26px] bg-[linear-gradient(150deg,#13b9a0_0%,#0a6f63_100%)] shadow-[0_0_40px_rgba(19,185,160,.45)] ring-1 ring-white/35">
-                <AP_Icon name={featured.icon} className="h-11 w-11 text-white" />
+              <span className="relative mt-[clamp(8px,1.8vh,20px)] grid h-[clamp(52px,8vh,80px)] w-[clamp(52px,8vh,80px)] place-items-center rounded-[22px] bg-[linear-gradient(150deg,#13b9a0_0%,#0a6f63_100%)] shadow-[0_0_40px_rgba(19,185,160,.45)] ring-1 ring-white/35">
+                <AP_Icon name={featured.icon} className="h-9 w-9 text-white" />
               </span>
-              <h2 className="ap-sol-copy relative mt-7 w-[min(300px,58%)] text-[clamp(22px,2.1vw,30px)] font-bold leading-[1.16] tracking-[-0.02em] [overflow-wrap:normal]">{featured.title}</h2>
-              <p className="ap-sol-copy relative mt-4 w-[min(300px,58%)] text-[13px] leading-[1.7] text-white/85">{featured.body}</p>
+              <h2 className="ap-sol-copy relative mt-[clamp(8px,1.8vh,20px)] w-[min(300px,58%)] text-[clamp(18px,min(2.1vw,3.4vh),30px)] font-bold leading-[1.16] tracking-[-0.02em] [overflow-wrap:normal]">{featured.title}</h2>
+              <p className="ap-sol-copy relative mt-3 w-[min(300px,58%)] text-[clamp(11px,1.6vh,13px)] leading-[1.6] text-white/85">{featured.body}</p>
               <Link href="/#contact" className={`${exploreRow} ap-sol-copy relative w-fit text-white`}>
                 <span>{explore}</span>
                 <span className={`${arrowDisc} bg-white/20`}><AP_Icon name="arrow-right" className="h-4 w-4" /></span>
@@ -85,16 +85,16 @@ function SolutionsPage({ content }: { content: SolutionsContent }) {
             <article
               key={item.key}
               id={item.key}
-              className={`group relative ${places[index] ?? "row-[2]"} flex flex-col rounded-[28px] border border-sx-line bg-white p-9 shadow-[0_14px_34px_rgba(1,54,65,.07),0_1px_4px_rgba(1,54,65,.06)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(1,54,65,.12)]`}
+              className={`group relative ${places[index] ?? "row-[2]"} flex flex-col rounded-[28px] border border-sx-line bg-white p-[clamp(12px,2.5vh,28px)] shadow-[0_14px_34px_rgba(1,54,65,.07),0_1px_4px_rgba(1,54,65,.06)] transition hover:-translate-y-0.5 hover:shadow-[0_20px_44px_rgba(1,54,65,.12)]`}
             >
               <span className="inline-flex w-fit rounded-xl bg-sx-mint px-3 py-1.5 text-[13px] font-bold tracking-[0.06em] text-sx-teal">{item.number}</span>
               <div className="mt-5 flex items-start gap-4">
-                <span className="grid h-[68px] w-[68px] shrink-0 place-items-center rounded-[20px] bg-[linear-gradient(150deg,#eaf7f5,#d6efeb)]">
+                <span className="grid h-[clamp(46px,6.6vh,68px)] w-[clamp(46px,6.6vh,68px)] shrink-0 place-items-center rounded-[20px] bg-[linear-gradient(150deg,#eaf7f5,#d6efeb)]">
                   <AP_Icon name={item.icon} className="h-8 w-8 text-sx-teal" />
                 </span>
                 <div className="min-w-0 flex-1">
-                  <h2 className="text-[clamp(15px,1.2vw,21px)] font-bold leading-[1.2] tracking-[-0.01em] text-hx-ink [overflow-wrap:normal]">{item.title}</h2>
-                  <p className="mt-3 text-[12.5px] leading-[1.62] text-hx-copy">{item.body}</p>
+                  <h2 className="text-[clamp(14px,min(1.2vw,2.5vh),21px)] font-bold leading-[1.2] tracking-[-0.01em] text-hx-ink [overflow-wrap:normal]">{item.title}</h2>
+                  <p className="mt-2 text-[clamp(11px,1.6vh,12.5px)] leading-[1.5] text-hx-copy">{item.body}</p>
                 </div>
               </div>
               <Link href="/#contact" className={`${exploreRow} text-sx-teal hover:text-sx-tealDark`}>
