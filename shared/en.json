@@ -40,28 +40,28 @@
     }
   ],
   "hero": {
-    "eyebrow": "AI OPERATING SYSTEM",
+    "eyebrow": "AI & DIGITAL SYSTEMS",
     "lines": [
-      "AI Operating System",
-      "for Modern Businesses",
-      ""
+      "Intelligent",
+      "systems.",
+      "Real momentum."
     ],
-    "body": "",
+    "body": "APEX builds software, AI, data, and workflow systems\nthat help businesses modernize operations and\nscale with confidence.",
     "primaryCta": "Explore Solutions",
-    "secondaryCta": "Watch Video",
+    "secondaryCta": "Book a Consultation",
     "principles": [
       {
-        "icon": "check-circle",
+        "icon": "shield",
         "title": "Secure by design",
         "body": "Built with trust from the ground up."
       },
       {
-        "icon": "check-circle",
+        "icon": "sitemap",
         "title": "Connected systems",
         "body": "Everything works better together."
       },
       {
-        "icon": "check-circle",
+        "icon": "chart",
         "title": "Measurable outcomes",
         "body": "Real impact you can see and scale."
       }

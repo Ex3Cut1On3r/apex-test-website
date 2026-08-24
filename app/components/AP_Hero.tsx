@@ -18,26 +18,30 @@ export default function AP_Hero({ hero }: { hero: HeroContent }) {
             {hero.lines[0]}<br />{hero.lines[1]}{hero.lines[2] ? <><br />{hero.lines[2]}</> : null}
             {hero.highlight ? <span className="text-apex-coral">{hero.highlight}</span> : null}
           </h1>
-          {hero.body ? <p className="mt-4 max-w-[520px] text-[13.5px] leading-[1.75] text-hx-copy">{hero.body}</p> : null}
-
-          <div className="mt-7 flex flex-wrap gap-y-4">
-            {hero.principles.map((item) => (
-              <div key={item.title} className="flex min-w-[min(150px,32%)] flex-1 basis-1/3 items-start gap-2.5 border-l border-hx-line px-3 first:border-l-0 first:pl-0">
-                <AP_Icon name={item.icon} className="mt-[1px] h-[17px] w-[17px] shrink-0 text-hx-cyan" />
-                <p className="min-w-0 text-[12px] leading-[1.5] text-hx-copy">{item.body}</p>
-              </div>
-            ))}
-          </div>
+          {hero.body ? <p className="mt-4 max-w-[560px] whitespace-pre-line text-[13.5px] leading-[1.75] text-hx-copy">{hero.body}</p> : null}
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
             <Link href="/solutions" className={`${button} bg-hx-cyan text-white hover:bg-[#0c7fae]`}>
-              <span>{hero.primaryCta}</span><AP_Icon name="arrow-up-right" />
+              <span>{hero.primaryCta}</span><AP_Icon name="arrow-right" />
             </Link>
             <AP_ContactLink
-              className={`${button} border border-hx-line bg-white text-hx-ink hover:border-hx-cyan hover:text-hx-cyan [&>svg:first-child]:h-[15px] [&>svg:first-child]:w-[15px]`}
-              icon="none"
-              leadingIcon="play"
+              className={`${button} border border-hx-line bg-white text-hx-ink hover:border-hx-cyan hover:text-hx-cyan`}
+              icon="arrow-up-right"
             >{hero.secondaryCta}</AP_ContactLink>
+          </div>
+
+          <span aria-hidden="true" className="mt-7 block h-px w-full bg-hx-line" />
+
+          <div className="mt-5 flex flex-wrap gap-y-4">
+            {hero.principles.map((item) => (
+              <div key={item.title} className="flex min-w-[min(150px,32%)] flex-1 basis-1/3 items-start gap-2.5 border-l border-hx-line px-3 first:border-l-0 first:pl-0">
+                <AP_Icon name={item.icon} className="mt-[1px] h-[17px] w-[17px] shrink-0 text-hx-cyan" />
+                <div className="min-w-0">
+                  <strong className="block text-[12px] font-bold leading-[1.35] text-hx-ink">{item.title}</strong>
+                  <p className="mt-1 text-[11.5px] leading-[1.5] text-hx-copy">{item.body}</p>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
