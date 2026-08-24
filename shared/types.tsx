@@ -38,6 +38,8 @@ export type HeroContent = {
   highlight?: string;
   architecture?: string[];
   architectureCards?: string[];
+  image?: string;
+  imageAlt?: string;
   body: string;
   primaryCta: string;
   secondaryCta: string;

@@ -1687,3 +1687,10 @@ body { color: var(--ap-ref-ink); background: #fff; }
 }
 .ap-footer-subscribe .subscribe-form .button svg { display: none; }
 .ap-footer-subscribe .subscribe-status { flex-basis: 100%; margin: 8px 0 0; padding: 0 12px 8px; font-size: 10.5px; }
+
+/* Hero artwork: fade the bitmap's edges so its rectangle does not read against
+   the hero gradient. */
+.ap-hero-art {
+  mask-image: radial-gradient(115% 115% at 50% 48%, #000 66%, rgba(0,0,0,.35) 86%, transparent 100%);
+  -webkit-mask-image: radial-gradient(115% 115% at 50% 48%, #000 66%, rgba(0,0,0,.35) 86%, transparent 100%);
+}

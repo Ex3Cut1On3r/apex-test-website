@@ -42,8 +42,16 @@ export default function AP_Hero({ hero }: { hero: HeroContent }) {
           </div>
         </div>
 
-        <div className="min-w-[min(420px,100%)] flex-1 basis-[54%]" aria-label="APEX platform architecture">
-          <AP_ArchitectureVisual layers={hero.architecture} cards={hero.architectureCards} />
+        <div className="min-w-[min(420px,100%)] flex-1 basis-[54%]">
+          {hero.image
+            ? <img
+                src={hero.image}
+                alt={hero.imageAlt ?? ""}
+                /* the artwork carries its own near-white ground; multiply plus a soft
+                   edge mask keeps its bounding box from showing on the hero gradient */
+                className="ap-hero-art mx-auto h-auto w-full max-w-[780px] mix-blend-multiply"
+              />
+            : <AP_ArchitectureVisual layers={hero.architecture} cards={hero.architectureCards} />}
         </div>
       </div>
     </section>

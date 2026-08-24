@@ -79,7 +79,9 @@
       "DATA",
       "AI MODELS",
       "INTEGRATIONS"
-    ]
+    ],
+    "image": "/api/assets/hero/apex-stack-v2.jpg",
+    "imageAlt": "APEX AI operating system: layered platform with automation, analytics, data, AI models and integrations"
   },
   "about": {
     "eyebrow": "HOW WE THINK",

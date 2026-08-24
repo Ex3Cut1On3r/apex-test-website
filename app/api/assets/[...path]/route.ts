@@ -25,13 +25,24 @@ export async function GET(
   try {
     const data = await fs.readFile(requested);
     const contentType = MIME[path.extname(requested).toLowerCase()] ?? "application/octet-stream";
-    // The icon sprite keeps its URL while its contents change, so it must be
-    // revalidated rather than cached as immutable.
-    const mutableSprite = path.basename(requested).toLowerCase() === "icons.svg";
+
+    /*
+     * Assets here keep their URL while their contents can be replaced, so
+     * "immutable" would pin a stale copy in browsers for a year. Serve a short
+     * cache with revalidation and answer conditional requests with 304 so the
+     * bytes only travel when the file actually changed.
+     */
+    const stat = await fs.stat(requested);
+    const etag = `W/"${stat.size}-${Math.floor(stat.mtimeMs)}"`;
+    if (_request.headers.get("if-none-match") === etag) {
+      return new NextResponse(null, { status: 304, headers: { ETag: etag, "Cache-Control": "public, max-age=300, must-revalidate" } });
+    }
+
     return new NextResponse(new Uint8Array(data), {
       headers: {
         "Content-Type": contentType,
-        "Cache-Control": mutableSprite ? "public, max-age=0, must-revalidate" : "public, max-age=31536000, immutable",
+        "Cache-Control": "public, max-age=300, must-revalidate",
+        ETag: etag,
       },
     });
   } catch {
