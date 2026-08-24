@@ -5,7 +5,7 @@ import AP_ArchitectureVisual from "@/app/components/AP_ArchitectureVisual";
 import AP_ContactLink from "@/app/components/AP_ContactLink";
 
 /* No media queries: copy and visual are flex children that wrap. */
-const shell = "mx-auto w-full max-w-[1640px] px-[clamp(1rem,3vw,2rem)]";
+const shell = "mx-auto w-[min(1640px,86%)]";
 const button = "inline-flex h-[36px] items-center justify-center gap-2 rounded px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] transition-colors [&_svg]:h-[13px] [&_svg]:w-[13px]";
 
 export default function AP_Hero({ hero }: { hero: HeroContent }) {
@@ -15,29 +15,29 @@ export default function AP_Hero({ hero }: { hero: HeroContent }) {
         <div className="min-w-[min(440px,100%)] flex-1 basis-[42%]">
           <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan">{hero.eyebrow}</span>
           <h1 className="mt-3.5 text-[clamp(38px,3.9vw,62px)] font-bold leading-[1.08] tracking-[-0.035em] text-hx-ink">
-            {hero.lines[0]}<br />{hero.lines[1]}<br />{hero.lines[2]}<span className="text-apex-coral">{hero.highlight ?? ""}</span>
+            {hero.lines[0]}<br />{hero.lines[1]}{hero.lines[2] ? <><br />{hero.lines[2]}</> : null}
+            {hero.highlight ? <span className="text-apex-coral">{hero.highlight}</span> : null}
           </h1>
-          <p className="mt-4 max-w-[520px] text-[13.5px] leading-[1.75] text-hx-copy">{hero.body}</p>
+          {hero.body ? <p className="mt-4 max-w-[520px] text-[13.5px] leading-[1.75] text-hx-copy">{hero.body}</p> : null}
 
-          <div className="mt-6 flex flex-wrap items-center gap-3">
-            <Link href="/solutions" className={`${button} bg-hx-cyan text-white hover:bg-[#0c7fae]`}>
-              <span>{hero.primaryCta}</span><AP_Icon name="arrow-right" />
-            </Link>
-            <AP_ContactLink className={`${button} border border-hx-line bg-white text-hx-ink hover:border-hx-cyan hover:text-hx-cyan`} icon="arrow-up-right">
-              {hero.secondaryCta}
-            </AP_ContactLink>
-          </div>
-
-          <div className="mt-8 flex flex-wrap gap-y-4">
+          <div className="mt-7 flex flex-wrap gap-y-4">
             {hero.principles.map((item) => (
               <div key={item.title} className="flex min-w-[min(150px,32%)] flex-1 basis-1/3 items-start gap-2.5 border-l border-hx-line px-3 first:border-l-0 first:pl-0">
-                <AP_Icon name={item.icon} className="mt-0.5 h-[22px] w-[22px] shrink-0 text-hx-cyan" />
-                <div className="min-w-0">
-                  <strong className="block text-xs font-bold text-hx-ink">{item.title}</strong>
-                  <p className="mt-1 text-[11px] leading-[1.45] text-hx-copy">{item.body}</p>
-                </div>
+                <AP_Icon name={item.icon} className="mt-[1px] h-[17px] w-[17px] shrink-0 text-hx-cyan" />
+                <p className="min-w-0 text-[12px] leading-[1.5] text-hx-copy">{item.body}</p>
               </div>
             ))}
+          </div>
+
+          <div className="mt-7 flex flex-wrap items-center gap-3">
+            <Link href="/solutions" className={`${button} bg-hx-cyan text-white hover:bg-[#0c7fae]`}>
+              <span>{hero.primaryCta}</span><AP_Icon name="arrow-up-right" />
+            </Link>
+            <AP_ContactLink
+              className={`${button} border border-hx-line bg-white text-hx-ink hover:border-hx-cyan hover:text-hx-cyan [&>svg:first-child]:h-[15px] [&>svg:first-child]:w-[15px]`}
+              icon="none"
+              leadingIcon="play"
+            >{hero.secondaryCta}</AP_ContactLink>
           </div>
         </div>
 

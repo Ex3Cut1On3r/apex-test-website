@@ -40,33 +40,33 @@
     }
   ],
   "hero": {
-    "eyebrow": "AI & DIGITAL SYSTEMS",
+    "eyebrow": "AI OPERATING SYSTEM",
     "lines": [
-      "Intelligent",
-      "systems.",
-      "Real momentum"
+      "AI Operating System",
+      "for Modern Businesses",
+      ""
     ],
-    "body": "APEX builds software, AI, data, and workflow systems that help businesses modernize operations and scale with confidence.",
+    "body": "",
     "primaryCta": "Explore Solutions",
-    "secondaryCta": "Book a Consultation",
+    "secondaryCta": "Watch Video",
     "principles": [
       {
-        "icon": "shield",
+        "icon": "check-circle",
         "title": "Secure by design",
         "body": "Built with trust from the ground up."
       },
       {
-        "icon": "nodes",
+        "icon": "check-circle",
         "title": "Connected systems",
         "body": "Everything works better together."
       },
       {
-        "icon": "chart",
+        "icon": "check-circle",
         "title": "Measurable outcomes",
         "body": "Real impact you can see and scale."
       }
     ],
-    "highlight": ".",
+    "highlight": "",
     "architecture": [
       "AI OPERATING SYSTEM",
       "WORKFLOW ENGINE",
@@ -119,22 +119,22 @@
         "key": "workflow",
         "number": "04",
         "icon": "sitemap",
-        "title": "Workflow Automation",
-        "body": "Streamline processes, reduce manual work, and improve consistency."
+        "title": "Data Engineering",
+        "body": "Build robust data pipelines and architectures that power reliable insights."
       },
       {
         "key": "data",
         "number": "05",
         "icon": "chart",
-        "title": "Data & Analytics",
-        "body": "Turn complex data into clear insights that drive better decisions."
+        "title": "Analytics & Insights",
+        "body": "Turn data into action with advanced analytics and real-time dashboards."
       },
       {
         "key": "cloud",
         "number": "06",
         "icon": "cloud",
-        "title": "Cloud / Infrastructure",
-        "body": "Secure, scalable, and resilient infrastructure built for performance."
+        "title": "Cloud Solutions",
+        "body": "Scalable, secure, and efficient cloud infrastructure tailored to your needs."
       }
     ]
   },

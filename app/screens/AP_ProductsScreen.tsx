@@ -15,7 +15,7 @@ const ITEM_ICONS: AP_IconName[] = ["flow", "chart", "sparkles", "layers"];
  * alone on a line. Zero-height ghost items close each wrapping row so a
  * partly filled last line keeps the column width of the rows above.
  */
-const shell = "mx-auto w-full max-w-[1640px] px-[clamp(1rem,3vw,2rem)]";
+const shell = "mx-auto w-[min(1640px,86%)]";
 const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-px-cyan2";
 const button = "inline-flex h-[34px] items-center justify-center gap-2 rounded px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] transition-colors [&_svg]:h-[13px] [&_svg]:w-[13px]";
 const textLink = "inline-flex items-center gap-2 text-[10.5px] font-extrabold text-px-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]";

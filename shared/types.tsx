@@ -8,7 +8,7 @@ export type AP_IconName =
   | "spark" | "mail" | "box"
   | "shield-check" | "sparkles" | "users" | "bulb" | "rocket"
   | "cloud" | "trend-up" | "upload-cloud" | "pin" | "building" | "chevron-down"
-  | "check-circle" | "sliders" | "share" | "sitemap";
+  | "check-circle" | "sliders" | "share" | "sitemap" | "play";
 
 export type NavItem = {
   label: string;

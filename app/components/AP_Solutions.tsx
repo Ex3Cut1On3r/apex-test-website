@@ -7,7 +7,7 @@ import AP_Icon from "@/app/components/AP_Icon";
  * that wrap; the cards are a wrapping row with a one-third basis, closed by
  * zero-height ghosts so a partly filled last row keeps the column width.
  */
-const shell = "mx-auto w-full max-w-[1640px] px-[clamp(1rem,3vw,2rem)]";
+const shell = "mx-auto w-[min(1640px,86%)]";
 
 export default function AP_Solutions({ content, standalone = false }: { content: SolutionsContent; standalone?: boolean }) {
   return (
@@ -31,9 +31,11 @@ export default function AP_Solutions({ content, standalone = false }: { content:
               id={item.key}
               className="flex min-w-[min(240px,100%)] flex-1 basis-[calc(33.333%-14px)] flex-col rounded-xl border border-hx-line bg-white p-6 transition hover:-translate-y-0.5 hover:border-[#bcdff2] hover:shadow-[0_14px_30px_rgba(11,34,51,.08)]"
             >
-              <AP_Icon name={item.icon} className="h-[46px] w-[46px] shrink-0 text-hx-cyan" />
-              <h3 className="mt-5 text-[17px] font-bold leading-tight text-hx-ink">{item.title}</h3>
-              <p className="mt-2.5 text-[12.5px] leading-[1.6] text-hx-copy">{item.body}</p>
+              <div className="flex items-center gap-3.5">
+                <AP_Icon name={item.icon} className="h-[30px] w-[30px] shrink-0 text-hx-cyan" />
+                <h3 className="min-w-0 text-[17px] font-bold leading-tight text-hx-ink">{item.title}</h3>
+              </div>
+              <p className="mt-3 text-[12.5px] leading-[1.6] text-hx-copy">{item.body}</p>
               <span aria-hidden="true" className="mt-auto flex justify-end pt-5 text-hx-cyan">
                 <AP_Icon name="arrow-right" className="h-[18px] w-[18px]" />
               </span>

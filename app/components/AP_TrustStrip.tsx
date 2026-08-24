@@ -1,36 +1,60 @@
 import type { TrustContent } from "@/shared/types";
 import AP_Icon from "@/app/components/AP_Icon";
 
-/* No media queries: one wrapping flex row, children carry basis + min-width. */
-const shell = "mx-auto w-full max-w-[1640px] px-[clamp(1rem,3vw,2rem)]";
+/*
+ * No media queries. Each group carries a minimum wide enough to hold its items
+ * on a single line, so a cramped row moves the whole group to its own line
+ * instead of orphaning its last item.
+ */
+const shell = "mx-auto w-[min(1640px,86%)]";
+const STAT_ICONS = ["trend-up", "users", "building", "check-circle"] as const;
 
 export default function AP_TrustStrip({ trust }: { trust?: TrustContent }) {
   if (!trust) return null;
   const { eyebrow, clients = [], stats = [] } = trust;
 
   return (
-    <section className="border-y border-hx-line bg-hx-band py-4" aria-label={eyebrow}>
-      <div className={`${shell} flex flex-wrap items-center justify-center gap-x-6 gap-y-6`}>
-        <span className="min-w-[min(150px,100%)] max-w-[190px] flex-1 text-[10px] font-extrabold uppercase leading-[1.35] tracking-[0.12em] text-hx-cyan">
-          {eyebrow}
-        </span>
-
-        <div className="flex min-w-[min(700px,100%)] flex-[2] flex-wrap items-center justify-center gap-x-6 gap-y-3">
-          {clients.map((client) => (
-            <span key={client} className="flex items-center gap-2 text-[13px] font-bold text-hx-ink">
-              <AP_Icon name="grid" className="h-4 w-4 shrink-0 text-hx-muted" />{client}
+    <section className="bg-white pb-[clamp(1.5rem,3vw,2.5rem)]" aria-label={eyebrow}>
+      <div className={shell}>
+        <div className="rounded-2xl border border-hx-line bg-white px-[clamp(1rem,2.2vw,2rem)] py-[clamp(1rem,1.8vw,1.5rem)] shadow-[0_10px_30px_rgba(11,34,51,.05)]">
+          {/* clients */}
+          <div className="flex flex-wrap items-center gap-x-4 gap-y-4">
+            <span className="min-w-[min(170px,100%)] max-w-[210px] flex-1 text-[11px] font-extrabold uppercase leading-[1.45] tracking-[0.12em] text-hx-cyan">
+              {eyebrow}
             </span>
-          ))}
-        </div>
-
-        <div className="flex min-w-[min(560px,100%)] flex-[1.5] flex-wrap justify-center gap-y-4">
-          {stats.map((stat) => (
-            <div key={stat.label} className="min-w-[min(140px,46%)] flex-1 basis-1/4 px-2 text-center">
-              <strong className="block text-[19px] font-bold leading-tight text-hx-cyan">{stat.value}</strong>
-              <small className="mt-0.5 block text-[10px] text-hx-copy">{stat.label}</small>
+            <div className="flex min-w-[min(680px,100%)] flex-[3] flex-wrap items-center justify-around gap-y-3">
+              {clients.map((client, index) => (
+                <span
+                  key={client}
+                  className={`flex flex-1 items-center justify-center gap-2 whitespace-nowrap px-3 text-[14px] font-bold text-hx-ink ${index ? "border-l border-hx-line" : ""}`}
+                >
+                  <AP_Icon name="grid" className="h-[18px] w-[18px] shrink-0 text-hx-cyan" />{client}
+                </span>
+              ))}
             </div>
-          ))}
-          {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(140px,46%)] flex-1 basis-1/4" />)}
+          </div>
+
+          {stats.length > 0 && (
+            <>
+              <span aria-hidden="true" className="mt-[clamp(0.75rem,1.4vw,1.25rem)] block h-px w-full bg-hx-line" />
+              <div className="flex flex-wrap gap-y-4 pt-[clamp(0.75rem,1.4vw,1.25rem)]">
+                {stats.map((stat, index) => (
+                  <div
+                    key={stat.label}
+                    className={`flex min-w-[min(200px,50%)] flex-1 basis-1/4 items-center gap-3 px-[clamp(0.5rem,1.5vw,1.25rem)] ${index ? "border-l border-hx-line" : ""}`}
+                  >
+                    <span className="grid h-[38px] w-[38px] shrink-0 place-items-center rounded-lg bg-hx-tint text-hx-cyan">
+                      <AP_Icon name={STAT_ICONS[index % STAT_ICONS.length]} className="h-[19px] w-[19px]" />
+                    </span>
+                    <span className="min-w-0">
+                      <strong className="block text-[22px] font-bold leading-none tracking-[-0.02em] text-hx-cyan">{stat.value}</strong>
+                      <small className="mt-1 block whitespace-nowrap text-[11px] text-hx-copy">{stat.label}</small>
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
         </div>
       </div>
     </section>

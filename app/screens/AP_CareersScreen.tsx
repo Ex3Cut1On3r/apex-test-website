@@ -51,7 +51,7 @@ const FALLBACK_STEPS: CareerStep[] = [
  * columns, without a media query.
  */
 const ghost = "h-0 min-w-[min(180px,100%)] flex-1 basis-[calc(20%-14px)]";
-const shell = "mx-auto w-full max-w-[1640px] px-[clamp(1rem,3vw,2rem)]";
+const shell = "mx-auto w-[min(1640px,86%)]";
 const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-cx-cyan2";
 const button = "inline-flex h-[34px] items-center justify-center gap-2 rounded px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] transition-colors [&_svg]:h-[13px] [&_svg]:w-[13px]";
 const buttonPrimary = `${button} bg-cx-cyan text-white hover:bg-[#0c7fae]`;
@@ -77,7 +77,7 @@ export default async function AP_CareersScreen() {
       <main className="bg-white text-cx-ink">
         {/* ---------- hero: copy and media are two flex children that wrap ---------- */}
         <section className="flex flex-wrap items-stretch border-b border-cx-line bg-white">
-          <div className="min-w-[min(560px,100%)] flex-1 basis-[46%] py-9 pl-[max(clamp(1rem,3vw,2rem),calc((100vw-1640px)/2))] pr-[clamp(1rem,3vw,2rem)]">
+          <div className="min-w-[min(560px,100%)] flex-1 basis-[46%] py-9 pl-[max(7%,calc((100vw-1640px)/2))] pr-[7%]">
             <div className="max-w-[700px]">
               <span className={eyebrow}>{page.eyebrow}</span>
               <h1 className="mt-3.5 text-[clamp(34px,3.6vw,58px)] font-bold leading-[1.02] tracking-[-0.03em] text-cx-ink">
