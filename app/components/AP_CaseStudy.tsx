@@ -17,7 +17,7 @@ export default function AP_CaseStudy({ content }: { content: CaseStudyContent })
 
           <div className="mt-6 flex flex-wrap gap-y-4">
             {content.facts.map((fact) => (
-              <div key={fact.title} className="flex min-w-[min(190px,100%)] flex-1 basis-1/3 items-start gap-3 border-l border-hx-line px-4 first:border-l-0 first:pl-0">
+              <div key={fact.title} className="flex min-w-[min(160px,32%)] flex-1 basis-1/3 items-start gap-2.5 border-l border-hx-line px-3 first:border-l-0 first:pl-0">
                 <AP_Icon name={fact.icon} className="mt-0.5 h-[20px] w-[20px] shrink-0 text-hx-cyan" />
                 <div className="min-w-0">
                   <strong className="block text-[12px] font-bold text-hx-ink">{fact.title}</strong>
@@ -25,7 +25,6 @@ export default function AP_CaseStudy({ content }: { content: CaseStudyContent })
                 </div>
               </div>
             ))}
-            {Array.from({ length: 2 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(190px,100%)] flex-1 basis-1/3" />)}
           </div>
 
           <AP_CaseStudyButton className="mt-6 inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]">

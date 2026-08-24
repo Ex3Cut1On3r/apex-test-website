@@ -53,7 +53,7 @@ export default async function AP_ProductsScreen() {
 
               <div className="mt-7 flex flex-wrap gap-y-4">
                 {highlights.map((highlight, index) => (
-                  <div key={highlight.title} className="flex min-w-[min(200px,100%)] flex-1 basis-1/3 items-start gap-3 border-l border-px-line px-5 first:border-l-0 first:pl-0">
+                  <div key={highlight.title} className="flex min-w-[min(160px,32%)] flex-1 basis-1/3 items-start gap-2.5 border-l border-px-line px-3 first:border-l-0 first:pl-0">
                     <AP_Icon name={highlight.icon ?? (["box", "sliders", "shield-check"] as AP_IconName[])[index % 3]} className="mt-0.5 h-[22px] w-[22px] shrink-0 text-px-cyan2" />
                     <div className="min-w-0">
                       <strong className="block text-xs font-bold text-px-ink">{highlight.title}</strong>
@@ -61,7 +61,6 @@ export default async function AP_ProductsScreen() {
                     </div>
                   </div>
                 ))}
-                {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/3" />)}
               </div>
             </div>
 
@@ -124,9 +123,9 @@ export default async function AP_ProductsScreen() {
                   <span className={eyebrow}>{page.flowEyebrow ?? "How our products work together"}</span>
                   <h2 className="mt-[7px] text-[19px] font-bold leading-[1.25] tracking-[-0.02em]">{page.flowTitle}</h2>
                 </div>
-                <div className={`${splitBody} flex flex-wrap items-stretch`}>
+                <div className={`${splitBody} flex flex-wrap items-stretch gap-y-3`}>
                   {flow.map((item, index) => (
-                    <div key={`flow-${item.name}`} className="flex min-w-[min(210px,100%)] flex-1 items-center gap-2">
+                    <div key={`flow-${item.name}`} className="flex min-w-[min(160px,100%)] flex-1 items-stretch gap-2">
                       <div className="flex min-w-0 flex-1 items-center gap-2.5 rounded-lg border border-px-line bg-white px-3 py-2.5">
                         <AP_Icon name={item.icon ?? ITEM_ICONS[index % ITEM_ICONS.length]} className="h-5 w-5 shrink-0 text-px-cyan2" />
                         <span className="min-w-0">
@@ -134,14 +133,17 @@ export default async function AP_ProductsScreen() {
                           <small className="block truncate text-[10px] text-px-copy">{item.category}</small>
                         </span>
                       </div>
-                      <AP_Icon name="arrow-right" className="h-3 w-3 shrink-0 text-[#8dc0d3]" />
+                      {/* only draw an arrow when something actually follows */}
+                      {(index < flow.length - 1 || outcome.length > 0) && (
+                        <AP_Icon name="arrow-right" className="h-3 w-3 shrink-0 self-center text-[#8dc0d3]" />
+                      )}
                     </div>
                   ))}
                   {outcome.length > 0 && (
-                    <div className="flex min-w-[min(210px,100%)] flex-1 items-center gap-2.5 rounded-lg border border-px-line bg-white px-3 py-2.5">
+                    <div className="flex min-w-[min(160px,100%)] flex-1 items-center gap-2.5 rounded-lg border border-px-cyan2/40 bg-white px-3 py-2.5">
                       <AP_Icon name="users" className="h-6 w-6 shrink-0 text-px-cyan2" />
                       <span className="min-w-0">
-                        {outcome.map((line) => <strong key={line} className="block truncate text-[11px] font-bold text-px-ink">{line}</strong>)}
+                        {outcome.map((line) => <strong key={line} className="block truncate text-[10.5px] font-bold leading-[1.35] text-px-ink">{line}</strong>)}
                       </span>
                     </div>
                   )}
