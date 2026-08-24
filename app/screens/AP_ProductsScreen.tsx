@@ -5,6 +5,7 @@ import AP_Footer from "@/app/components/AP_Footer";
 import AP_Icon from "@/app/components/AP_Icon";
 import AP_ProductConsole from "@/app/components/AP_ProductConsole";
 import AP_ProductPreview from "@/app/components/AP_ProductPreview";
+import AP_TrustStrip from "@/app/components/AP_TrustStrip";
 
 const ITEM_ICONS: AP_IconName[] = ["flow", "chart", "sparkles", "layers"];
 
@@ -236,30 +237,8 @@ export default async function AP_ProductsScreen() {
           </div>
         </section>
 
-        {/* ---------- trust strip ---------- */}
-        <section className="bg-px-band py-4">
-          <div className={`${shell} flex flex-wrap items-center gap-x-6 gap-y-5`}>
-            <span className="min-w-[min(150px,100%)] max-w-[190px] flex-1 text-[10px] font-extrabold uppercase leading-[1.35] tracking-[0.12em] text-px-cyan2">
-              {page.trustEyebrow}
-            </span>
-            <div className="flex min-w-[min(360px,100%)] flex-[2] flex-wrap items-center justify-around gap-x-5 gap-y-3">
-              {clients.map((client) => (
-                <span key={client} className="flex items-center gap-2 text-[13px] font-bold text-px-ink">
-                  <AP_Icon name="grid" className="h-4 w-4 shrink-0 text-px-muted" />{client}
-                </span>
-              ))}
-            </div>
-            <div className="flex min-w-[min(340px,100%)] flex-[1.5] flex-wrap border-l border-px-line">
-              {stats.map((stat) => (
-                <div key={stat.label} className="min-w-[min(110px,100%)] flex-1 basis-1/4 px-2 text-center">
-                  <strong className="block text-[19px] font-bold leading-tight text-px-cyan">{stat.value}</strong>
-                  <small className="mt-0.5 block text-[10px] text-px-copy">{stat.label}</small>
-                </div>
-              ))}
-              {Array.from({ length: 3 }).map((_, ghost) => <span key={`ghost-${ghost}`} aria-hidden="true" className="h-0 min-w-[min(200px,100%)] flex-1 basis-1/4" />)}
-            </div>
-          </div>
-        </section>
+        {/* ---------- trust strip: shared component, same as home and solutions ---------- */}
+        <AP_TrustStrip trust={{ eyebrow: page.trustEyebrow ?? "", clients, stats }} />
       </main>
       <AP_Footer nav={data.nav} content={data.footer} social={data.social} />
     </>
