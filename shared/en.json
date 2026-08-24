@@ -203,9 +203,9 @@
         "title": "Education",
         "body": "Smarter platforms for learning, tutoring, administrative operations, and student experiences.",
         "bullets": [
-          "Learning platforms",
-          "AI tutor assistance",
-          "Operations systems"
+          "Learning Platforms",
+          "Admin Automation",
+          "AI Guidance Systems"
         ]
       },
       {
@@ -215,9 +215,9 @@
         "title": "Service Operations",
         "body": "End-to-end systems for service businesses that need efficiency, visibility, and seamless customer journeys.",
         "bullets": [
-          "Booking & scheduling",
-          "Customer journey automation",
-          "CRM & operations"
+          "Booking & Scheduling",
+          "Customer Journey Automation",
+          "CRM & Operations"
         ]
       },
       {
@@ -227,16 +227,16 @@
         "title": "Public & Environmental Systems",
         "body": "Intelligent systems for monitoring, environmental operations, and public data coordination.",
         "bullets": [
-          "Environmental monitoring",
-          "Data intelligence",
-          "Workflow coordination"
+          "Environmental Monitoring",
+          "Data Intelligence",
+          "Workflow Coordination"
         ]
       }
     ],
     "learnMoreLabel": "Learn more",
-    "pageTitle": "Solutions for mission-driven",
-    "pageHighlight": "industries.",
-    "pageBody": "We partner with organizations where impact matters most—delivering intelligent systems that improve outcomes, streamline operations, and drive meaningful change.",
+    "pageTitle": "Built for real",
+    "pageHighlight": "operations.",
+    "pageBody": "We focus on industries where complex workflows, disconnected systems, and manual work create real friction.",
     "stats": [
       {
         "value": "100+",
@@ -273,7 +273,12 @@
         "title": "Built to scale",
         "body": "Modular, flexible, and ready to grow with you."
       }
-    ]
+    ],
+    "pageEyebrow": "INDUSTRIES",
+    "exploreLabel": "Explore this industry",
+    "pageOpenDoorTitle": "Have a different operational challenge?",
+    "pageOpenDoorBody": "Let's discuss how we can help.",
+    "pageOpenDoorCta": "Talk to our team"
   },
   "caseStudy": {
     "eyebrow": "CASE STUDY",

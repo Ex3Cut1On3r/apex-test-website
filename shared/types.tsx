@@ -104,6 +104,11 @@ export type IndustriesContent = {
   openDoorBody: string;
   openDoorCta: string;
   learnMoreLabel?: string;
+  pageEyebrow?: string;
+  exploreLabel?: string;
+  pageOpenDoorTitle?: string;
+  pageOpenDoorBody?: string;
+  pageOpenDoorCta?: string;
   pageTitle?: string;
   pageHighlight?: string;
   pageBody?: string;
