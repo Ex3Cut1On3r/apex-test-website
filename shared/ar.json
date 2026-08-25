@@ -8,11 +8,11 @@
   "nav": [
     {
       "label": "الحلول",
-      "href": "/solutions"
+      "href": "/#solutions"
     },
     {
       "label": "القطاعات",
-      "href": "/industries"
+      "href": "/#industries"
     },
     {
       "label": "دراسات الحالة",
@@ -20,19 +20,19 @@
     },
     {
       "label": "المنهجية",
-      "href": "/method"
+      "href": "/#method"
     },
     {
       "label": "المنتجات",
-      "href": "/products"
+      "href": "/#products"
     },
     {
       "label": "الأخبار",
-      "href": "/blogs"
+      "href": "/#blogs"
     },
     {
       "label": "الوظائف",
-      "href": "/careers"
+      "href": "/#careers"
     }
   ],
   "hero": {

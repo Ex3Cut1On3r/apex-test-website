@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import type { ContactRequest, ContactResponse } from "@/shared/types";
+import { sendAdminEmail, ADMIN_RECIPIENT } from "@/shared/mailer";
 
 function isEmail(value: string) {
   return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
@@ -25,6 +26,39 @@ export async function POST(request: Request) {
 
   const lead: ContactRequest & { submittedAt: string } = { name, email, company, message, submittedAt: new Date().toISOString() };
   const webhookUrl = process.env.APEX_CONTACT_WEBHOOK_URL;
+
+  /*
+   * The careers form posts here too, passing the role as `company`. Label the
+   * two so the inbox can tell an application from a project enquiry.
+   */
+  const isApplication = message.startsWith("Application for:");
+  const subject = isApplication
+    ? `New job application - ${company || "General"} - ${name}`
+    : `New enquiry from ${name}${company ? ` (${company})` : ""}`;
+
+  // Delivery must not cost the applicant their submission, so failures here
+  // are logged and the request still succeeds.
+  try {
+    const result = await sendAdminEmail({
+      subject,
+      replyTo: email,
+      text: [
+        subject,
+        "",
+        `Name:      ${name}`,
+        `Email:     ${email}`,
+        `${isApplication ? "Role:     " : "Company:  "} ${company || "—"}`,
+        `Submitted: ${lead.submittedAt}`,
+        "",
+        message,
+      ].join("\n"),
+    });
+    if (!result.delivered) {
+      console.warn(`APEX: no mail transport configured; ${ADMIN_RECIPIENT} was not emailed.`);
+    }
+  } catch (error) {
+    console.error("APEX admin email failed", error);
+  }
 
   if (webhookUrl) {
     try {

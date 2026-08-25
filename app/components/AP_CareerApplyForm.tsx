@@ -70,24 +70,21 @@ export default function AP_CareerApplyForm({ roles, locations, note, labels }: P
       return;
     }
 
-    const details = [
-      `Application for: ${role || labels.roleGeneralOption}`,
-      `Phone: ${String(form.get("phone") ?? "").trim()}`,
-      `Location: ${String(form.get("location") ?? "").trim()}`,
-      `LinkedIn / portfolio: ${String(form.get("linkedin") ?? "").trim() || "—"}`,
-      `Resume: ${resume.name}`,
-      "",
-      cover.trim(),
-    ].join("\n");
+    // Multipart so the CV itself is uploaded, not just its name.
+    const payload = new FormData();
+    payload.set("name", name);
+    payload.set("email", email);
+    payload.set("role", role || labels.roleGeneralOption);
+    payload.set("phone", String(form.get("phone") ?? "").trim());
+    payload.set("location", String(form.get("location") ?? "").trim());
+    payload.set("linkedin", String(form.get("linkedin") ?? "").trim());
+    payload.set("cover", cover.trim().slice(0, COVER_LIMIT));
+    payload.set("resume", resume, resume.name);
 
     setSending(true);
     setStatus(null);
     try {
-      const response = await fetch("/api/contact", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email, company: role, message: details.slice(0, COVER_LIMIT) }),
-      });
+      const response = await fetch("/api/apply", { method: "POST", body: payload });
       const result = (await response.json()) as { ok: boolean; error?: string };
       if (!result.ok) throw new Error(result.error || labels.errorGeneric);
       setStatus({ tone: "ok", text: labels.success });

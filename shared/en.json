@@ -8,11 +8,11 @@
   "nav": [
     {
       "label": "Solutions",
-      "href": "/solutions"
+      "href": "/#solutions"
     },
     {
       "label": "Industries",
-      "href": "/industries"
+      "href": "/#industries"
     },
     {
       "label": "Case Studies",
@@ -20,19 +20,19 @@
     },
     {
       "label": "Method",
-      "href": "/method"
+      "href": "/#method"
     },
     {
       "label": "Products",
-      "href": "/products"
+      "href": "/#products"
     },
     {
       "label": "Blogs",
-      "href": "/blogs"
+      "href": "/#blogs"
     },
     {
       "label": "Careers",
-      "href": "/careers"
+      "href": "/#careers"
     }
   ],
   "hero": {
