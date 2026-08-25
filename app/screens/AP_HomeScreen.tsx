@@ -27,7 +27,7 @@ export default async function AP_HomeScreen() {
           <div className="mx-auto flex w-[min(1640px,86%)] flex-wrap justify-center gap-y-4">
             {data.solutions.items.map((item) => (
               <div key={item.key} className="flex min-w-[min(180px,46%)] flex-1 basis-1/6 items-center gap-2.5 px-3">
-                <span className="text-[11px] font-extrabold text-hx-cyan">{item.number}</span>
+                <span className="text-[11px] font-extrabold text-hx-cyanInk">{item.number}</span>
                 <strong className="min-w-0 text-[11.5px] font-bold leading-[1.35] text-hx-ink">{item.title}</strong>
               </div>
             ))}

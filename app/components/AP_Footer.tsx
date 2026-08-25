@@ -21,7 +21,7 @@ export default function AP_Footer({ nav, content, social }: { nav: NavItem[]; co
           <Link prefetch={false} href="/" aria-label="APEX home" className="inline-block">
             <Image src="/api/assets/logo/apex-logo.svg" alt="APEX" width={140} height={43} />
           </Link>
-          {content.tagline && <p className="mt-4 text-[12px] font-bold tracking-[-0.01em] text-hx-cyan">{content.tagline}</p>}
+          {content.tagline && <p className="mt-4 text-[12px] font-bold tracking-[-0.01em] text-hx-cyanInk">{content.tagline}</p>}
           {content.body && <p className="mt-2.5 max-w-[300px] text-[11.5px] leading-[1.7] text-hx-copy">{content.body}</p>}
           <div className="ap-footer-social mt-6"><AP_SocialLinks social={social} /></div>
         </div>
@@ -30,14 +30,14 @@ export default function AP_Footer({ nav, content, social }: { nav: NavItem[]; co
         {columns.map((column) => (
           <nav key={column.title} className="min-w-[min(145px,100%)] flex-1 basis-[13%]" aria-label={column.title}>
             <strong className="block text-[10px] font-extrabold uppercase tracking-[0.15em] text-hx-ink/70">{column.title}</strong>
-            <span aria-hidden="true" className="mt-3 block h-px w-8 bg-hx-cyan/45" />
+            <span aria-hidden="true" className="mt-3 block h-px w-8 bg-hx-cyan2/45" />
             <ul className="mt-4 flex list-none flex-col gap-2.5 p-0">
               {column.links.map((link) => (
                 <li key={`${column.title}-${link.label}`}>
                   <Link
                     prefetch={false}
                     href={link.href}
-                    className="inline-block text-[11.5px] leading-[1.45] text-hx-copy transition-colors duration-150 hover:text-hx-cyan"
+                    className="inline-block text-[11.5px] leading-[1.45] text-hx-copy transition-colors duration-150 hover:text-hx-cyanInk"
                   >{link.label}</Link>
                 </li>
               ))}
@@ -48,7 +48,7 @@ export default function AP_Footer({ nav, content, social }: { nav: NavItem[]; co
         {/* newsletter */}
         <div className="min-w-[min(250px,100%)] flex-[1.4] basis-[20%]">
           <strong className="block text-[10px] font-extrabold uppercase tracking-[0.15em] text-hx-ink/70">{content.newsletterTitle ?? ""}</strong>
-          <span aria-hidden="true" className="mt-3 block h-px w-8 bg-hx-cyan/45" />
+          <span aria-hidden="true" className="mt-3 block h-px w-8 bg-hx-cyan2/45" />
           <p className="mt-4 max-w-[300px] text-[11.5px] leading-[1.6] text-hx-copy">{content.newsletterBody ?? ""}</p>
           <div className="ap-footer-subscribe mt-4 max-w-[320px]"><AP_SubscribeForm /></div>
         </div>
@@ -64,7 +64,7 @@ export default function AP_Footer({ nav, content, social }: { nav: NavItem[]; co
                 key={link.label}
                 prefetch={false}
                 href={link.href}
-                className="text-[10.5px] text-hx-muted transition-colors duration-150 hover:text-hx-cyan"
+                className="text-[10.5px] text-hx-muted transition-colors duration-150 hover:text-hx-cyanInk"
               >{link.label}</Link>
             ))}
           </div>

@@ -8,7 +8,7 @@ import AP_Icon from "@/app/components/AP_Icon";
  * on a line. Zero-height ghosts close a partly filled last row.
  */
 const shell = "mx-auto w-[min(1640px,86%)]";
-const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan";
+const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyanInk";
 const exploreRow = "mt-auto flex items-center gap-3 pt-[clamp(8px,2.1vh,28px)] text-[clamp(11px,1.6vh,13px)] font-bold";
 const arrowDisc = "grid h-8 w-8 shrink-0 place-items-center rounded-full transition-transform group-hover:translate-x-0.5";
 
@@ -120,7 +120,7 @@ export default function AP_Solutions({ content, standalone = false }: { content:
           <span className={eyebrow}>{content.eyebrow}</span>
           <h2 className="mt-3 text-[clamp(26px,2.4vw,34px)] font-bold leading-[1.15] tracking-[-0.02em] text-hx-ink">{content.title}</h2>
           <p className="mt-4 max-w-[420px] text-[13px] leading-[1.7] text-hx-copy">{content.body}</p>
-          <Link href="/solutions" className="mt-5 inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:text-[#0c7fae]">
+          <Link href="/solutions" className="mt-5 inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyanInk transition-colors hover:text-[#00897E]">
             <span>{content.cta}</span><AP_Icon name="arrow-right" className="h-[13px] w-[13px]" />
           </Link>
         </div>
@@ -137,7 +137,7 @@ export default function AP_Solutions({ content, standalone = false }: { content:
                 <h3 className="min-w-0 text-[17px] font-bold leading-tight text-hx-ink">{item.title}</h3>
               </div>
               <p className="mt-3 text-[12.5px] leading-[1.6] text-hx-copy">{item.body}</p>
-              <span aria-hidden="true" className="mt-auto flex justify-end pt-5 text-hx-cyan">
+              <span aria-hidden="true" className="mt-auto flex justify-end pt-5 text-hx-cyanInk">
                 <AP_Icon name="arrow-right" className="h-[18px] w-[18px]" />
               </span>
             </article>

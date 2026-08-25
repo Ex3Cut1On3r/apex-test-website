@@ -4,7 +4,7 @@
  */
 const NAV = ["Triggers", "Tasks", "Decisions", "Integrations", "Notifications"];
 const SUMMARY = [
-  { label: "Total Runs", value: "342", tone: "text-px-cyan" },
+  { label: "Total Runs", value: "342", tone: "text-px-cyanInk" },
   { label: "Completed", value: "321", tone: "text-emerald-500" },
   { label: "In Progress", value: "18", tone: "text-amber-500" },
   { label: "Failed", value: "3", tone: "text-rose-500" },
@@ -36,7 +36,7 @@ export default function AP_ProductPreview() {
             </span>
           </div>
           <div className="mt-1 flex gap-2 border-b border-px-line pb-1 text-[5.5px] text-px-muted">
-            <span className="border-b border-px-cyan pb-1 font-bold text-px-cyan">Designer</span><span>Versions</span><span>Settings</span>
+            <span className="border-b border-px-cyan pb-1 font-bold text-px-cyanInk">Designer</span><span>Versions</span><span>Settings</span>
           </div>
           <div className="flex flex-col items-center gap-1.5 py-2.5">
             <span className="rounded-md bg-emerald-500 px-2 py-1 text-[6px] font-bold text-white">Start</span>

@@ -28,7 +28,7 @@ export default function AP_ProductConsole() {
     <div aria-hidden="true" className="flex w-full min-w-0 overflow-hidden rounded-xl border border-px-line bg-white shadow-[0_18px_44px_rgba(10,26,44,.12)]">
       {/* rail */}
       <div className="flex w-9 shrink-0 flex-col items-center gap-3.5 bg-[#10232f] py-3">
-        <span className="h-4 w-4 rounded bg-px-cyan/70" />
+        <span className="h-4 w-4 rounded bg-px-cyan2/70" />
         {Array.from({ length: 5 }).map((_, i) => <span key={i} className="h-3 w-3 rounded-sm bg-white/15" />)}
       </div>
 
@@ -44,7 +44,7 @@ export default function AP_ProductConsole() {
               <span className="block truncate text-[6px] text-px-muted">{tile.label}</span>
               <span className="mt-0.5 flex items-baseline gap-1">
                 <b className="text-[13px] font-bold leading-none text-px-ink">{tile.value}</b>
-                <i className="text-[5.5px] not-italic text-px-cyan">{tile.tag}</i>
+                <i className="text-[5.5px] not-italic text-px-cyanInk">{tile.tag}</i>
               </span>
             </div>
           ))}
@@ -59,7 +59,7 @@ export default function AP_ProductConsole() {
               <path d="M0 58 L28 50 L56 52 L84 36 L112 30 L140 20 L168 22 L196 12 L220 8 V66 H0Z" fill="#1f8fce" fillOpacity=".08" />
             </svg>
             <div className="mt-1 flex gap-2.5 text-[5.5px] text-px-muted">
-              <span className="flex items-center gap-1"><i className="block h-1 w-1 rounded-full bg-px-cyan" />Completed</span>
+              <span className="flex items-center gap-1"><i className="block h-1 w-1 rounded-full bg-px-cyan2" />Completed</span>
               <span className="flex items-center gap-1"><i className="block h-1 w-1 rounded-full bg-px-line" />In Progress</span>
             </div>
           </div>
@@ -71,7 +71,7 @@ export default function AP_ProductConsole() {
               {CATEGORIES.map((c) => (
                 <li key={c.label} className="flex items-center gap-1.5 text-[5.5px] text-px-muted">
                   <span className="w-12 shrink-0 truncate">{c.label}</span>
-                  <span className="h-1 flex-1 rounded-full bg-px-tint"><i className="block h-1 rounded-full bg-px-cyan" style={{ width: c.w }} /></span>
+                  <span className="h-1 flex-1 rounded-full bg-px-tint"><i className="block h-1 rounded-full bg-px-cyan2" style={{ width: c.w }} /></span>
                   <b className="shrink-0 font-semibold text-px-ink">{c.value}</b>
                 </li>
               ))}

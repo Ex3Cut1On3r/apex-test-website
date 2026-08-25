@@ -13,8 +13,8 @@ import AP_BlogCover from "@/app/components/AP_BlogCover";
  * shrink when alone on a line. Spacing uses clamp().
  */
 const shell = "mx-auto w-[min(1640px,86%)]";
-const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan";
-const readMore = "mt-auto inline-flex items-center gap-1.5 pt-3 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan hover:text-[#0c7fae]";
+const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyanInk";
+const readMore = "mt-auto inline-flex items-center gap-1.5 pt-3 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyanInk hover:text-[#00897E]";
 
 export default async function AP_BlogsScreen() {
   const { data } = await getCmsContent("en");
@@ -34,7 +34,7 @@ export default async function AP_BlogsScreen() {
             <div className="min-w-[min(420px,100%)] flex-1 basis-[46%]">
               <span className={eyebrow}>{page.eyebrow}</span>
               <h1 className="mt-3 text-[clamp(30px,3.1vw,46px)] font-bold leading-[1.1] tracking-[-0.03em] text-hx-ink">
-                {page.title}<br /><span className="text-hx-cyan">{page.highlight}</span>
+                {page.title}<br /><span className="text-hx-cyanInk">{page.highlight}</span>
               </h1>
               <p className="mt-4 max-w-[480px] text-[12.5px] leading-[1.7] text-hx-copy">{page.body}</p>
               <div className="mt-5 max-w-[420px]">
@@ -64,7 +64,7 @@ export default async function AP_BlogsScreen() {
                     {featured.image ? <img src={featured.image} alt={featured.title} /> : <AP_BlogCover variant="feature" />}
                   </div>
                   <div className="absolute inset-y-0 right-0 flex w-[52%] flex-col items-center justify-center gap-2 px-4 text-center">
-                    <strong className="text-[clamp(24px,2.6vw,38px)] font-bold leading-none tracking-[-0.03em] text-hx-cyan">{featured.statValue}</strong>
+                    <strong className="text-[clamp(24px,2.6vw,38px)] font-bold leading-none tracking-[-0.03em] text-hx-cyanInk">{featured.statValue}</strong>
                     <small className="text-[10px] font-bold uppercase tracking-[0.12em] text-hx-ink">{featured.statLabel}</small>
                     {featured.badge && <span className="mt-1 rounded-full bg-[#0b2233] px-3 py-1.5 text-[10px] font-semibold text-white">{featured.badge}</span>}
                   </div>
@@ -78,7 +78,7 @@ export default async function AP_BlogsScreen() {
                 <span
                   key={category}
                   className={index === 0
-                    ? "rounded-md bg-hx-cyan px-3.5 py-2 text-[10.5px] font-bold text-white"
+                    ? "rounded-md bg-hx-cyan2 px-3.5 py-2 text-[10.5px] font-bold text-white"
                     : "rounded-md border border-hx-line bg-white px-3.5 py-2 text-[10.5px] font-bold text-hx-copy"}
                 >{category}</span>
               ))}
@@ -93,7 +93,7 @@ export default async function AP_BlogsScreen() {
                   </div>
                   <div className="flex flex-1 flex-col p-3.5">
                     <div className="flex flex-wrap items-baseline justify-between gap-x-2">
-                      <span className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-hx-cyan">{update.category}</span>
+                      <span className="text-[10px] font-extrabold uppercase tracking-[0.1em] text-hx-cyanInk">{update.category}</span>
                       <span className="text-[10px] text-hx-muted">{update.date}</span>
                     </div>
                     <h3 className="mt-2 text-[12px] font-bold leading-[1.3] text-hx-ink">{update.title}</h3>
@@ -122,13 +122,13 @@ export default async function AP_BlogsScreen() {
                 {milestones.map((milestone, index) => (
                   <li key={milestone.title} className="relative flex gap-3 pl-0">
                     <span className="relative flex flex-col items-center">
-                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-hx-tint text-hx-cyan">
+                      <span className="grid h-8 w-8 shrink-0 place-items-center rounded-lg bg-hx-tint text-hx-cyanInk">
                         <AP_Icon name={milestone.icon ?? "spark"} className="h-4 w-4" />
                       </span>
                       {index < milestones.length - 1 && <span aria-hidden="true" className="mt-1 w-px flex-1 bg-hx-line" />}
                     </span>
                     <div className="min-w-0 pb-1">
-                      <span className="block text-[10px] font-extrabold uppercase tracking-[0.1em] text-hx-cyan">{milestone.date}</span>
+                      <span className="block text-[10px] font-extrabold uppercase tracking-[0.1em] text-hx-cyanInk">{milestone.date}</span>
                       <strong className="mt-1 block text-[11.5px] font-bold leading-[1.3] text-hx-ink">{milestone.title}</strong>
                       <p className="mt-1 text-[10px] leading-[1.45] text-hx-copy">{milestone.body}</p>
                     </div>

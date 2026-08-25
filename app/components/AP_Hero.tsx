@@ -13,7 +13,7 @@ export default function AP_Hero({ hero }: { hero: HeroContent }) {
     <section className="border-b border-hx-line bg-[linear-gradient(180deg,#ffffff_0%,#f7fbfe_100%)]">
       <div className={`${shell} flex flex-wrap items-center gap-x-10 gap-y-8 py-[clamp(2rem,3.5vw,3.25rem)]`}>
         <div className="min-w-[min(440px,100%)] flex-1 basis-[42%]">
-          <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan">{hero.eyebrow}</span>
+          <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyanInk">{hero.eyebrow}</span>
           <h1 className="mt-3.5 text-[clamp(38px,3.9vw,62px)] font-bold leading-[1.08] tracking-[-0.035em] text-hx-ink">
             {hero.lines[0]}<br />{hero.lines[1]}{hero.lines[2] ? <><br />{hero.lines[2]}</> : null}
             {hero.highlight ? <span className="text-apex-coral">{hero.highlight}</span> : null}
@@ -21,11 +21,11 @@ export default function AP_Hero({ hero }: { hero: HeroContent }) {
           {hero.body ? <p className="mt-4 max-w-[560px] whitespace-pre-line text-[13.5px] leading-[1.75] text-hx-copy">{hero.body}</p> : null}
 
           <div className="mt-7 flex flex-wrap items-center gap-3">
-            <Link href="/solutions" className={`${button} bg-hx-cyan text-white hover:bg-[#0c7fae]`}>
+            <Link href="/solutions" className={`${button} bg-hx-cyan2 text-white hover:bg-[#00695F]`}>
               <span>{hero.primaryCta}</span><AP_Icon name="arrow-right" />
             </Link>
             <AP_ContactLink
-              className={`${button} border border-hx-line bg-white text-hx-ink hover:border-hx-cyan hover:text-hx-cyan`}
+              className={`${button} border border-hx-line bg-white text-hx-ink hover:border-hx-cyan hover:text-hx-cyanInk`}
               icon="arrow-up-right"
             >{hero.secondaryCta}</AP_ContactLink>
           </div>

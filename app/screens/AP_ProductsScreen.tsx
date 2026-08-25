@@ -19,7 +19,7 @@ const ITEM_ICONS: AP_IconName[] = ["flow", "chart", "sparkles", "layers"];
 const shell = "mx-auto w-[min(1640px,86%)]";
 const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-px-cyan2";
 const button = "inline-flex h-[34px] items-center justify-center gap-2 rounded px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] transition-colors [&_svg]:h-[13px] [&_svg]:w-[13px]";
-const textLink = "inline-flex items-center gap-2 text-[10.5px] font-extrabold text-px-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]";
+const textLink = "inline-flex items-center gap-2 text-[10.5px] font-extrabold text-px-cyanInk transition-colors hover:text-[#00897E] [&_svg]:h-[13px] [&_svg]:w-[13px]";
 const split = "flex flex-wrap gap-x-2.5 gap-y-5";
 const splitLabel = "min-w-[min(16rem,100%)] shrink-0 grow-0 basis-64";
 const splitBody = "min-w-[min(560px,100%)] flex-1";
@@ -48,7 +48,7 @@ export default async function AP_ProductsScreen() {
             <div className="min-w-[min(460px,100%)] flex-1 basis-[44%]">
               <span className={eyebrow}>{page.eyebrow}</span>
               <h1 className="mt-3.5 text-[clamp(34px,3.4vw,54px)] font-bold leading-[1.04] tracking-[-0.03em] text-px-ink">
-                {page.title}<br /><span className="text-px-cyan">{page.highlight}</span>
+                {page.title}<br /><span className="text-px-cyanInk">{page.highlight}</span>
               </h1>
               <p className="mt-4 max-w-[560px] text-sm leading-[1.75] text-px-copy">{page.body}</p>
 
@@ -178,7 +178,7 @@ export default async function AP_ProductsScreen() {
             <div className="min-w-[min(240px,100%)] flex-1 basis-[20%] rounded-xl border border-px-line bg-white p-4">
               <strong className="block text-[13px] font-bold text-px-ink">{page.deployCardTitle ?? "See it in your brand"}</strong>
               <p className="mt-2 text-[11px] leading-[1.55] text-px-copy">{page.deployCardBody}</p>
-              <a href="#cta" className={`${button} mt-4 bg-px-cyan text-white hover:bg-[#0c7fae]`}>
+              <a href="#cta" className={`${button} mt-4 bg-px-cyan2 text-white hover:bg-[#00695F]`}>
                 <span>{page.deployCardCta ?? "Book a demo"}</span><AP_Icon name="arrow-right" />
               </a>
             </div>
@@ -195,7 +195,7 @@ export default async function AP_ProductsScreen() {
                   <AP_Icon name="flow" className="h-8 w-8 shrink-0 text-px-cyan2" />
                   <div className="min-w-0">
                     <strong className="block text-[22px] font-bold leading-tight tracking-[-0.02em] text-px-ink">{page.featuredName}</strong>
-                    <small className="block text-[11.5px] font-semibold text-px-cyan">{page.featuredCategory}</small>
+                    <small className="block text-[11.5px] font-semibold text-px-cyanInk">{page.featuredCategory}</small>
                   </div>
                 </div>
                 <p className="mt-3 text-[11.5px] leading-[1.6] text-px-copy">{page.featuredBody}</p>

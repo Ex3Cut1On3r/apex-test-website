@@ -90,8 +90,8 @@ p, h1, h2, h3 { overflow-wrap: break-word; }
 .button svg { width: 16px; height: 16px; }
 .button:hover { transform: translateY(-1px); }
 .button:focus-visible, a:focus-visible, .mobile-menu-button:focus-visible { outline: 3px solid rgba(0,179,164,.22); outline-offset: 3px; }
-.button-primary { background: var(--ap-ref-cyan); color: #fff; box-shadow: 0 12px 28px rgba(15,155,212,.18); }
-.button-primary:hover { background: var(--ap-ref-cyan-dark); box-shadow: 0 15px 34px rgba(15,155,212,.22); }
+.button-primary { background: var(--ap-ref-cyan); color: #fff; box-shadow: 0 12px 28px rgba(0,137,126,.18); }
+.button-primary:hover { background: var(--ap-ref-cyan-dark); box-shadow: 0 15px 34px rgba(0,137,126,.22); }
 .button-secondary { background: #fff !important; color: var(--ink) !important; border: 1px solid #B7C1C6 !important; box-shadow: none !important; }
 .button-secondary:hover { border-color: #87949A !important; background: #FBFCFC !important; }
 .nav-button { min-height: 42px; padding-inline: 18px; }
@@ -336,7 +336,7 @@ p, h1, h2, h3 { overflow-wrap: break-word; }
 
 
 /* Shared component primitives */
-.button-plain { background: transparent; color: var(--ap-ref-cyan); box-shadow: none; border: 0; padding-inline: 0; }
+.button-plain { background: transparent; color: #009B8E; box-shadow: none; border: 0; padding-inline: 0; }
 .ap-textbox { width: 100%; border: 1px solid #CAD4D8; border-radius: 8px; background: #FBFCFC; padding: 12px 13px; color: var(--ink); outline: 0; font-size: 13px; font-weight: 500; }
 .ap-textbox:focus { border-color: var(--teal); box-shadow: 0 0 0 3px rgba(0,179,164,.10); background: #fff; }
 .ap-textarea { resize: vertical; min-height: 120px; }
@@ -1091,8 +1091,8 @@ p, h1, h2, h3 { overflow-wrap: break-word; }
 
 :root {
   --ap-ref-max: 1180px;
-  --ap-ref-cyan: #0f9bd4;
-  --ap-ref-cyan-dark: #0c7fae;
+  --ap-ref-cyan: #00897E;
+  --ap-ref-cyan-dark: #00695F;
   --ap-ref-ink: #0d2537;
   --ap-ref-copy: #5e6e79;
   --ap-ref-line: #dfe8eb;
@@ -1673,7 +1673,7 @@ body { color: var(--ap-ref-ink); background: #fff; }
   transition: border-color .16s ease, box-shadow .16s ease;
 }
 .ap-footer-subscribe .subscribe-form:focus-within {
-  border-color: var(--ap-ref-cyan); box-shadow: 0 0 0 3px rgba(15,155,212,.14);
+  border-color: var(--ap-ref-cyan); box-shadow: 0 0 0 3px rgba(0,137,126,.14);
 }
 .ap-footer-subscribe .subscribe-form .ap-textbox {
   flex: 1; min-width: 0; height: 40px; padding: 0 12px;

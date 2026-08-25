@@ -11,7 +11,7 @@ export default function AP_CaseStudy({ content }: { content: CaseStudyContent })
     <section id="case-studies" className="border-b border-hx-line bg-white py-[clamp(2rem,4vw,3.5rem)]">
       <div className={`${shell} flex flex-wrap items-center gap-x-[clamp(2rem,4vw,4rem)] gap-y-8`}>
         <div className="min-w-[min(320px,100%)] flex-1 basis-[42%]">
-          <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan">{content.eyebrow}</span>
+          <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyanInk">{content.eyebrow}</span>
           <h2 className="mt-3 text-[clamp(24px,2.3vw,32px)] font-bold leading-[1.18] tracking-[-0.02em] text-hx-ink">{content.headline}</h2>
           <p className="mt-4 max-w-[520px] text-[12.5px] leading-[1.7] text-hx-copy">{content.body}</p>
 
@@ -27,7 +27,7 @@ export default function AP_CaseStudy({ content }: { content: CaseStudyContent })
             ))}
           </div>
 
-          <AP_CaseStudyButton className="mt-6 inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]">
+          <AP_CaseStudyButton className="mt-6 inline-flex items-center gap-2 text-[11px] font-extrabold uppercase tracking-[0.08em] text-hx-cyanInk transition-colors hover:text-[#00897E] [&_svg]:h-[13px] [&_svg]:w-[13px]">
             {content.cta} <AP_Icon name="arrow-right" />
           </AP_CaseStudyButton>
         </div>

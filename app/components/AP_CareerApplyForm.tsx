@@ -177,7 +177,7 @@ export default function AP_CareerApplyForm({ roles, locations, note, labels }: P
             >
               <AP_Icon name="upload-cloud" className="mb-1 h-6 w-6 text-cx-cyan2" />
               <b className="max-w-full truncate px-2 text-[11px] font-bold text-cx-ink">{resume ? resume.name : labels.resumeDropTitle}</b>
-              <u className="text-[11px] font-bold text-cx-cyan no-underline">{resume ? labels.resumeReplace : labels.resumeDropBrowse}</u>
+              <u className="text-[11px] font-bold text-cx-cyanInk no-underline">{resume ? labels.resumeReplace : labels.resumeDropBrowse}</u>
               <small className="text-[10px] text-cx-muted">{labels.resumeHint}</small>
             </div>
             <input ref={fileInput} type="file" accept=".pdf,.doc,.docx" hidden onChange={(event) => acceptFile(event.target.files?.[0])} />
@@ -192,7 +192,7 @@ export default function AP_CareerApplyForm({ roles, locations, note, labels }: P
         <button
           type="submit"
           disabled={sending}
-          className="inline-flex h-[34px] shrink-0 items-center justify-center gap-2 rounded bg-cx-cyan px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#0c7fae] disabled:cursor-not-allowed disabled:opacity-60 [&_svg]:h-[13px] [&_svg]:w-[13px]"
+          className="inline-flex h-[34px] shrink-0 items-center justify-center gap-2 rounded bg-cx-cyan2 px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#00695F] disabled:cursor-not-allowed disabled:opacity-60 [&_svg]:h-[13px] [&_svg]:w-[13px]"
         >
           <span>{sending ? labels.submitting : labels.submit}</span>
           <AP_Icon name="arrow-right" />

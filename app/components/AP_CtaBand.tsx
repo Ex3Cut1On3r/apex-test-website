@@ -17,12 +17,12 @@ export default function AP_CtaBand({ content }: { content: MethodContent }) {
           </span>
 
           <h2 className="relative z-[1] min-w-[min(300px,100%)] flex-1 text-[clamp(20px,2vw,28px)] font-bold leading-[1.22] tracking-[-0.02em] text-hx-ink">
-            {content.ctaTitle}<br />{content.ctaBodyLead ?? "your business can"} <span className="text-hx-cyan">{content.ctaHighlight}</span>
+            {content.ctaTitle}<br />{content.ctaBodyLead ?? "your business can"} <span className="text-hx-cyanInk">{content.ctaHighlight}</span>
           </h2>
 
           <div className="relative z-[1] flex min-w-[min(280px,100%)] flex-1 flex-col items-start gap-3">
             <p className="max-w-[320px] text-[11.5px] leading-[1.55] text-hx-copy">{content.ctaBody}</p>
-            <AP_ContactLink className="inline-flex h-[34px] items-center gap-2 rounded bg-hx-cyan px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]">
+            <AP_ContactLink className="inline-flex h-[34px] items-center gap-2 rounded bg-hx-cyan2 px-[18px] text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-white transition-colors hover:bg-[#00695F] [&_svg]:h-[13px] [&_svg]:w-[13px]">
               {content.cta}
             </AP_ContactLink>
           </div>

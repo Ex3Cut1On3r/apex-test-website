@@ -9,8 +9,8 @@ import AP_IndustriesGlobe from "@/app/components/AP_IndustriesGlobe";
 
 export default function AP_Industries({ content, standalone = false }: { content: IndustriesContent; standalone?: boolean }) {
   const shell = "mx-auto w-[min(1640px,86%)]";
-  const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan";
-  const ctaLink = "mt-2 inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:text-[#0c7fae] [&_svg]:h-[13px] [&_svg]:w-[13px]";
+  const eyebrow = "block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyanInk";
+  const ctaLink = "mt-2 inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyanInk transition-colors hover:text-[#00897E] [&_svg]:h-[13px] [&_svg]:w-[13px]";
 
   if (standalone) {
     const [first, second, ...wide] = content.items;
@@ -145,7 +145,7 @@ export default function AP_Industries({ content, standalone = false }: { content
           <span className={eyebrow}>{content.eyebrow}</span>
           <h2 className="mt-3 text-[clamp(26px,2.4vw,34px)] font-bold leading-[1.15] tracking-[-0.02em] text-hx-ink">{content.title}</h2>
           <p className="mt-4 max-w-[380px] text-[13px] leading-[1.7] text-hx-copy">{content.body}</p>
-          <Link href="/industries" className="mt-5 inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:text-[#0c7fae]">
+          <Link href="/industries" className="mt-5 inline-flex items-center gap-2 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyanInk transition-colors hover:text-[#00897E]">
             <span>{content.cta}</span><AP_Icon name="arrow-right" className="h-[13px] w-[13px]" />
           </Link>
         </div>
@@ -160,7 +160,7 @@ export default function AP_Industries({ content, standalone = false }: { content
                 <AP_Icon name={item.icon} className="h-[22px] w-[22px] shrink-0 text-hx-cyan" />
                 <h3 className="mt-2.5 text-[15px] font-bold leading-tight text-hx-ink">{item.title}</h3>
                 <p className="mt-2 text-[11.5px] leading-[1.55] text-hx-copy">{item.body}</p>
-                <Link href="/industries" className="mt-auto inline-flex items-center gap-1.5 pt-4 text-[10.5px] font-bold text-hx-cyan hover:text-[#0c7fae]">
+                <Link href="/industries" className="mt-auto inline-flex items-center gap-1.5 pt-4 text-[10.5px] font-bold text-hx-cyanInk hover:text-[#00897E]">
                   <span>{item.learnMore ?? content.learnMoreLabel ?? "Learn more"}</span><AP_Icon name="arrow-right" className="h-3 w-3" />
                 </Link>
               </div>

@@ -38,12 +38,12 @@ export default function AP_Insights({ blogs, solutions, compact = false }: { blo
     <section className={`border-t border-hx-line bg-hx-band ${compact ? "py-[clamp(2rem,4vw,3.25rem)]" : "py-[clamp(2.25rem,4.5vw,3.75rem)]"}`}>
       <div className={`${shell} flex flex-wrap gap-x-[clamp(2rem,5vw,5rem)] gap-y-8`}>
         <div className="min-w-[min(260px,100%)] flex-1 basis-[22%]">
-          <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyan">{blogs.insightsEyebrow ?? ""}</span>
+          <span className="block text-[10px] font-extrabold uppercase leading-tight tracking-[0.14em] text-hx-cyanInk">{blogs.insightsEyebrow ?? ""}</span>
           <h2 className="mt-3 text-[clamp(22px,2.1vw,28px)] font-bold leading-[1.2] tracking-[-0.02em] text-hx-ink">{blogs.insightsTitle ?? ""}</h2>
           <p className="mt-3 max-w-[330px] text-[11.5px] leading-[1.6] text-hx-copy">{blogs.insightsBody ?? ""}</p>
           <Link
             href="/blogs"
-            className="mt-5 inline-flex h-[34px] items-center gap-2 rounded border border-hx-line bg-white px-4 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyan transition-colors hover:border-hx-cyan"
+            className="mt-5 inline-flex h-[34px] items-center gap-2 rounded border border-hx-line bg-white px-4 text-[10.5px] font-extrabold uppercase tracking-[0.08em] text-hx-cyanInk transition-colors hover:border-hx-cyan"
           >
             <span>{blogs.insightsCta ?? ""}</span><AP_Icon name="arrow-right" className="h-[13px] w-[13px]" />
           </Link>
@@ -56,7 +56,7 @@ export default function AP_Insights({ blogs, solutions, compact = false }: { blo
                 {post.image ? <img src={post.image} alt={post.title} className="h-full w-full object-cover" /> : <PostArt index={index} />}
               </div>
               <div className="flex flex-1 flex-col p-4">
-                <span className="block text-[10px] font-extrabold uppercase tracking-[0.12em] text-hx-cyan">{post.category}</span>
+                <span className="block text-[10px] font-extrabold uppercase tracking-[0.12em] text-hx-cyanInk">{post.category}</span>
                 <h3 className="mt-2 text-[13.5px] font-bold leading-[1.3] text-hx-ink">{post.title}</h3>
                 <p className="mt-2 text-[11px] leading-[1.5] text-hx-copy">{post.body}</p>
                 <div className="mt-auto flex items-center justify-between gap-3 pt-4 text-[10px] text-hx-muted">
