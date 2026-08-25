@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getAdminSession } from "@/shared/auth";
 import { getContent, saveContent } from "@/shared/store";
+import { publishContentUpdate } from "@/shared/realtime";
 import type {
   AdminContentGetResponse,
   AdminContentUpdateRequest,
@@ -42,6 +43,8 @@ export async function PUT(request: Request) {
       return NextResponse.json<AdminContentUpdateResponse>({ ok: false, error: "Content payload is incomplete." }, { status: 422 });
     }
     const result = await saveContent(locale, body.content);
+    // Tell every open page to pull the new content in.
+    publishContentUpdate(locale);
     return NextResponse.json<AdminContentUpdateResponse>({ ok: true, ...result });
   } catch (error) {
     return NextResponse.json<AdminContentUpdateResponse>({ ok: false, error: error instanceof Error ? error.message : "Could not publish content" }, { status: 500 });

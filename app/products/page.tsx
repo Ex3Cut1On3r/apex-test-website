@@ -8,3 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default function ProductsPage() { return <AP_ProductsScreen />; }
+
+/* Rendered per request so CMS edits appear without a redeploy. */
+export const dynamic = "force-dynamic";

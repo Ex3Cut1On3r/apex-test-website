@@ -8,3 +8,6 @@ export const metadata: Metadata = {
 };
 
 export default function BlogsPage() { return <AP_BlogsScreen />; }
+
+/* Rendered per request so CMS edits appear without a redeploy. */
+export const dynamic = "force-dynamic";
