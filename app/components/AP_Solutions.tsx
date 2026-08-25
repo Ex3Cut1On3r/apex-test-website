@@ -18,10 +18,11 @@ const arrowDisc = "grid h-8 w-8 shrink-0 place-items-center rounded-full transit
  * it, as in the approved artwork. Columns come from auto-fit so the grid still
  * reflows without a media query. Teal here matches the artwork.
  */
-function SolutionsPage({ content }: { content: SolutionsContent }) {
+function SolutionsPage({ content, embedded = false }: { content: SolutionsContent; embedded?: boolean }) {
   const items: SolutionItem[] = content.pageItems?.length ? content.pageItems : content.items;
   const [featured, ...rest] = items;
   const explore = content.exploreLabel ?? "Explore capability";
+  const Title = embedded ? "h2" : "h1";
   /* row 1: 4 + 3 + 3 columns, row 2: the featured card's 4 plus 2 + 2 + 2 */
   /* 20-column placement, matching the artwork: 01 spans cols 1-8 and overhangs
      into row 2, where 04 overlaps its notched corner. */
@@ -37,9 +38,14 @@ function SolutionsPage({ content }: { content: SolutionsContent }) {
     <section id="solutions" className="bg-sx-page pb-[clamp(0.5rem,3.2vh,4.5rem)] pt-[clamp(0.6rem,1.8vh,2.5rem)]">
       <div className={shell}>
         <div className="mx-auto max-w-[820px] text-center">
-          <h1 className="text-[clamp(26px,min(3.4vw,5.4vh),50px)] font-bold leading-[1.1] tracking-[-0.03em] text-hx-ink">
+          {embedded && content.eyebrow ? (
+            <span className="mb-2 block text-[10px] font-extrabold uppercase leading-tight tracking-[0.16em] text-sx-teal">
+              {content.eyebrow}
+            </span>
+          ) : null}
+          <Title className="text-[clamp(26px,min(3.4vw,5.4vh),50px)] font-bold leading-[1.1] tracking-[-0.03em] text-hx-ink">
             {content.pageTitle}<br />{content.pageHighlight}{content.pageAccent ? <span className="text-sx-teal">{content.pageAccent}</span> : null}
-          </h1>
+          </Title>
           <p className="mx-auto mt-2 max-w-[700px] whitespace-pre-line text-[clamp(11.5px,1.7vh,13px)] leading-[1.7] text-hx-copy">{content.pageBody}</p>
         </div>
 
@@ -109,8 +115,8 @@ function SolutionsPage({ content }: { content: SolutionsContent }) {
   );
 }
 
-export default function AP_Solutions({ content, standalone = false }: { content: SolutionsContent; standalone?: boolean }) {
-  if (standalone) return <SolutionsPage content={content} />;
+export default function AP_Solutions({ content, standalone = false, embedded = false }: { content: SolutionsContent; standalone?: boolean; embedded?: boolean }) {
+  if (standalone) return <SolutionsPage content={content} embedded={embedded} />;
 
   /* Home: label column beside a 3-up card grid. */
   return (

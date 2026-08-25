@@ -35,6 +35,49 @@ export default function AP_Header({ nav, activePath = "" }: { nav: NavItem[]; ac
   const currentPath = activePath || pathname || "/";
 
   /*
+   * Nav items point at pages, but the home page now carries most of those as
+   * sections. Watch whichever of them are on this page and mark the one the
+   * reader is actually in, falling back to path matching when none are.
+   */
+  const [activeId, setActiveId] = useState("");
+  const navIds = nav
+    .map((item) => {
+      const [route, anchor] = item.href.split("#");
+      return anchor || (route || "/").replace(/^\//, "");
+    })
+    .filter(Boolean);
+  const navIdKey = navIds.join(",");
+
+  useEffect(() => {
+    const sections = navIdKey
+      .split(",")
+      .map((id) => document.getElementById(id))
+      .filter((el): el is HTMLElement => Boolean(el));
+    if (!sections.length) {
+      setActiveId("");
+      return;
+    }
+
+    const visible = new Set<string>();
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) visible.add(entry.target.id);
+          else visible.delete(entry.target.id);
+        });
+        // several can straddle the band; take the first in document order
+        const current = sections.find((section) => visible.has(section.id));
+        if (current) setActiveId(current.id);
+      },
+      // a thin band near the top of the viewport marks the section being read
+      { rootMargin: "-18% 0px -72% 0px", threshold: 0 },
+    );
+
+    sections.forEach((section) => observer.observe(section));
+    return () => observer.disconnect();
+  }, [navIdKey, pathname]);
+
+  /*
    * A Next <Link href="/#case-studies"> is a route navigation: it refetches the
    * RSC payload and re-renders the page, which reads as a flicker. When the
    * anchor is on the page we are already on, scroll to it directly instead.
@@ -54,9 +97,13 @@ export default function AP_Header({ nav, activePath = "" }: { nav: NavItem[]; ac
   const isActive = useCallback((href: string) => {
     const [rawRoute, anchor] = href.split("#");
     const route = rawRoute || "/";
+    const id = anchor || route.replace(/^\//, "");
+
+    // A section of this page is in view: it wins over the route.
+    if (activeId) return id === activeId;
     if (anchor) return route === currentPath && hash === `#${anchor}`;
     return route === currentPath;
-  }, [currentPath, hash]);
+  }, [currentPath, hash, activeId]);
 
   return (
     <header className="topbar ap-ref-header">

@@ -14,7 +14,7 @@ export default function AP_Footer({ nav, content, social }: { nav: NavItem[]; co
     : [{ title: "Company", links: nav.map((item) => ({ label: item.label, href: item.href })) }];
 
   return (
-    <footer id="about" className="border-t border-hx-line bg-[linear-gradient(180deg,#f7fafd_0%,#eef5fa_100%)] text-hx-ink">
+    <footer className="border-t border-hx-line bg-[linear-gradient(180deg,#f7fafd_0%,#eef5fa_100%)] text-hx-ink">
       <div className={`${shell} flex flex-wrap gap-x-[clamp(1.25rem,2.5vw,3rem)] gap-y-10 pb-10 pt-[clamp(2.5rem,4.5vw,3.5rem)]`}>
         {/* brand */}
         <div className="min-w-[min(240px,100%)] flex-[1.5] basis-[23%]">
