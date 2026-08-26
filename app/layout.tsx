@@ -75,7 +75,7 @@ export default async function RootLayout({ children }: { children: React.ReactNo
       <body>
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }} />
         {children}
-        <AP_PublicOverlays caseStudy={content.caseStudy} social={content.social} />
+        <AP_PublicOverlays caseStudy={content.caseStudy} social={content.social} contact={content.contact} />
         <AP_LiveContent />
       </body>
     </html>

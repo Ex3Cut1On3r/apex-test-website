@@ -325,6 +325,25 @@ export type BlogsPageContent = {
 };
 
 
+export type ContactContent = {
+  eyebrow: string;
+  title: string;
+  body: string;
+  points: string[];
+  replyNote: string;
+  nameLabel: string;
+  emailLabel: string;
+  companyLabel: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  submitLabel: string;
+  sendingLabel: string;
+  privacyNote: string;
+  successTitle: string;
+  successBody: string;
+  successCta: string;
+};
+
 export type SocialContent = {
   /** Full wa.me URL. Optional override; normally leave blank and set whatsappNumber. */
   whatsapp: string;
@@ -450,6 +469,7 @@ export type SiteContent = {
   blogs: BlogsPageContent;
   careers: CareersPageContent;
   social: SocialContent;
+  contact?: ContactContent;
   trust?: TrustContent;
 };
 

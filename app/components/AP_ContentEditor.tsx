@@ -5,7 +5,7 @@ import { AP_AdminIcon } from "@/app/components/AP_AdminIcons";
 import type { AP_IconName, Locale, SiteContent } from "@/shared/types";
 
 type EditorMode = "site" | "products" | "blogs" | "careers";
-type SiteSection = "meta" | "hero" | "about" | "solutions" | "industries" | "caseStudy" | "method" | "social" | "footer";
+type SiteSection = "meta" | "hero" | "about" | "solutions" | "industries" | "caseStudy" | "method" | "contactModal" | "social" | "footer";
 
 const siteSections: { key: SiteSection; label: string }[] = [
   { key: "meta", label: "Site & navigation" },
@@ -15,6 +15,7 @@ const siteSections: { key: SiteSection; label: string }[] = [
   { key: "industries", label: "Industries" },
   { key: "caseStudy", label: "Case study" },
   { key: "method", label: "Method" },
+  { key: "contactModal", label: "Contact form" },
   { key: "social", label: "Social & contact" },
   { key: "footer", label: "Footer" },
 ];
@@ -27,6 +28,7 @@ const sectionDescriptions: Record<SiteSection, string> = {
   industries: "Only active verticals belong here. The open-door row invites other operational challenges.",
   caseStudy: "The featured TutWithUs collaboration and the detailed case-study modal content.",
   method: "The APEX operating method, core principles, and final business-impact CTA.",
+  contactModal: "Every label in the \u201cLet\u2019s build together\u201d dialog. Submissions are emailed to the address set in APEX_NOTIFY_EMAIL.",
   social: "WhatsApp, LinkedIn, Instagram, and the local guided assistant labels. Social URLs are editable here; when left blank, the public site uses the fallback values from the JSON content files.",
   footer: "Legal copy and footer-level static content.",
 };
@@ -212,6 +214,12 @@ function renderSiteSection(section: SiteSection, content: SiteContent, change: (
 
   if (section === "method") {
     return <><SectionHead eyebrow="HOMEPAGE" title="APEX method" description={sectionDescriptions.method} /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("method.eyebrow")} onChange={(v) => change("method.eyebrow", v)} /><TextField label="Title" value={value("method.title")} onChange={(v) => change("method.title", v)} /><div className="field full"><TextArea label="Body" value={value("method.body")} onChange={(v) => change("method.body", v)} /></div></div><div className="form-divider" /><div className="array-stack">{content.method.steps.map((step, index) => <div className="subcard" key={step.number}><div className="subcard-head"><strong>{step.number} · {step.title}</strong><span>{step.icon}</span></div><div className="field-grid"><TextField label="Title" value={step.title} onChange={(v) => change(`method.steps.${index}.title`, v)} /><TextArea label="Body" value={step.body} onChange={(v) => change(`method.steps.${index}.body`, v)} /></div></div>)}</div><div className="form-divider" /><div className="field-grid"><TextField label="CTA title" value={value("method.ctaTitle")} onChange={(v) => change("method.ctaTitle", v)} /><TextField label="Highlighted words" value={value("method.ctaHighlight")} onChange={(v) => change("method.ctaHighlight", v)} /><div className="field full"><TextArea label="CTA body" value={value("method.ctaBody")} onChange={(v) => change("method.ctaBody", v)} /></div><TextField label="CTA button" value={value("method.cta")} onChange={(v) => change("method.cta", v)} /></div></div></>;
+  }
+
+  if (section === "contactModal") {
+    const c = content.contact;
+    if (!c) return <><SectionHead eyebrow="CONTACT" title="Contact form" description={sectionDescriptions.contactModal} /><div className="editor-card-body"><p>No contact block in this content file yet.</p></div></>;
+    return <><SectionHead eyebrow="CONTACT" title="Contact form" description={sectionDescriptions.contactModal} /><div className="editor-card-body"><div className="field-grid"><TextField label="Eyebrow" value={value("contact.eyebrow")} onChange={(v) => change("contact.eyebrow", v)} /><TextField label="Title" value={value("contact.title")} onChange={(v) => change("contact.title", v)} /><div className="field full"><TextArea label="Intro" value={value("contact.body")} onChange={(v) => change("contact.body", v)} /></div><div className="field full"><TextField label="Reassurance points (separate with |)" value={c.points.join(" | ")} onChange={(v) => change("contact.points", v.split("|").map((s) => s.trim()).filter(Boolean))} /></div><TextField label="Reply note" value={value("contact.replyNote")} onChange={(v) => change("contact.replyNote", v)} /></div><div className="form-divider" /><div className="field-grid"><TextField label="Name label" value={value("contact.nameLabel")} onChange={(v) => change("contact.nameLabel", v)} /><TextField label="Email label" value={value("contact.emailLabel")} onChange={(v) => change("contact.emailLabel", v)} /><TextField label="Company label" value={value("contact.companyLabel")} onChange={(v) => change("contact.companyLabel", v)} /><TextField label="Message label" value={value("contact.messageLabel")} onChange={(v) => change("contact.messageLabel", v)} /><TextField label="Message placeholder" value={value("contact.messagePlaceholder")} onChange={(v) => change("contact.messagePlaceholder", v)} /><TextField label="Submit button" value={value("contact.submitLabel")} onChange={(v) => change("contact.submitLabel", v)} /><TextField label="Sending label" value={value("contact.sendingLabel")} onChange={(v) => change("contact.sendingLabel", v)} /><div className="field full"><TextField label="Privacy note" value={value("contact.privacyNote")} onChange={(v) => change("contact.privacyNote", v)} /></div></div><div className="form-divider" /><div className="field-grid"><TextField label="Success title" value={value("contact.successTitle")} onChange={(v) => change("contact.successTitle", v)} /><TextField label="Success button" value={value("contact.successCta")} onChange={(v) => change("contact.successCta", v)} /><div className="field full"><TextArea label="Success body" value={value("contact.successBody")} onChange={(v) => change("contact.successBody", v)} /></div></div></div></>;
   }
 
   if (section === "social") {

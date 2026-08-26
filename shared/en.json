@@ -980,5 +980,27 @@
         "label": "Average partnership"
       }
     ]
+  },
+  "contact": {
+    "eyebrow": "START A PROJECT",
+    "title": "Tell us what should work better.",
+    "body": "Share the system, workflow, or operational challenge you want to fix. A polished brief is not required — a few sentences is enough to start.",
+    "points": [
+      "A real engineer reads every request",
+      "No sales sequence, no obligation",
+      "Clear next step within one business day"
+    ],
+    "replyNote": "We usually reply within one business day.",
+    "nameLabel": "Your name",
+    "emailLabel": "Work email",
+    "companyLabel": "Company",
+    "messageLabel": "What are you trying to improve?",
+    "messagePlaceholder": "The process that slows us down is…",
+    "submitLabel": "Send request",
+    "sendingLabel": "Sending…",
+    "privacyNote": "Your details stay with APEX and are used only to answer this request.",
+    "successTitle": "Request received.",
+    "successBody": "Thanks — your project context is with our team. We'll come back to you with a clear next step.",
+    "successCta": "Close"
   }
 }
